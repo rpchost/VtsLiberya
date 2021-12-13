@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CERTIFICATE">
+    <Key>
+      <PropertyRef Name="CERTIFICATENO" />
+    </Key>
+    <Property Name="CERTIFICATENO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CERTIFICATEDATE" Type="DateTime" Precision="3" />
+    <Property Name="CERTIFICATELASTTESTDATE" Type="DateTime" Precision="3" />
+    <Property Name="CERTIFICATETIME" Type="DateTime" Precision="3" />
+    <Property Name="INSPECTIONNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LANENO" Type="Int32" />
+    <Property Name="CHASSISNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SC1TIMEIN" Type="DateTime" Precision="3" />
+    <Property Name="SC1TIMEOUT" Type="DateTime" Precision="3" />
+    <Property Name="SC1INSPECTORNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SC1INSPECTORNO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="HEADLIGHTS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="GASANALYSER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SC2TIMEIN" Type="DateTime" Precision="3" />
+    <Property Name="SC2TIMEOUT" Type="DateTime" Precision="3" />
+    <Property Name="SC2INSPECTORNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SC2INSPECTORNO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SIDESLIP" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SUSPENSION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SC3TIMEIN" Type="DateTime" Precision="3" />
+    <Property Name="SC3TIMEOUT" Type="DateTime" Precision="3" />
+    <Property Name="SC3INSPECTORNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SC3INSPECTORNO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BRAKES" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SC4TIMEIN" Type="DateTime" Precision="3" />
+    <Property Name="SC4TIMEOUT" Type="DateTime" Precision="3" />
+    <Property Name="SC4INSPECTORNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SC4INSPECTORNO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VISUAL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="VISUAL1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL9" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL10" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL11" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL13" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL14" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL15" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL16" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL17" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL18" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL19" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VISUAL20" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TESTRESULT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="NOPRINTEDCOPIES" Type="Int32" />
+    <Property Name="TSTAMP" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="FEEAMOUNT" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="FEETYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="FEELABEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="STATIONNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MANUFACTURER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAKE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MODEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ManuallyGenerated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ExportDate" Type="DateTime" Precision="3" />
+    <Property Name="ValCO" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ValHC" Type="Int32" />
+    <Property Name="ValKFactorAvg" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ValKFactorEuro" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ValFstAxel" Type="Int32" />
+    <Property Name="ValScdAxel" Type="Int32" />
+    <Property Name="ValFAxelRPct" Type="Int32" />
+    <Property Name="ValFAxelLPct" Type="Int32" />
+    <Property Name="ValRAxelRPct" Type="Int32" />
+    <Property Name="ValRAxelLPct" Type="Int32" />
+    <Property Name="ValFAxelBrakeForceR" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValFAxelBrakeForceL" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValRAxelBrakeForceR" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValRAxelBrakeForceL" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValHandBrakeForceR" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValHandBrakeForceL" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="NorValSideSlip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ValCO2" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValO2" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValLambda" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="NorValCO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NorValHC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NorValShkAbsorberLR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NorValShkAbsorber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ValParkBrakeForceR" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValParkBrakeForceL" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValDecService" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValDecPark" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="NorValBrake" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NorValDecService" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NorValDecPark" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ValFAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValRAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValThrdAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValFrthAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValFifthAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="ValSixthAxleImb" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="NextInspectionDate" Type="DateTime" Precision="3" />
+    <Property Name="DynamicWeight" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="StaticWeight" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="PitchAngleRight" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="PitchAngleLeft" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="RepeatType" Type="Int32" />
+    <Property Name="FreeRepeat" Type="Int32" />
+    <Property Name="ReceiptNo" Type="Int32" />
+    <Property Name="ValWeightFstAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValWeightSecAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValWeightThrdAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValWeightFrthAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValWeightFifthAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValWeightSxthAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbSecAxleImb" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdAxleImb" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthAxleImb" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthAxleImb" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbSxthAxleImb" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbThrdLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbThrdRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbFrthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbFrthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbFifthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbFifthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbSixthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValSbSixthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbSixthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="ValPbSixthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="AddIn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RollerPBLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerPBRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerSecLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerSecRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerThirdLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerThirdRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerFourthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerFourthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerFifthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerFifthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerSixthLeftAxle" Type="Decimal" Precision="9" Scale="3" />
+    <Property Name="RollerSixthRightAxle" Type="Decimal" Precision="9" Scale="3" />
+  </EntityType>
+  <EntityContainer Name="VTSEntities6" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CERTIFICATEs" EntityType="Self.CERTIFICATE" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VTSModelFailRateInspByLane.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CARDAFTAR">
+    <Key>
+      <PropertyRef Name="CHASSISNO" />
+    </Key>
+    <Property Name="CHASSISNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PLATENO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OWNER" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADDRESS1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADDRESS2" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADDRESS3" Type="nvarchar" MaxLength="100" />
+    <Property Name="DATEOWNERSHIP" Type="datetime" />
+    <Property Name="DATEFREGISTRATION" Type="int" />
+    <Property Name="CARDAFTARNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="10" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="10" />
+    <Property Name="MAIL" Type="nvarchar" MaxLength="20" />
+    <Property Name="MOBILE" Type="nvarchar" MaxLength="10" />
+    <Property Name="MANUFACTURER" Type="nvarchar" MaxLength="50" />
+    <Property Name="DATEMANUFACTURED" Type="int" />
+    <Property Name="MAKE" Type="nvarchar" MaxLength="20" />
+    <Property Name="SHAPE" Type="nvarchar" MaxLength="20" />
+    <Property Name="MODEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="USAGE" Type="varchar" MaxLength="2" />
+    <Property Name="ENGINEPOWER" Type="int" />
+    <Property Name="COLOR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ENGINENO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NOCYLINDERS" Type="int" />
+    <Property Name="NOSEATS" Type="int" />
+    <Property Name="NOSEATSDRIVER" Type="int" />
+    <Property Name="WEIGHTEMPTY" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="WEIGHTTOTAL" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="NETLOAD" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="TRAILERSPECS" Type="nvarchar" MaxLength="100" />
+    <Property Name="FUELTYPE" Type="char" MaxLength="1" />
+    <Property Name="CARMILEAGE" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="NBAXELS" Type="int" />
+    <Property Name="USER_FK" Type="int" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOSTNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATEDATE" Type="datetime" />
+    <Property Name="UPDATETIME" Type="datetime" />
+    <Property Name="TSTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="ExportDate" Type="datetime" />
+    <Property Name="VehicleCategory" Type="int" />
+    <Property Name="FourWD" Type="int" />
+    <Property Name="SpecialCase" Type="char" MaxLength="1" />
+    <Property Name="VisitCount" Type="int" />
+    <Property Name="Istimara" Type="int" />
+    <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CERTIFICATE">
+    <Key>
+      <PropertyRef Name="CERTIFICATENO" />
+    </Key>
+    <Property Name="CERTIFICATENO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CERTIFICATEDATE" Type="datetime" />
+    <Property Name="CERTIFICATELASTTESTDATE" Type="datetime" />
+    <Property Name="CERTIFICATETIME" Type="datetime" />
+    <Property Name="INSPECTIONNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="LANENO" Type="int" />
+    <Property Name="CHASSISNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="SC1TIMEIN" Type="datetime" />
+    <Property Name="SC1TIMEOUT" Type="datetime" />
+    <Property Name="SC1INSPECTORNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SC1INSPECTORNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="HEADLIGHTS" Type="char" MaxLength="1" />
+    <Property Name="GASANALYSER" Type="char" MaxLength="1" />
+    <Property Name="SC2TIMEIN" Type="datetime" />
+    <Property Name="SC2TIMEOUT" Type="datetime" />
+    <Property Name="SC2INSPECTORNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SC2INSPECTORNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="SIDESLIP" Type="char" MaxLength="1" />
+    <Property Name="SUSPENSION" Type="char" MaxLength="1" />
+    <Property Name="SC3TIMEIN" Type="datetime" />
+    <Property Name="SC3TIMEOUT" Type="datetime" />
+    <Property Name="SC3INSPECTORNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SC3INSPECTORNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="BRAKES" Type="char" MaxLength="1" />
+    <Property Name="SC4TIMEIN" Type="datetime" />
+    <Property Name="SC4TIMEOUT" Type="datetime" />
+    <Property Name="SC4INSPECTORNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SC4INSPECTORNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="VISUAL" Type="char" MaxLength="1" />
+    <Property Name="VISUAL1" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL2" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL3" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL4" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL5" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL6" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL7" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL8" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL9" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL10" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL11" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL12" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL13" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL14" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL15" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL16" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL17" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL18" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL19" Type="varchar" MaxLength="255" />
+    <Property Name="VISUAL20" Type="varchar" MaxLength="255" />
+    <Property Name="TESTRESULT" Type="char" MaxLength="1" />
+    <Property Name="NOPRINTEDCOPIES" Type="int" />
+    <Property Name="TSTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="FEEAMOUNT" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="FEETYPE" Type="char" MaxLength="2" />
+    <Property Name="FEELABEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="STATIONNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="MANUFACTURER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAKE" Type="nvarchar" MaxLength="20" />
+    <Property Name="MODEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="ManuallyGenerated" Type="char" MaxLength="1" />
+    <Property Name="ExportDate" Type="datetime" />
+    <Property Name="ValCO" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="ValHC" Type="int" />
+    <Property Name="ValKFactorAvg" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="ValKFactorEuro" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="ValFstAxel" Type="int" />
+    <Property Name="ValScdAxel" Type="int" />
+    <Property Name="ValFAxelRPct" Type="int" />
+    <Property Name="ValFAxelLPct" Type="int" />
+    <Property Name="ValRAxelRPct" Type="int" />
+    <Property Name="ValRAxelLPct" Type="int" />
+    <Property Name="ValFAxelBrakeForceR" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValFAxelBrakeForceL" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValRAxelBrakeForceR" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValRAxelBrakeForceL" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValHandBrakeForceR" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValHandBrakeForceL" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="NorValSideSlip" Type="varchar" MaxLength="10" />
+    <Property Name="ValCO2" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValO2" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValLambda" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="NorValCO" Type="varchar" MaxLength="10" />
+    <Property Name="NorValHC" Type="varchar" MaxLength="10" />
+    <Property Name="NorValShkAbsorberLR" Type="varchar" MaxLength="20" />
+    <Property Name="NorValShkAbsorber" Type="varchar" MaxLength="15" />
+    <Property Name="ValParkBrakeForceR" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValParkBrakeForceL" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValDecService" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValDecPark" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="NorValBrake" Type="varchar" MaxLength="15" />
+    <Property Name="NorValDecService" Type="varchar" MaxLength="15" />
+    <Property Name="NorValDecPark" Type="varchar" MaxLength="15" />
+    <Property Name="ValFAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValRAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValThrdAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValFrthAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValFifthAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="ValSixthAxleImb" Type="numeric" Precision="6" Scale="3" />
+    <Property Name="NextInspectionDate" Type="datetime" />
+    <Property Name="DynamicWeight" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="StaticWeight" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="PitchAngleRight" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="PitchAngleLeft" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="RepeatType" Type="int" />
+    <Property Name="FreeRepeat" Type="int" />
+    <Property Name="ReceiptNo" Type="int" />
+    <Property Name="ValWeightFstAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValWeightSecAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValWeightThrdAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValWeightFrthAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValWeightFifthAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValWeightSxthAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbSecAxleImb" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdAxleImb" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthAxleImb" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthAxleImb" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbSxthAxleImb" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbThrdLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbThrdRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbFrthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbFrthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbThrdLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFrthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbFifthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbFifthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbFifthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbSixthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValSbSixthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbSixthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="ValPbSixthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="AddIn" Type="char" MaxLength="1" />
+    <Property Name="RollerPBLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerPBRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerSecLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerSecRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerThirdLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerThirdRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerFourthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerFourthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerFifthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerFifthRightAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerSixthLeftAxle" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="RollerSixthRightAxle" Type="numeric" Precision="9" Scale="3" />
+  </EntityType>
+  <EntityType Name="INSPECTIONHISTORY">
+    <Key>
+      <PropertyRef Name="INSPECTIONNO" />
+    </Key>
+    <Property Name="INSPECTIONNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CHASSISNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ITYPE" Type="char" MaxLength="3" />
+    <Property Name="LANE" Type="int" />
+    <Property Name="FEEAMOUNT" Type="numeric" Precision="9" Scale="3" />
+    <Property Name="FEETYPE" Type="char" MaxLength="2" />
+    <Property Name="FEELABEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="STATIONNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="TESTDATE" Type="datetime" />
+    <Property Name="TESTTIME" Type="datetime" />
+    <Property Name="LASTSTATIONNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="LASTTESTDATE" Type="datetime" />
+    <Property Name="LASTTESTTIME" Type="datetime" />
+    <Property Name="USER_FK" Type="int" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="HOSTNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATEDATE" Type="datetime" />
+    <Property Name="UPDATETIME" Type="datetime" />
+    <Property Name="CASHIERNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="CASHIER_FK" Type="int" />
+    <Property Name="TSTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="TESTRESULT" Type="char" MaxLength="1" />
+    <Property Name="ExportDate" Type="datetime" />
+    <Property Name="APPDATETIME" Type="datetime" />
+    <Property Name="InspType" Type="char" MaxLength="1" />
+    <Property Name="PrintTime" Type="datetime" />
+    <Property Name="BarcodeTime" Type="datetime" />
+    <Property Name="ReceiptNo" Type="varchar" MaxLength="50" />
+    <Property Name="LaneIN" Type="int" />
+    <Property Name="LANETYPE" Type="int" />
+    <Property Name="MinLane" Type="int" />
+  </EntityType>
+  <Association Name="FK_CERTIFICATE_CARDAFTAR">
+    <End Role="CARDAFTAR" Type="Self.CARDAFTAR" Multiplicity="0..1" />
+    <End Role="CERTIFICATE" Type="Self.CERTIFICATE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDAFTAR">
+        <PropertyRef Name="CHASSISNO" />
+      </Principal>
+      <Dependent Role="CERTIFICATE">
+        <PropertyRef Name="CHASSISNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSPECTIONHISTORY_CARDAFTAR">
+    <End Role="CARDAFTAR" Type="Self.CARDAFTAR" Multiplicity="1" />
+    <End Role="INSPECTIONHISTORY" Type="Self.INSPECTIONHISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDAFTAR">
+        <PropertyRef Name="CHASSISNO" />
+      </Principal>
+      <Dependent Role="INSPECTIONHISTORY">
+        <PropertyRef Name="CHASSISNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VTSModelFailRateInspByLaneStoreContainer">
+    <EntitySet Name="CARDAFTAR" EntityType="Self.CARDAFTAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CERTIFICATE" EntityType="Self.CERTIFICATE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INSPECTIONHISTORY" EntityType="Self.INSPECTIONHISTORY" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CERTIFICATE_CARDAFTAR" Association="Self.FK_CERTIFICATE_CARDAFTAR">
+      <End Role="CARDAFTAR" EntitySet="CARDAFTAR" />
+      <End Role="CERTIFICATE" EntitySet="CERTIFICATE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSPECTIONHISTORY_CARDAFTAR" Association="Self.FK_INSPECTIONHISTORY_CARDAFTAR">
+      <End Role="CARDAFTAR" EntitySet="CARDAFTAR" />
+      <End Role="INSPECTIONHISTORY" EntitySet="INSPECTIONHISTORY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

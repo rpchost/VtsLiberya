@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VTSModelFailRateInspByLaneStoreContainer" CdmEntityContainer="VTSEntitiesFailRateInspByLane">
+    <EntitySetMapping Name="CARDAFTARs">
+      <EntityTypeMapping TypeName="VTSModelFailRateInspByLane.CARDAFTAR">
+        <MappingFragment StoreEntitySet="CARDAFTAR">
+          <ScalarProperty Name="CHASSISNO" ColumnName="CHASSISNO" />
+          <ScalarProperty Name="PLATENO" ColumnName="PLATENO" />
+          <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+          <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+          <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+          <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+          <ScalarProperty Name="DATEOWNERSHIP" ColumnName="DATEOWNERSHIP" />
+          <ScalarProperty Name="DATEFREGISTRATION" ColumnName="DATEFREGISTRATION" />
+          <ScalarProperty Name="CARDAFTARNO" ColumnName="CARDAFTARNO" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+          <ScalarProperty Name="DATEMANUFACTURED" ColumnName="DATEMANUFACTURED" />
+          <ScalarProperty Name="MAKE" ColumnName="MAKE" />
+          <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
+          <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+          <ScalarProperty Name="USAGE" ColumnName="USAGE" />
+          <ScalarProperty Name="ENGINEPOWER" ColumnName="ENGINEPOWER" />
+          <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+          <ScalarProperty Name="ENGINENO" ColumnName="ENGINENO" />
+          <ScalarProperty Name="NOCYLINDERS" ColumnName="NOCYLINDERS" />
+          <ScalarProperty Name="NOSEATS" ColumnName="NOSEATS" />
+          <ScalarProperty Name="NOSEATSDRIVER" ColumnName="NOSEATSDRIVER" />
+          <ScalarProperty Name="WEIGHTEMPTY" ColumnName="WEIGHTEMPTY" />
+          <ScalarProperty Name="WEIGHTTOTAL" ColumnName="WEIGHTTOTAL" />
+          <ScalarProperty Name="NETLOAD" ColumnName="NETLOAD" />
+          <ScalarProperty Name="TRAILERSPECS" ColumnName="TRAILERSPECS" />
+          <ScalarProperty Name="FUELTYPE" ColumnName="FUELTYPE" />
+          <ScalarProperty Name="CARMILEAGE" ColumnName="CARMILEAGE" />
+          <ScalarProperty Name="NBAXELS" ColumnName="NBAXELS" />
+          <ScalarProperty Name="USER_FK" ColumnName="USER_FK" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="HOSTNAME" ColumnName="HOSTNAME" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="UPDATETIME" ColumnName="UPDATETIME" />
+          <ScalarProperty Name="TSTAMP" ColumnName="TSTAMP" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+          <ScalarProperty Name="VehicleCategory" ColumnName="VehicleCategory" />
+          <ScalarProperty Name="FourWD" ColumnName="FourWD" />
+          <ScalarProperty Name="SpecialCase" ColumnName="SpecialCase" />
+          <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+          <ScalarProperty Name="Istimara" ColumnName="Istimara" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CERTIFICATEs">
+      <EntityTypeMapping TypeName="VTSModelFailRateInspByLane.CERTIFICATE">
+        <MappingFragment StoreEntitySet="CERTIFICATE">
+          <ScalarProperty Name="CERTIFICATENO" ColumnName="CERTIFICATENO" />
+          <ScalarProperty Name="CERTIFICATEDATE" ColumnName="CERTIFICATEDATE" />
+          <ScalarProperty Name="CERTIFICATELASTTESTDATE" ColumnName="CERTIFICATELASTTESTDATE" />
+          <ScalarProperty Name="CERTIFICATETIME" ColumnName="CERTIFICATETIME" />
+          <ScalarProperty Name="INSPECTIONNO" ColumnName="INSPECTIONNO" />
+          <ScalarProperty Name="LANENO" ColumnName="LANENO" />
+          <ScalarProperty Name="CHASSISNO" ColumnName="CHASSISNO" />
+          <ScalarProperty Name="SC1TIMEIN" ColumnName="SC1TIMEIN" />
+          <ScalarProperty Name="SC1TIMEOUT" ColumnName="SC1TIMEOUT" />
+          <ScalarProperty Name="SC1INSPECTORNAME" ColumnName="SC1INSPECTORNAME" />
+          <ScalarProperty Name="SC1INSPECTORNO" ColumnName="SC1INSPECTORNO" />
+          <ScalarProperty Name="HEADLIGHTS" ColumnName="HEADLIGHTS" />
+          <ScalarProperty Name="GASANALYSER" ColumnName="GASANALYSER" />
+          <ScalarProperty Name="SC2TIMEIN" ColumnName="SC2TIMEIN" />
+          <ScalarProperty Name="SC2TIMEOUT" ColumnName="SC2TIMEOUT" />
+          <ScalarProperty Name="SC2INSPECTORNAME" ColumnName="SC2INSPECTORNAME" />
+          <ScalarProperty Name="SC2INSPECTORNO" ColumnName="SC2INSPECTORNO" />
+          <ScalarProperty Name="SIDESLIP" ColumnName="SIDESLIP" />
+          <ScalarProperty Name="SUSPENSION" ColumnName="SUSPENSION" />
+          <ScalarProperty Name="SC3TIMEIN" ColumnName="SC3TIMEIN" />
+          <ScalarProperty Name="SC3TIMEOUT" ColumnName="SC3TIMEOUT" />
+          <ScalarProperty Name="SC3INSPECTORNAME" ColumnName="SC3INSPECTORNAME" />
+          <ScalarProperty Name="SC3INSPECTORNO" ColumnName="SC3INSPECTORNO" />
+          <ScalarProperty Name="BRAKES" ColumnName="BRAKES" />
+          <ScalarProperty Name="SC4TIMEIN" ColumnName="SC4TIMEIN" />
+          <ScalarProperty Name="SC4TIMEOUT" ColumnName="SC4TIMEOUT" />
+          <ScalarProperty Name="SC4INSPECTORNAME" ColumnName="SC4INSPECTORNAME" />
+          <ScalarProperty Name="SC4INSPECTORNO" ColumnName="SC4INSPECTORNO" />
+          <ScalarProperty Name="VISUAL" ColumnName="VISUAL" />
+          <ScalarProperty Name="VISUAL1" ColumnName="VISUAL1" />
+          <ScalarProperty Name="VISUAL2" ColumnName="VISUAL2" />
+          <ScalarProperty Name="VISUAL3" ColumnName="VISUAL3" />
+          <ScalarProperty Name="VISUAL4" ColumnName="VISUAL4" />
+          <ScalarProperty Name="VISUAL5" ColumnName="VISUAL5" />
+          <ScalarProperty Name="VISUAL6" ColumnName="VISUAL6" />
+          <ScalarProperty Name="VISUAL7" ColumnName="VISUAL7" />
+          <ScalarProperty Name="VISUAL8" ColumnName="VISUAL8" />
+          <ScalarProperty Name="VISUAL9" ColumnName="VISUAL9" />
+          <ScalarProperty Name="VISUAL10" ColumnName="VISUAL10" />
+          <ScalarProperty Name="VISUAL11" ColumnName="VISUAL11" />
+          <ScalarProperty Name="VISUAL12" ColumnName="VISUAL12" />
+          <ScalarProperty Name="VISUAL13" ColumnName="VISUAL13" />
+          <ScalarProperty Name="VISUAL14" ColumnName="VISUAL14" />
+          <ScalarProperty Name="VISUAL15" ColumnName="VISUAL15" />
+          <ScalarProperty Name="VISUAL16" ColumnName="VISUAL16" />
+          <ScalarProperty Name="VISUAL17" ColumnName="VISUAL17" />
+          <ScalarProperty Name="VISUAL18" ColumnName="VISUAL18" />
+          <ScalarProperty Name="VISUAL19" ColumnName="VISUAL19" />
+          <ScalarProperty Name="VISUAL20" ColumnName="VISUAL20" />
+          <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT" />
+          <ScalarProperty Name="NOPRINTEDCOPIES" ColumnName="NOPRINTEDCOPIES" />
+          <ScalarProperty Name="TSTAMP" ColumnName="TSTAMP" />
+          <ScalarProperty Name="FEEAMOUNT" ColumnName="FEEAMOUNT" />
+          <ScalarProperty Name="FEETYPE" ColumnName="FEETYPE" />
+          <ScalarProperty Name="FEELABEL" ColumnName="FEELABEL" />
+          <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+          <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+          <ScalarProperty Name="MAKE" ColumnName="MAKE" />
+          <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+          <ScalarProperty Name="ManuallyGenerated" ColumnName="ManuallyGenerated" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+          <ScalarProperty Name="ValCO" ColumnName="ValCO" />
+          <ScalarProperty Name="ValHC" ColumnName="ValHC" />
+          <ScalarProperty Name="ValKFactorAvg" ColumnName="ValKFactorAvg" />
+          <ScalarProperty Name="ValKFactorEuro" ColumnName="ValKFactorEuro" />
+          <ScalarProperty Name="ValFstAxel" ColumnName="ValFstAxel" />
+          <ScalarProperty Name="ValScdAxel" ColumnName="ValScdAxel" />
+          <ScalarProperty Name="ValFAxelRPct" ColumnName="ValFAxelRPct" />
+          <ScalarProperty Name="ValFAxelLPct" ColumnName="ValFAxelLPct" />
+          <ScalarProperty Name="ValRAxelRPct" ColumnName="ValRAxelRPct" />
+          <ScalarProperty Name="ValRAxelLPct" ColumnName="ValRAxelLPct" />
+          <ScalarProperty Name="ValFAxelBrakeForceR" ColumnName="ValFAxelBrakeForceR" />
+          <ScalarProperty Name="ValFAxelBrakeForceL" ColumnName="ValFAxelBrakeForceL" />
+          <ScalarProperty Name="ValRAxelBrakeForceR" ColumnName="ValRAxelBrakeForceR" />
+          <ScalarProperty Name="ValRAxelBrakeForceL" ColumnName="ValRAxelBrakeForceL" />
+          <ScalarProperty Name="ValHandBrakeForceR" ColumnName="ValHandBrakeForceR" />
+          <ScalarProperty Name="ValHandBrakeForceL" ColumnName="ValHandBrakeForceL" />
+          <ScalarProperty Name="NorValSideSlip" ColumnName="NorValSideSlip" />
+          <ScalarProperty Name="ValCO2" ColumnName="ValCO2" />
+          <ScalarProperty Name="ValO2" ColumnName="ValO2" />
+          <ScalarProperty Name="ValLambda" ColumnName="ValLambda" />
+          <ScalarProperty Name="NorValCO" ColumnName="NorValCO" />
+          <ScalarProperty Name="NorValHC" ColumnName="NorValHC" />
+          <ScalarProperty Name="NorValShkAbsorberLR" ColumnName="NorValShkAbsorberLR" />
+          <ScalarProperty Name="NorValShkAbsorber" ColumnName="NorValShkAbsorber" />
+          <ScalarProperty Name="ValParkBrakeForceR" ColumnName="ValParkBrakeForceR" />
+          <ScalarProperty Name="ValParkBrakeForceL" ColumnName="ValParkBrakeForceL" />
+          <ScalarProperty Name="ValDecService" ColumnName="ValDecService" />
+          <ScalarProperty Name="ValDecPark" ColumnName="ValDecPark" />
+          <ScalarProperty Name="NorValBrake" ColumnName="NorValBrake" />
+          <ScalarProperty Name="NorValDecService" ColumnName="NorValDecService" />
+          <ScalarProperty Name="NorValDecPark" ColumnName="NorValDecPark" />
+          <ScalarProperty Name="ValFAxleImb" ColumnName="ValFAxleImb" />
+          <ScalarProperty Name="ValRAxleImb" ColumnName="ValRAxleImb" />
+          <ScalarProperty Name="ValThrdAxleImb" ColumnName="ValThrdAxleImb" />
+          <ScalarProperty Name="ValFrthAxleImb" ColumnName="ValFrthAxleImb" />
+          <ScalarProperty Name="ValFifthAxleImb" ColumnName="ValFifthAxleImb" />
+          <ScalarProperty Name="ValSixthAxleImb" ColumnName="ValSixthAxleImb" />
+          <ScalarProperty Name="NextInspectionDate" ColumnName="NextInspectionDate" />
+          <ScalarProperty Name="DynamicWeight" ColumnName="DynamicWeight" />
+          <ScalarProperty Name="StaticWeight" ColumnName="StaticWeight" />
+          <ScalarProperty Name="PitchAngleRight" ColumnName="PitchAngleRight" />
+          <ScalarProperty Name="PitchAngleLeft" ColumnName="PitchAngleLeft" />
+          <ScalarProperty Name="RepeatType" ColumnName="RepeatType" />
+          <ScalarProperty Name="FreeRepeat" ColumnName="FreeRepeat" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="ValWeightFstAxle" ColumnName="ValWeightFstAxle" />
+          <ScalarProperty Name="ValWeightSecAxle" ColumnName="ValWeightSecAxle" />
+          <ScalarProperty Name="ValWeightThrdAxle" ColumnName="ValWeightThrdAxle" />
+          <ScalarProperty Name="ValWeightFrthAxle" ColumnName="ValWeightFrthAxle" />
+          <ScalarProperty Name="ValWeightFifthAxle" ColumnName="ValWeightFifthAxle" />
+          <ScalarProperty Name="ValWeightSxthAxle" ColumnName="ValWeightSxthAxle" />
+          <ScalarProperty Name="ValPbSecAxleImb" ColumnName="ValPbSecAxleImb" />
+          <ScalarProperty Name="ValPbThrdAxleImb" ColumnName="ValPbThrdAxleImb" />
+          <ScalarProperty Name="ValPbFrthAxleImb" ColumnName="ValPbFrthAxleImb" />
+          <ScalarProperty Name="ValPbFifthAxleImb" ColumnName="ValPbFifthAxleImb" />
+          <ScalarProperty Name="ValPbSxthAxleImb" ColumnName="ValPbSxthAxleImb" />
+          <ScalarProperty Name="ValSbThrdLeftAxle" ColumnName="ValSbThrdLeftAxle" />
+          <ScalarProperty Name="ValSbThrdRightAxle" ColumnName="ValSbThrdRightAxle" />
+          <ScalarProperty Name="ValSbFrthLeftAxle" ColumnName="ValSbFrthLeftAxle" />
+          <ScalarProperty Name="ValSbFrthRightAxle" ColumnName="ValSbFrthRightAxle" />
+          <ScalarProperty Name="ValPbThrdRightAxle" ColumnName="ValPbThrdRightAxle" />
+          <ScalarProperty Name="ValPbThrdLeftAxle" ColumnName="ValPbThrdLeftAxle" />
+          <ScalarProperty Name="ValPbFrthRightAxle" ColumnName="ValPbFrthRightAxle" />
+          <ScalarProperty Name="ValPbFrthLeftAxle" ColumnName="ValPbFrthLeftAxle" />
+          <ScalarProperty Name="ValSbFifthLeftAxle" ColumnName="ValSbFifthLeftAxle" />
+          <ScalarProperty Name="ValSbFifthRightAxle" ColumnName="ValSbFifthRightAxle" />
+          <ScalarProperty Name="ValPbFifthLeftAxle" ColumnName="ValPbFifthLeftAxle" />
+          <ScalarProperty Name="ValPbFifthRightAxle" ColumnName="ValPbFifthRightAxle" />
+          <ScalarProperty Name="ValSbSixthLeftAxle" ColumnName="ValSbSixthLeftAxle" />
+          <ScalarProperty Name="ValSbSixthRightAxle" ColumnName="ValSbSixthRightAxle" />
+          <ScalarProperty Name="ValPbSixthLeftAxle" ColumnName="ValPbSixthLeftAxle" />
+          <ScalarProperty Name="ValPbSixthRightAxle" ColumnName="ValPbSixthRightAxle" />
+          <ScalarProperty Name="AddIn" ColumnName="AddIn" />
+          <ScalarProperty Name="RollerPBLeftAxle" ColumnName="RollerPBLeftAxle" />
+          <ScalarProperty Name="RollerPBRightAxle" ColumnName="RollerPBRightAxle" />
+          <ScalarProperty Name="RollerSecLeftAxle" ColumnName="RollerSecLeftAxle" />
+          <ScalarProperty Name="RollerSecRightAxle" ColumnName="RollerSecRightAxle" />
+          <ScalarProperty Name="RollerThirdLeftAxle" ColumnName="RollerThirdLeftAxle" />
+          <ScalarProperty Name="RollerThirdRightAxle" ColumnName="RollerThirdRightAxle" />
+          <ScalarProperty Name="RollerFourthLeftAxle" ColumnName="RollerFourthLeftAxle" />
+          <ScalarProperty Name="RollerFourthRightAxle" ColumnName="RollerFourthRightAxle" />
+          <ScalarProperty Name="RollerFifthLeftAxle" ColumnName="RollerFifthLeftAxle" />
+          <ScalarProperty Name="RollerFifthRightAxle" ColumnName="RollerFifthRightAxle" />
+          <ScalarProperty Name="RollerSixthLeftAxle" ColumnName="RollerSixthLeftAxle" />
+          <ScalarProperty Name="RollerSixthRightAxle" ColumnName="RollerSixthRightAxle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSPECTIONHISTORies">
+      <EntityTypeMapping TypeName="VTSModelFailRateInspByLane.INSPECTIONHISTORY">
+        <MappingFragment StoreEntitySet="INSPECTIONHISTORY">
+          <ScalarProperty Name="INSPECTIONNO" ColumnName="INSPECTIONNO" />
+          <ScalarProperty Name="CHASSISNO" ColumnName="CHASSISNO" />
+          <ScalarProperty Name="ITYPE" ColumnName="ITYPE" />
+          <ScalarProperty Name="LANE" ColumnName="LANE" />
+          <ScalarProperty Name="FEEAMOUNT" ColumnName="FEEAMOUNT" />
+          <ScalarProperty Name="FEETYPE" ColumnName="FEETYPE" />
+          <ScalarProperty Name="FEELABEL" ColumnName="FEELABEL" />
+          <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+          <ScalarProperty Name="TESTDATE" ColumnName="TESTDATE" />
+          <ScalarProperty Name="TESTTIME" ColumnName="TESTTIME" />
+          <ScalarProperty Name="LASTSTATIONNAME" ColumnName="LASTSTATIONNAME" />
+          <ScalarProperty Name="LASTTESTDATE" ColumnName="LASTTESTDATE" />
+          <ScalarProperty Name="LASTTESTTIME" ColumnName="LASTTESTTIME" />
+          <ScalarProperty Name="USER_FK" ColumnName="USER_FK" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="HOSTNAME" ColumnName="HOSTNAME" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="UPDATETIME" ColumnName="UPDATETIME" />
+          <ScalarProperty Name="CASHIERNAME" ColumnName="CASHIERNAME" />
+          <ScalarProperty Name="CASHIER_FK" ColumnName="CASHIER_FK" />
+          <ScalarProperty Name="TSTAMP" ColumnName="TSTAMP" />
+          <ScalarProperty Name="TESTRESULT" ColumnName="TESTRESULT" />
+          <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+          <ScalarProperty Name="APPDATETIME" ColumnName="APPDATETIME" />
+          <ScalarProperty Name="InspType" ColumnName="InspType" />
+          <ScalarProperty Name="PrintTime" ColumnName="PrintTime" />
+          <ScalarProperty Name="BarcodeTime" ColumnName="BarcodeTime" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="LaneIN" ColumnName="LaneIN" />
+          <ScalarProperty Name="LANETYPE" ColumnName="LANETYPE" />
+          <ScalarProperty Name="MinLane" ColumnName="MinLane" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

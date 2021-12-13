@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MdlFailRateByDefectcodeStoreContainer" CdmEntityContainer="VTSEntitiesFailRateByDefectcode">
+    <FunctionImportMapping FunctionImportName="RptFailRateByDefectCode" FunctionName="MdlFailRateByDefectcode.Store.RptFailRateByDefectCode">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MdlFailRateByDefectcode.RptFailRateByDefectCode_Result">
+          <ScalarProperty Name="PLATENO" ColumnName="PLATENO" />
+          <ScalarProperty Name="CHASSISNO" ColumnName="CHASSISNO" />
+          <ScalarProperty Name="LANENO" ColumnName="LANENO" />
+          <ScalarProperty Name="CERTIFICATEDATE" ColumnName="CERTIFICATEDATE" />
+          <ScalarProperty Name="SCINSPECTORNO" ColumnName="SCINSPECTORNO" />
+          <ScalarProperty Name="SCTIMEIN" ColumnName="SCTIMEIN" />
+          <ScalarProperty Name="SCTIMEOUT" ColumnName="SCTIMEOUT" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="VehicleCategory" ColumnName="VehicleCategory" />
+          <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+          <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+          <ScalarProperty Name="DateManufactured" ColumnName="DateManufactured" />
+          <ScalarProperty Name="VisualDescp" ColumnName="VisualDescp" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

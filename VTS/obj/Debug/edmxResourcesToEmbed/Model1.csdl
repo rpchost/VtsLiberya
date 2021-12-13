@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VTSModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DEFECTS_Tmp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CERTIFICATENO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DEFECTDATE" Type="DateTime" Precision="3" />
+    <Property Name="DEFECTDESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="VTSEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DEFECTS_Tmp" EntityType="Self.DEFECTS_Tmp" />
+  </EntityContainer>
+</Schema>

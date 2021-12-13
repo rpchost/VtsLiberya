@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MdlFailRateByDefectcode.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="RptFailRateByDefectCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="varchar" Mode="In" />
+          <Parameter Name="Todate" Type="varchar" Mode="In" />
+          <Parameter Name="StationName" Type="varchar" Mode="In" />
+          <Parameter Name="Defect" Type="varchar" Mode="In" />
+          <Parameter Name="Visit" Type="varchar" Mode="In" />
+          <Parameter Name="VehicleType" Type="varchar" Mode="In" />
+          <Parameter Name="VehicleCategory" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MdlFailRateByDefectcodeStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MdlFailRateByDefectcode" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VTSEntitiesFailRateByDefectcode" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="RptFailRateByDefectCode" ReturnType="Collection(MdlFailRateByDefectcode.RptFailRateByDefectCode_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="Todate" Mode="In" Type="String" />
+            <Parameter Name="StationName" Mode="In" Type="String" />
+            <Parameter Name="Defect" Mode="In" Type="String" />
+            <Parameter Name="Visit" Mode="In" Type="String" />
+            <Parameter Name="VehicleType" Mode="In" Type="String" />
+            <Parameter Name="VehicleCategory" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="RptFailRateByDefectCode_Result">
+          <Property Type="String" Name="PLATENO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CHASSISNO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LANENO" Nullable="true" />
+          <Property Type="DateTime" Name="CERTIFICATEDATE" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SCINSPECTORNO" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="SCTIMEIN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="SCTIMEOUT" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SectionName" Nullable="false" MaxLength="8" />
+          <Property Type="Int32" Name="VehicleCategory" Nullable="true" />
+          <Property Type="String" Name="FeeLabel" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="STATIONNAME" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DateManufactured" Nullable="true" />
+          <Property Type="String" Name="VisualDescp" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Result" Nullable="true" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MdlFailRateByDefectcodeStoreContainer" CdmEntityContainer="VTSEntitiesFailRateByDefectcode" >
+          <FunctionImportMapping FunctionImportName="RptFailRateByDefectCode" FunctionName="MdlFailRateByDefectcode.Store.RptFailRateByDefectCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MdlFailRateByDefectcode.RptFailRateByDefectCode_Result">
+                <ScalarProperty Name="PLATENO" ColumnName="PLATENO" />
+                <ScalarProperty Name="CHASSISNO" ColumnName="CHASSISNO" />
+                <ScalarProperty Name="LANENO" ColumnName="LANENO" />
+                <ScalarProperty Name="CERTIFICATEDATE" ColumnName="CERTIFICATEDATE" />
+                <ScalarProperty Name="SCINSPECTORNO" ColumnName="SCINSPECTORNO" />
+                <ScalarProperty Name="SCTIMEIN" ColumnName="SCTIMEIN" />
+                <ScalarProperty Name="SCTIMEOUT" ColumnName="SCTIMEOUT" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="VehicleCategory" ColumnName="VehicleCategory" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+                <ScalarProperty Name="DateManufactured" ColumnName="DateManufactured" />
+                <ScalarProperty Name="VisualDescp" ColumnName="VisualDescp" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FailRateInspByLaneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FailRateInspByLaneEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="RPTFstVisitFailRateByLane" ReturnType="Collection(FailRateInspByLaneModel.RPTFstVisitFailRateByLane_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="STATIONNAME" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="RPTFstVisitFailRateByLane_Result">
+    <Property Type="DateTime" Name="CERTIFICATEDATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="STATIONNAME" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Laneno" Nullable="true" />
+    <Property Type="String" Name="VehicleType" Nullable="false" MaxLength="6" />
+    <Property Type="Int32" Name="FaiL" Nullable="false" />
+  </ComplexType>
+</Schema>

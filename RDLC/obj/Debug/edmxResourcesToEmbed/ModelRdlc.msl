@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VTSModelStoreContainer" CdmEntityContainer="VTSEntities">
+    <FunctionImportMapping FunctionImportName="RPTFstVisitFailRateByLane" FunctionName="VTSModel.Store.RPTFstVisitFailRateByLane">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VTSModel.RPTFstVisitFailRateByLane_Result">
+          <ScalarProperty Name="CERTIFICATEDATE" ColumnName="CERTIFICATEDATE" />
+          <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+          <ScalarProperty Name="Laneno" ColumnName="Laneno" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="FaiL" ColumnName="FaiL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

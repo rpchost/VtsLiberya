@@ -1,0 +1,2461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B07E5348-DF0D-417E-A718-6C2E27909B1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>VTS_4._7_.My.MyApplication</StartupObject>
+    <RootNamespace>VTS_4._7_</RootNamespace>
+    <AssemblyName>VTS[4.7]</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>VTS[4.7].xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>VTS[4.7].xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.6.0.0\lib\net461\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.6.0.0\lib\net461\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.6.0.0\lib\net461\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.6.0.0\lib\net461\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.6.0.0\lib\net461\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Visual\Accessoires de visibilite.Designer.vb">
+      <DependentUpon>Accessoires de visibilite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Accessoires de visibilite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Accouplement de direction.Designer.vb">
+      <DependentUpon>Accouplement de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Accouplement de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Accouplement, relais de transmission.Designer.vb">
+      <DependentUpon>Accouplement, relais de transmission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Accouplement, relais de transmission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Aile.Designer.vb">
+      <DependentUpon>Aile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Aile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Alimentation.Designer.vb">
+      <DependentUpon>Alimentation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Alimentation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Amortisseurs.Designer.vb">
+      <DependentUpon>Amortisseurs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Amortisseurs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Angle, ripage.Designer.vb">
+      <DependentUpon>Angle, ripage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Angle, ripage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Antivol de direction.Designer.vb">
+      <DependentUpon>Antivol de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Antivol de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Articulation du triangle ou tirant de suspension .Designer.vb">
+      <DependentUpon>Articulation du triangle ou tirant de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Articulation du triangle ou tirant de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Assistance de direction.Designer.vb">
+      <DependentUpon>Assistance de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Assistance de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Assistance de Freinage.Designer.vb">
+      <DependentUpon>Assistance de Freinage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Assistance de Freinage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Assistance dedirection .Designer.vb">
+      <DependentUpon>Assistance dedirection .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Assistance dedirection .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Assistence de frienage servo.Designer.vb">
+      <DependentUpon>Assistence de frienage servo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Assistence de frienage servo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques internationaux.Designer.vb">
+      <DependentUpon>Autocars touristiques internationaux.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques internationaux.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques internationaux1.Designer.vb">
+      <DependentUpon>Autocars touristiques internationaux1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques internationaux1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques.Designer.vb">
+      <DependentUpon>Autocars touristiques.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques1.Designer.vb">
+      <DependentUpon>Autocars touristiques1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autocars touristiques1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autre Vitrage.Designer.vb">
+      <DependentUpon>Autre Vitrage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autre Vitrage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Autres équipement.Designer.vb">
+      <DependentUpon>Autres équipement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Autres équipement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Avertisseur sonore.Designer.vb">
+      <DependentUpon>Avertisseur sonore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Avertisseur sonore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Barre stabilisatrice.Designer.vb">
+      <DependentUpon>Barre stabilisatrice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Barre stabilisatrice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Bas de caisse amovible.Designer.vb">
+      <DependentUpon>Bas de caisse amovible.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Bas de caisse amovible.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Bas de caisse.Designer.vb">
+      <DependentUpon>Bas de caisse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Bas de caisse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Batterie.Designer.vb">
+      <DependentUpon>Batterie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Batterie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Berceau.Designer.vb">
+      <DependentUpon>Berceau.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Berceau.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Biellette, timonerie de direction.Designer.vb">
+      <DependentUpon>Biellette, timonerie de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Biellette, timonerie de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Boite.Designer.vb">
+      <DependentUpon>Boite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Boite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Bruit moteur.Designer.vb">
+      <DependentUpon>Bruit moteur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Bruit moteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\BusinessUnit.Designer.vb">
+      <DependentUpon>BusinessUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\BusinessUnit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Cable, tringlerie du frein de stationnement .Designer.vb">
+      <DependentUpon>Cable, tringlerie du frein de stationnement .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Cable, tringlerie du frein de stationnement .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Caisse.Designer.vb">
+      <DependentUpon>Caisse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Caisse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\CalculatedVts.Designer.vb">
+      <DependentUpon>CalculatedVts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\CalculatedVts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Canalisation dassistance de direction .Designer.vb">
+      <DependentUpon>Canalisation dassistance de direction .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Canalisation dassistance de direction .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Canalisation de frein .Designer.vb">
+      <DependentUpon>Canalisation de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Canalisation de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Canalisation échappement.Designer.vb">
+      <DependentUpon>Canalisation échappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Canalisation échappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\CanalisationFreinPneumatique.Designer.vb">
+      <DependentUpon>CanalisationFreinPneumatique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\CanalisationFreinPneumatique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Capot.Designer.vb">
+      <DependentUpon>Capot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Capot.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Carburateur, systeme injection.Designer.vb">
+      <DependentUpon>Carburateur, systeme injection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Carburateur, systeme injection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Carrosserie.Designer.vb">
+      <DependentUpon>Carrosserie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Carrosserie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Cashier.Designer.vb">
+      <DependentUpon>Cashier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Cashier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Catadioptre AR .Designer.vb">
+      <DependentUpon>Catadioptre AR .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Catadioptre AR .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Catadioptre lateral .Designer.vb">
+      <DependentUpon>Catadioptre lateral .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Catadioptre lateral .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\catalytique %28pourles vehicules mis en marche a partir de 25.10.2012.Designer.vb">
+      <DependentUpon>catalytique %28pourles vehicules mis en marche a partir de 25.10.2012.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\catalytique %28pourles vehicules mis en marche a partir de 25.10.2012.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Ceinture, Siege avant et arriere.Designer.vb">
+      <DependentUpon>Ceinture, Siege avant et arriere.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Ceinture, Siege avant et arriere.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Certificate.Designer.vb">
+      <DependentUpon>Certificate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Certificate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Circuit de carburant.Designer.vb">
+      <DependentUpon>Circuit de carburant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Circuit de carburant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Circuit hydraulique de suspension .Designer.vb">
+      <DependentUpon>Circuit hydraulique de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Circuit hydraulique de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Circuit Hydraulique.Designer.vb">
+      <DependentUpon>Circuit Hydraulique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Circuit Hydraulique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Circuit pneumatique de suspension.Designer.vb">
+      <DependentUpon>Circuit pneumatique de suspension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Circuit pneumatique de suspension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\circuit pneumatiques.Designer.vb">
+      <DependentUpon>circuit pneumatiques.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\circuit pneumatiques.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="class\connection.vb" />
+    <Compile Include="class\EsIn.vb" />
+    <Compile Include="class\EsOut.vb" />
+    <Compile Include="class\Handler.vb" />
+    <Compile Include="class\Helpers.vb" />
+    <Compile Include="Visual\codes.Designer.vb">
+      <DependentUpon>codes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\codes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Collecteur échappement.Designer.vb">
+      <DependentUpon>Collecteur échappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Collecteur échappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\colonne de direction.Designer.vb">
+      <DependentUpon>colonne de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\colonne de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Commande d%27éclairage et de signalisation .Designer.vb">
+      <DependentUpon>Commande d%27éclairage et de signalisation .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Commande d%27éclairage et de signalisation .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Commande de Rétroviseur extérieur.Designer.vb">
+      <DependentUpon>Commande de Rétroviseur extérieur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Commande de Rétroviseur extérieur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Commande du frein de stationnement .Designer.vb">
+      <DependentUpon>Commande du frein de stationnement .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Commande du frein de stationnement .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Compresseur dair.Designer.vb">
+      <DependentUpon>Compresseur dair.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Compresseur dair.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Compteur Kilometrique.Designer.vb">
+      <DependentUpon>Compteur Kilometrique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Compteur Kilometrique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ComputerNamePattern.Designer.vb">
+      <DependentUpon>ComputerNamePattern.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ComputerNamePattern.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Correcteur, repartiteur de freinage .Designer.vb">
+      <DependentUpon>Correcteur, repartiteur de freinage .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Correcteur, repartiteur de freinage .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Courroie pompe dassistance de direction .Designer.vb">
+      <DependentUpon>Courroie pompe dassistance de direction .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Courroie pompe dassistance de direction .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\crémaillere, boitier de direction.Designer.vb">
+      <DependentUpon>crémaillere, boitier de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\crémaillere, boitier de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DefectPage.Designer.vb">
+      <DependentUpon>DefectPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DefectPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Defects.Designer.vb">
+      <DependentUpon>Defects.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Defects.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DeletedCode.Designer.vb">
+      <DependentUpon>DeletedCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DeletedCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Direction.Designer.vb">
+      <DependentUpon>Direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Dispositif d%27attelage.Designer.vb">
+      <DependentUpon>Dispositif d%27attelage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Dispositif d%27attelage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Dispositif de levage de vehicule et outils neccessaires pour effectuer le replacement de la roue defecteuse.Designer.vb">
+      <DependentUpon>Dispositif de levage de vehicule et outils neccessaires pour effectuer le replacement de la roue defecteuse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Dispositif de levage de vehicule et outils neccessaires pour effectuer le replacement de la roue defecteuse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\dispositif de marche arriere.Designer.vb">
+      <DependentUpon>dispositif de marche arriere.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\dispositif de marche arriere.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Disque de frein .Designer.vb">
+      <DependentUpon>Disque de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Disque de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Divers.Designer.vb">
+      <DependentUpon>Divers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Divers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversAbsence.Designer.vb">
+      <DependentUpon>DiversAbsence.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversAbsence.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversAbsent.Designer.vb">
+      <DependentUpon>DiversAbsent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversAbsent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversCarte.Designer.vb">
+      <DependentUpon>DiversCarte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversCarte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversKM.Designer.vb">
+      <DependentUpon>DiversKM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversKM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversNonRoulant.Designer.vb">
+      <DependentUpon>DiversNonRoulant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversNonRoulant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\DiversOdm.Designer.vb">
+      <DependentUpon>DiversOdm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\DiversOdm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Eclairage.Designer.vb">
+      <DependentUpon>Eclairage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Eclairage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\EclairageSign.Designer.vb">
+      <DependentUpon>EclairageSign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\EclairageSign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Elément D%27information.Designer.vb">
+      <DependentUpon>Elément D%27information.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Elément D%27information.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Eléments de commande, d%27information.Designer.vb">
+      <DependentUpon>Eléments de commande, d%27information.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Eléments de commande, d%27information.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Eléments de commande.Designer.vb">
+      <DependentUpon>Eléments de commande.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Eléments de commande.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Eléments de récepteurs.Designer.vb">
+      <DependentUpon>Eléments de récepteurs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Eléments de récepteurs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Energie moteur.Designer.vb">
+      <DependentUpon>Energie moteur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Energie moteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Equipements.Designer.vb">
+      <DependentUpon>Equipements.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Equipements.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ESINPath.Designer.vb">
+      <DependentUpon>ESINPath.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ESINPath.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Essieu.Designer.vb">
+      <DependentUpon>Essieu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Essieu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Essuie-glace AV.Designer.vb">
+      <DependentUpon>Essuie-glace AV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Essuie-glace AV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Etrier,  cylindre de roue.Designer.vb">
+      <DependentUpon>Etrier,  cylindre de roue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Etrier,  cylindre de roue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Extincteur.Designer.vb">
+      <DependentUpon>Extincteur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Extincteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu additionnel.Designer.vb">
+      <DependentUpon>Feu additionnel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu additionnel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu antibrouillard AV.Designer.vb">
+      <DependentUpon>Feu antibrouillard AV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu antibrouillard AV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de brouillard AR.Designer.vb">
+      <DependentUpon>Feu de brouillard AR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de brouillard AR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de gabarit.Designer.vb">
+      <DependentUpon>Feu de gabarit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de gabarit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de plaque AR.Designer.vb">
+      <DependentUpon>Feu de plaque AR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de plaque AR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de position .Designer.vb">
+      <DependentUpon>Feu de position .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de position .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de recul.Designer.vb">
+      <DependentUpon>Feu de recul.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de recul.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de route.Designer.vb">
+      <DependentUpon>Feu de route.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de route.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu de stop.Designer.vb">
+      <DependentUpon>Feu de stop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu de stop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Feu indicateur de direction.Designer.vb">
+      <DependentUpon>Feu indicateur de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Feu indicateur de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FeuCroisementdeclairage.Designer.vb">
+      <DependentUpon>FeuCroisementdeclairage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FeuCroisementdeclairage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FeuCroisementdemesures.Designer.vb">
+      <DependentUpon>FeuCroisementdemesures.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FeuCroisementdemesures.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Flexible de frein .Designer.vb">
+      <DependentUpon>Flexible de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Flexible de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Form2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form3.Designer.vb">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Form3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form4.Designer.vb">
+      <DependentUpon>Form4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Form4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form5.Designer.vb">
+      <DependentUpon>Form5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Form5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Form6.Designer.vb">
+      <DependentUpon>Form6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Form6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FrappeFroid.Designer.vb">
+      <DependentUpon>FrappeFroid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FrappeFroid.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Frein de secours.Designer.vb">
+      <DependentUpon>Frein de secours.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Frein de secours.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Freinage.Designer.vb">
+      <DependentUpon>Freinage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Freinage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FreinDeService.Designer.vb">
+      <DependentUpon>FreinDeService.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FreinDeService.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FreinStationnement.Designer.vb">
+      <DependentUpon>FreinStationnement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FreinStationnement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Groupe Moto-propulseur.Designer.vb">
+      <DependentUpon>Groupe Moto-propulseur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Groupe Moto-propulseur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Groups.Designer.vb">
+      <DependentUpon>Groups.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Groups.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\GroupsBusinessUnit.Designer.vb">
+      <DependentUpon>GroupsBusinessUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\GroupsBusinessUnit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Habitacle.Designer.vb">
+      <DependentUpon>Habitacle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Habitacle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Identification.Designer.vb">
+      <DependentUpon>Identification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Identification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Infrastructure soubassement.Designer.vb">
+      <DependentUpon>Infrastructure soubassement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Infrastructure soubassement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Jante.Designer.vb">
+      <DependentUpon>Jante.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Jante.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Lave -glace AV.Designer.vb">
+      <DependentUpon>Lave -glace AV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Lave -glace AV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Liaisons au sol.Designer.vb">
+      <DependentUpon>Liaisons au sol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Liaisons au sol.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Processor\Log.Designer.vb">
+      <DependentUpon>Log.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Processor\Log.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Lomgeron, brancard.Designer.vb">
+      <DependentUpon>Lomgeron, brancard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Lomgeron, brancard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\MachinesTypesGroups.Designer.vb">
+      <DependentUpon>MachinesTypesGroups.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\MachinesTypesGroups.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Processor\MahaRymeProcessor.Designer.vb">
+      <DependentUpon>MahaRymeProcessor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Processor\MahaRymeProcessor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Maitre-cylindre.Designer.vb">
+      <DependentUpon>Maitre-cylindre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Maitre-cylindre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ManageSections.Designer.vb">
+      <DependentUpon>ManageSections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ManageSections.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ManometreOuTemoinsPression.Designer.vb">
+      <DependentUpon>ManometreOuTemoinsPression.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ManometreOuTemoinsPression.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\MesureDirection.Designer.vb">
+      <DependentUpon>MesureDirection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\MesureDirection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Mesures.Designer.vb">
+      <DependentUpon>Mesures.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Mesures.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\MesuresFreinage.Designer.vb">
+      <DependentUpon>MesuresFreinage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\MesuresFreinage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\MesuresLiaisons.Designer.vb">
+      <DependentUpon>MesuresLiaisons.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\MesuresLiaisons.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Mesurespollution.Designer.vb">
+      <DependentUpon>Mesurespollution.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Mesurespollution.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Moteur.Designer.vb">
+      <DependentUpon>Moteur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Moteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Visual\Niveau sonore.Designer.vb">
+      <DependentUpon>Niveau sonore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Niveau sonore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Nombres de places assises.Designer.vb">
+      <DependentUpon>Nombres de places assises.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Nombres de places assises.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\NumeroChassis.Designer.vb">
+      <DependentUpon>NumeroChassis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\NumeroChassis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\odometre.Designer.vb">
+      <DependentUpon>odometre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\odometre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Opacité des fumées echappement.Designer.vb">
+      <DependentUpon>Opacité des fumées echappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Opacité des fumées echappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Organes Mécaniques.Designer.vb">
+      <DependentUpon>Organes Mécaniques.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Organes Mécaniques.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\OrganesDeDirection.Designer.vb">
+      <DependentUpon>OrganesDeDirection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\OrganesDeDirection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pare-chocs, bouclier.Designer.vb">
+      <DependentUpon>Pare-chocs, bouclier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pare-chocs, bouclier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\PareBrise.Designer.vb">
+      <DependentUpon>PareBrise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\PareBrise.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Passage de roue.Designer.vb">
+      <DependentUpon>Passage de roue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Passage de roue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pieds montant.Designer.vb">
+      <DependentUpon>Pieds montant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pieds montant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pivot, fusée de roue.Designer.vb">
+      <DependentUpon>Pivot, fusée de roue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pivot, fusée de roue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Plancher.Designer.vb">
+      <DependentUpon>Plancher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Plancher.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\plaque de tare greater than 3500.Designer.vb">
+      <DependentUpon>plaque de tare greater than 3500.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\plaque de tare greater than 3500.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Plaque.Designer.vb">
+      <DependentUpon>Plaque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Plaque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\PlaqueCode.Designer.vb">
+      <DependentUpon>PlaqueCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\PlaqueCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\PlaqueConstructeur.Designer.vb">
+      <DependentUpon>PlaqueConstructeur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\PlaqueConstructeur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Plaquette de frein .Designer.vb">
+      <DependentUpon>Plaquette de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Plaquette de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pneumatique .Designer.vb">
+      <DependentUpon>Pneumatique .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pneumatique .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Poids lourds internationaux.Designer.vb">
+      <DependentUpon>Poids lourds internationaux.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Poids lourds internationaux.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Poids lourds internationaux1.Designer.vb">
+      <DependentUpon>Poids lourds internationaux1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Poids lourds internationaux1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Poids lourds1.Designer.vb">
+      <DependentUpon>Poids lourds1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Poids lourds1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Poidslourds.Designer.vb">
+      <DependentUpon>Poidslourds.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Poidslourds.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\PollutionNiveausonoreSpécial.Designer.vb">
+      <DependentUpon>PollutionNiveausonoreSpécial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\PollutionNiveausonoreSpécial.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pompe alimentation en carburant.Designer.vb">
+      <DependentUpon>Pompe alimentation en carburant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pompe alimentation en carburant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pompe, verin dassistance de direction .Designer.vb">
+      <DependentUpon>Pompe, verin dassistance de direction .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pompe, verin dassistance de direction .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pont, boite de transfert.Designer.vb">
+      <DependentUpon>Pont, boite de transfert.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pont, boite de transfert.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Porte AR, hayon.Designer.vb">
+      <DependentUpon>Porte AR, hayon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Porte AR, hayon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Porte latérale.Designer.vb">
+      <DependentUpon>Porte latérale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Porte latérale.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pot catalytique %28Pour les vehicule mis en marche a partir de 25.10.2012%29.Designer.vb">
+      <DependentUpon>Pot catalytique %28Pour les vehicule mis en marche a partir de 25.10.2012%29.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pot catalytique %28Pour les vehicule mis en marche a partir de 25.10.2012%29.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Présentation du véhicule.Designer.vb">
+      <DependentUpon>Présentation du véhicule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Présentation du véhicule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Pédale du frein de service .Designer.vb">
+      <DependentUpon>Pédale du frein de service .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Pédale du frein de service .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Relais de direction.Designer.vb">
+      <DependentUpon>Relais de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Relais de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FailRateInspByLane.Designer.vb">
+      <DependentUpon>FailRateInspByLane.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FailRateInspByLane.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ModelFailRateInspByLane.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFailRateInspByLane.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ModelFailRateInspByLane.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFailRateInspByLane.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ModelFailRateInspByLane.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFailRateInspByLane.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RPTFstVisitFailRateByLane_Result.vb">
+      <DependentUpon>ModelFailRateInspByLane.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Ressort, barre de torsion .Designer.vb">
+      <DependentUpon>Ressort, barre de torsion .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Ressort, barre de torsion .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Review.Designer.vb">
+      <DependentUpon>Review.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Review.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ReviewMeasurement.Designer.vb">
+      <DependentUpon>ReviewMeasurement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ReviewMeasurement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\ReviewMeasurementRepeat.Designer.vb">
+      <DependentUpon>ReviewMeasurementRepeat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\ReviewMeasurementRepeat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Rotule du triangle ou tirant de suspension .Designer.vb">
+      <DependentUpon>Rotule du triangle ou tirant de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Rotule du triangle ou tirant de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Rotules articulation de direction.Designer.vb">
+      <DependentUpon>Rotules articulation de direction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Rotules articulation de direction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Roue de secours.Designer.vb">
+      <DependentUpon>Roue de secours.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Roue de secours.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Roue.Designer.vb">
+      <DependentUpon>Roue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Roue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Roues.Designer.vb">
+      <DependentUpon>Roues.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Roues.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Roulement de roue .Designer.vb">
+      <DependentUpon>Roulement de roue .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Roulement de roue .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Réservoir dair de frein.Designer.vb">
+      <DependentUpon>Réservoir dair de frein.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Réservoir dair de frein.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Réservoir dair de suspension .Designer.vb">
+      <DependentUpon>Réservoir dair de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Réservoir dair de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Réservoir dassistance de direction .Designer.vb">
+      <DependentUpon>Réservoir dassistance de direction .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Réservoir dassistance de direction .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Réservoir de carburant.Designer.vb">
+      <DependentUpon>Réservoir de carburant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Réservoir de carburant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Réservoir de liquide de frein .Designer.vb">
+      <DependentUpon>Réservoir de liquide de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Réservoir de liquide de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Rétroviseur extérieur G %28droit uniquement si AR non vitré%29.Designer.vb">
+      <DependentUpon>Rétroviseur extérieur G %28droit uniquement si AR non vitré%29.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Rétroviseur extérieur G %28droit uniquement si AR non vitré%29.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Rétroviseur intérieur.Designer.vb">
+      <DependentUpon>Rétroviseur intérieur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Rétroviseur intérieur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Rétroviseurs.Designer.vb">
+      <DependentUpon>Rétroviseurs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Rétroviseurs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Select_Vehicle.Designer.vb">
+      <DependentUpon>Select_Vehicle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Select_Vehicle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Siege.Designer.vb">
+      <DependentUpon>Siege.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Siege.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Signal de détresse-Flasher.Designer.vb">
+      <DependentUpon>Signal de détresse-Flasher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Signal de détresse-Flasher.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Signalisation.Designer.vb">
+      <DependentUpon>Signalisation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Signalisation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Silencieux échappement.Designer.vb">
+      <DependentUpon>Silencieux échappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Silencieux échappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Silent bloc de barre stabilisatrice .Designer.vb">
+      <DependentUpon>Silent bloc de barre stabilisatrice .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Silent bloc de barre stabilisatrice .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\silent bloc tirant de suspension .Designer.vb">
+      <DependentUpon>silent bloc tirant de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\silent bloc tirant de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Sphere, coussin damortisseur.Designer.vb">
+      <DependentUpon>Sphere, coussin damortisseur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Sphere, coussin damortisseur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Structure carrosserie.Designer.vb">
+      <DependentUpon>Structure carrosserie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Structure carrosserie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Structures.Designer.vb">
+      <DependentUpon>Structures.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Structures.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Support roue de secours.Designer.vb">
+      <DependentUpon>Support roue de secours.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Support roue de secours.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Suspension .Designer.vb">
+      <DependentUpon>Suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Systemes antiblocage.Designer.vb">
+      <DependentUpon>Systemes antiblocage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Systemes antiblocage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Systemes antiblocage1.Designer.vb">
+      <DependentUpon>Systemes antiblocage1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Systemes antiblocage1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\SYSTEMLOGIN.Designer.vb">
+      <DependentUpon>SYSTEMLOGIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\SYSTEMLOGIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Tambour de frein .Designer.vb">
+      <DependentUpon>Tambour de frein .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Tambour de frein .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Taxi1.Designer.vb">
+      <DependentUpon>Taxi1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Taxi1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Taxipage.Designer.vb">
+      <DependentUpon>Taxipage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Taxipage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Temoindeclairageetdesignalisation.Designer.vb">
+      <DependentUpon>Temoindeclairageetdesignalisation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Temoindeclairageetdesignalisation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\TemoinFonction1.Designer.vb">
+      <DependentUpon>TemoinFonction1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\TemoinFonction1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\TemoinFonction2.Designer.vb">
+      <DependentUpon>TemoinFonction2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\TemoinFonction2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Teneur en CO des gaz echappement.Designer.vb">
+      <DependentUpon>Teneur en CO des gaz echappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Teneur en CO des gaz echappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\TimerSet.Designer.vb">
+      <DependentUpon>TimerSet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\TimerSet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Trains.Designer.vb">
+      <DependentUpon>Trains.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Trains.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Transmission.Designer.vb">
+      <DependentUpon>Transmission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Transmission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Traverse.Designer.vb">
+      <DependentUpon>Traverse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Traverse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Triangle de pré-signalisation %28en labsence de signal de détresse %29.Designer.vb">
+      <DependentUpon>Triangle de pré-signalisation %28en labsence de signal de détresse %29.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Triangle de pré-signalisation %28en labsence de signal de détresse %29.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Triangle, tirant de suspension .Designer.vb">
+      <DependentUpon>Triangle, tirant de suspension .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Triangle, tirant de suspension .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Tringlerie de commande des freins.Designer.vb">
+      <DependentUpon>Tringlerie de commande des freins.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Tringlerie de commande des freins.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Troisiéme feu stop.Designer.vb">
+      <DependentUpon>Troisiéme feu stop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Troisiéme feu stop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Tuyauterie dassistance  de freinage .Designer.vb">
+      <DependentUpon>Tuyauterie dassistance  de freinage .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Tuyauterie dassistance  de freinage .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoin de dispositif OBD.Designer.vb">
+      <DependentUpon>Témoin de dispositif OBD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoin de dispositif OBD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoin de feux de brouillard AR.Designer.vb">
+      <DependentUpon>Témoin de feux de brouillard AR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoin de feux de brouillard AR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoin de feux de route .Designer.vb">
+      <DependentUpon>Témoin de feux de route .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoin de feux de route .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoin de signal de détresse.Designer.vb">
+      <DependentUpon>Témoin de signal de détresse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoin de signal de détresse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoin indicateur de direction .Designer.vb">
+      <DependentUpon>Témoin indicateur de direction .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoin indicateur de direction .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Témoins de mauvais fonctionement du cossin gonflable.Designer.vb">
+      <DependentUpon>Témoins de mauvais fonctionement du cossin gonflable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Témoins de mauvais fonctionement du cossin gonflable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Un controle supplementaire de vehicules soumis a la loi specifique.Designer.vb">
+      <DependentUpon>Un controle supplementaire de vehicules soumis a la loi specifique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Un controle supplementaire de vehicules soumis a la loi specifique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Users.Designer.vb">
+      <DependentUpon>Users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Users.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\UsersGroup.Designer.vb">
+      <DependentUpon>UsersGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\UsersGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Vannes du circuit de freinage .Designer.vb">
+      <DependentUpon>Vannes du circuit de freinage .vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Vannes du circuit de freinage .vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Vehicles.Designer.vb">
+      <DependentUpon>Vehicles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Vehicles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Vehicule.Designer.vb">
+      <DependentUpon>Vehicule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Vehicule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\VehiculePage.Designer.vb">
+      <DependentUpon>VehiculePage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\VehiculePage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Visibilite.Designer.vb">
+      <DependentUpon>Visibilite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Visibilite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Vitrages.Designer.vb">
+      <DependentUpon>Vitrages.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Vitrages.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\VolantDirection.Designer.vb">
+      <DependentUpon>VolantDirection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\VolantDirection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\échappement.Designer.vb">
+      <DependentUpon>échappement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\échappement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\Éléments de carrosserie inamovible.Designer.vb">
+      <DependentUpon>Éléments de carrosserie inamovible.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\Éléments de carrosserie inamovible.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\éléments information.Designer.vb">
+      <DependentUpon>éléments information.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\éléments information.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Visual\Accessoires de visibilite.resx">
+      <DependentUpon>Accessoires de visibilite.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Accouplement de direction.resx">
+      <DependentUpon>Accouplement de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Accouplement, relais de transmission.resx">
+      <DependentUpon>Accouplement, relais de transmission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Aile.resx">
+      <DependentUpon>Aile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Alimentation.resx">
+      <DependentUpon>Alimentation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Amortisseurs.resx">
+      <DependentUpon>Amortisseurs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Angle, ripage.resx">
+      <DependentUpon>Angle, ripage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Antivol de direction.resx">
+      <DependentUpon>Antivol de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Articulation du triangle ou tirant de suspension .resx">
+      <DependentUpon>Articulation du triangle ou tirant de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Assistance de direction.resx">
+      <DependentUpon>Assistance de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Assistance de Freinage.resx">
+      <DependentUpon>Assistance de Freinage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Assistance dedirection .resx">
+      <DependentUpon>Assistance dedirection .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Assistence de frienage servo.resx">
+      <DependentUpon>Assistence de frienage servo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autocars touristiques internationaux.resx">
+      <DependentUpon>Autocars touristiques internationaux.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autocars touristiques internationaux1.resx">
+      <DependentUpon>Autocars touristiques internationaux1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autocars touristiques.resx">
+      <DependentUpon>Autocars touristiques.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autocars touristiques1.resx">
+      <DependentUpon>Autocars touristiques1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autre Vitrage.resx">
+      <DependentUpon>Autre Vitrage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Autres équipement.resx">
+      <DependentUpon>Autres équipement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Avertisseur sonore.resx">
+      <DependentUpon>Avertisseur sonore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Barre stabilisatrice.resx">
+      <DependentUpon>Barre stabilisatrice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Bas de caisse amovible.resx">
+      <DependentUpon>Bas de caisse amovible.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Bas de caisse.resx">
+      <DependentUpon>Bas de caisse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Batterie.resx">
+      <DependentUpon>Batterie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Berceau.resx">
+      <DependentUpon>Berceau.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Biellette, timonerie de direction.resx">
+      <DependentUpon>Biellette, timonerie de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Boite.resx">
+      <DependentUpon>Boite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Bruit moteur.resx">
+      <DependentUpon>Bruit moteur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\BusinessUnit.resx">
+      <DependentUpon>BusinessUnit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Cable, tringlerie du frein de stationnement .resx">
+      <DependentUpon>Cable, tringlerie du frein de stationnement .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Caisse.resx">
+      <DependentUpon>Caisse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\CalculatedVts.resx">
+      <DependentUpon>CalculatedVts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Canalisation dassistance de direction .resx">
+      <DependentUpon>Canalisation dassistance de direction .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Canalisation de frein .resx">
+      <DependentUpon>Canalisation de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Canalisation échappement.resx">
+      <DependentUpon>Canalisation échappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\CanalisationFreinPneumatique.resx">
+      <DependentUpon>CanalisationFreinPneumatique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Capot.resx">
+      <DependentUpon>Capot.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Carburateur, systeme injection.resx">
+      <DependentUpon>Carburateur, systeme injection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Carrosserie.resx">
+      <DependentUpon>Carrosserie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Cashier.resx">
+      <DependentUpon>Cashier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Catadioptre AR .resx">
+      <DependentUpon>Catadioptre AR .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Catadioptre lateral .resx">
+      <DependentUpon>Catadioptre lateral .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\catalytique %28pourles vehicules mis en marche a partir de 25.10.2012.resx">
+      <DependentUpon>catalytique %28pourles vehicules mis en marche a partir de 25.10.2012.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Ceinture, Siege avant et arriere.resx">
+      <DependentUpon>Ceinture, Siege avant et arriere.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Certificate.resx">
+      <DependentUpon>Certificate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Circuit de carburant.resx">
+      <DependentUpon>Circuit de carburant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Circuit hydraulique de suspension .resx">
+      <DependentUpon>Circuit hydraulique de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Circuit Hydraulique.resx">
+      <DependentUpon>Circuit Hydraulique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Circuit pneumatique de suspension.resx">
+      <DependentUpon>Circuit pneumatique de suspension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\circuit pneumatiques.resx">
+      <DependentUpon>circuit pneumatiques.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\codes.resx">
+      <DependentUpon>codes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Collecteur échappement.resx">
+      <DependentUpon>Collecteur échappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\colonne de direction.resx">
+      <DependentUpon>colonne de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Commande d%27éclairage et de signalisation .resx">
+      <DependentUpon>Commande d%27éclairage et de signalisation .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Commande de Rétroviseur extérieur.resx">
+      <DependentUpon>Commande de Rétroviseur extérieur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Commande du frein de stationnement .resx">
+      <DependentUpon>Commande du frein de stationnement .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Compresseur dair.resx">
+      <DependentUpon>Compresseur dair.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Compteur Kilometrique.resx">
+      <DependentUpon>Compteur Kilometrique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ComputerNamePattern.resx">
+      <DependentUpon>ComputerNamePattern.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Correcteur, repartiteur de freinage .resx">
+      <DependentUpon>Correcteur, repartiteur de freinage .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Courroie pompe dassistance de direction .resx">
+      <DependentUpon>Courroie pompe dassistance de direction .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\crémaillere, boitier de direction.resx">
+      <DependentUpon>crémaillere, boitier de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DefectPage.resx">
+      <DependentUpon>DefectPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Defects.resx">
+      <DependentUpon>Defects.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DeletedCode.resx">
+      <DependentUpon>DeletedCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Direction.resx">
+      <DependentUpon>Direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Dispositif d%27attelage.resx">
+      <DependentUpon>Dispositif d%27attelage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Dispositif de levage de vehicule et outils neccessaires pour effectuer le replacement de la roue defecteuse.resx">
+      <DependentUpon>Dispositif de levage de vehicule et outils neccessaires pour effectuer le replacement de la roue defecteuse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\dispositif de marche arriere.resx">
+      <DependentUpon>dispositif de marche arriere.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Disque de frein .resx">
+      <DependentUpon>Disque de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Divers.resx">
+      <DependentUpon>Divers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversAbsence.resx">
+      <DependentUpon>DiversAbsence.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversAbsent.resx">
+      <DependentUpon>DiversAbsent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversCarte.resx">
+      <DependentUpon>DiversCarte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversKM.resx">
+      <DependentUpon>DiversKM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversNonRoulant.resx">
+      <DependentUpon>DiversNonRoulant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\DiversOdm.resx">
+      <DependentUpon>DiversOdm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Eclairage.resx">
+      <DependentUpon>Eclairage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\EclairageSign.resx">
+      <DependentUpon>EclairageSign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Elément D%27information.resx">
+      <DependentUpon>Elément D%27information.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Eléments de commande, d%27information.resx">
+      <DependentUpon>Eléments de commande, d%27information.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Eléments de commande.resx">
+      <DependentUpon>Eléments de commande.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Eléments de récepteurs.resx">
+      <DependentUpon>Eléments de récepteurs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Energie moteur.resx">
+      <DependentUpon>Energie moteur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Equipements.resx">
+      <DependentUpon>Equipements.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ESINPath.resx">
+      <DependentUpon>ESINPath.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Essieu.resx">
+      <DependentUpon>Essieu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Essuie-glace AV.resx">
+      <DependentUpon>Essuie-glace AV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Etrier,  cylindre de roue.resx">
+      <DependentUpon>Etrier,  cylindre de roue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Extincteur.resx">
+      <DependentUpon>Extincteur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu additionnel.resx">
+      <DependentUpon>Feu additionnel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu antibrouillard AV.resx">
+      <DependentUpon>Feu antibrouillard AV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de brouillard AR.resx">
+      <DependentUpon>Feu de brouillard AR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de gabarit.resx">
+      <DependentUpon>Feu de gabarit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de plaque AR.resx">
+      <DependentUpon>Feu de plaque AR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de position .resx">
+      <DependentUpon>Feu de position .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de recul.resx">
+      <DependentUpon>Feu de recul.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de route.resx">
+      <DependentUpon>Feu de route.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu de stop.resx">
+      <DependentUpon>Feu de stop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Feu indicateur de direction.resx">
+      <DependentUpon>Feu indicateur de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FeuCroisementdeclairage.resx">
+      <DependentUpon>FeuCroisementdeclairage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FeuCroisementdemesures.resx">
+      <DependentUpon>FeuCroisementdemesures.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Flexible de frein .resx">
+      <DependentUpon>Flexible de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Form3.resx">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Form4.resx">
+      <DependentUpon>Form4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Form5.resx">
+      <DependentUpon>Form5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Form6.resx">
+      <DependentUpon>Form6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FrappeFroid.resx">
+      <DependentUpon>FrappeFroid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Frein de secours.resx">
+      <DependentUpon>Frein de secours.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Freinage.resx">
+      <DependentUpon>Freinage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FreinDeService.resx">
+      <DependentUpon>FreinDeService.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FreinStationnement.resx">
+      <DependentUpon>FreinStationnement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Groupe Moto-propulseur.resx">
+      <DependentUpon>Groupe Moto-propulseur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Groups.resx">
+      <DependentUpon>Groups.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\GroupsBusinessUnit.resx">
+      <DependentUpon>GroupsBusinessUnit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Habitacle.resx">
+      <DependentUpon>Habitacle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Identification.resx">
+      <DependentUpon>Identification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Infrastructure soubassement.resx">
+      <DependentUpon>Infrastructure soubassement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Jante.resx">
+      <DependentUpon>Jante.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Lave -glace AV.resx">
+      <DependentUpon>Lave -glace AV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Liaisons au sol.resx">
+      <DependentUpon>Liaisons au sol.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Processor\Log.resx">
+      <DependentUpon>Log.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Lomgeron, brancard.resx">
+      <DependentUpon>Lomgeron, brancard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\MachinesTypesGroups.resx">
+      <DependentUpon>MachinesTypesGroups.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Processor\MahaRymeProcessor.resx">
+      <DependentUpon>MahaRymeProcessor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Maitre-cylindre.resx">
+      <DependentUpon>Maitre-cylindre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ManageSections.resx">
+      <DependentUpon>ManageSections.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ManometreOuTemoinsPression.resx">
+      <DependentUpon>ManometreOuTemoinsPression.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\MesureDirection.resx">
+      <DependentUpon>MesureDirection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Mesures.resx">
+      <DependentUpon>Mesures.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\MesuresFreinage.resx">
+      <DependentUpon>MesuresFreinage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\MesuresLiaisons.resx">
+      <DependentUpon>MesuresLiaisons.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Mesurespollution.resx">
+      <DependentUpon>Mesurespollution.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Moteur.resx">
+      <DependentUpon>Moteur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Niveau sonore.resx">
+      <DependentUpon>Niveau sonore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Nombres de places assises.resx">
+      <DependentUpon>Nombres de places assises.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\NumeroChassis.resx">
+      <DependentUpon>NumeroChassis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\odometre.resx">
+      <DependentUpon>odometre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Opacité des fumées echappement.resx">
+      <DependentUpon>Opacité des fumées echappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Organes Mécaniques.resx">
+      <DependentUpon>Organes Mécaniques.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\OrganesDeDirection.resx">
+      <DependentUpon>OrganesDeDirection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pare-chocs, bouclier.resx">
+      <DependentUpon>Pare-chocs, bouclier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\PareBrise.resx">
+      <DependentUpon>PareBrise.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Passage de roue.resx">
+      <DependentUpon>Passage de roue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pieds montant.resx">
+      <DependentUpon>Pieds montant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pivot, fusée de roue.resx">
+      <DependentUpon>Pivot, fusée de roue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Plancher.resx">
+      <DependentUpon>Plancher.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\plaque de tare greater than 3500.resx">
+      <DependentUpon>plaque de tare greater than 3500.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Plaque.resx">
+      <DependentUpon>Plaque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\PlaqueCode.resx">
+      <DependentUpon>PlaqueCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\PlaqueConstructeur.resx">
+      <DependentUpon>PlaqueConstructeur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Plaquette de frein .resx">
+      <DependentUpon>Plaquette de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pneumatique .resx">
+      <DependentUpon>Pneumatique .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Poids lourds internationaux.resx">
+      <DependentUpon>Poids lourds internationaux.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Poids lourds internationaux1.resx">
+      <DependentUpon>Poids lourds internationaux1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Poids lourds1.resx">
+      <DependentUpon>Poids lourds1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Poidslourds.resx">
+      <DependentUpon>Poidslourds.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\PollutionNiveausonoreSpécial.resx">
+      <DependentUpon>PollutionNiveausonoreSpécial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pompe alimentation en carburant.resx">
+      <DependentUpon>Pompe alimentation en carburant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pompe, verin dassistance de direction .resx">
+      <DependentUpon>Pompe, verin dassistance de direction .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pont, boite de transfert.resx">
+      <DependentUpon>Pont, boite de transfert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Porte AR, hayon.resx">
+      <DependentUpon>Porte AR, hayon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Porte latérale.resx">
+      <DependentUpon>Porte latérale.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pot catalytique %28Pour les vehicule mis en marche a partir de 25.10.2012%29.resx">
+      <DependentUpon>Pot catalytique %28Pour les vehicule mis en marche a partir de 25.10.2012%29.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Présentation du véhicule.resx">
+      <DependentUpon>Présentation du véhicule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Pédale du frein de service .resx">
+      <DependentUpon>Pédale du frein de service .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Relais de direction.resx">
+      <DependentUpon>Relais de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FailRateInspByLane.rdlc" />
+    <EmbeddedResource Include="Reports\FailRateInspByLane.resx">
+      <DependentUpon>FailRateInspByLane.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Ressort, barre de torsion .resx">
+      <DependentUpon>Ressort, barre de torsion .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Review.resx">
+      <DependentUpon>Review.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ReviewMeasurement.resx">
+      <DependentUpon>ReviewMeasurement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\ReviewMeasurementRepeat.resx">
+      <DependentUpon>ReviewMeasurementRepeat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Rotule du triangle ou tirant de suspension .resx">
+      <DependentUpon>Rotule du triangle ou tirant de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Rotules articulation de direction.resx">
+      <DependentUpon>Rotules articulation de direction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Roue de secours.resx">
+      <DependentUpon>Roue de secours.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Roue.resx">
+      <DependentUpon>Roue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Roues.resx">
+      <DependentUpon>Roues.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Roulement de roue .resx">
+      <DependentUpon>Roulement de roue .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Réservoir dair de frein.resx">
+      <DependentUpon>Réservoir dair de frein.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Réservoir dair de suspension .resx">
+      <DependentUpon>Réservoir dair de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Réservoir dassistance de direction .resx">
+      <DependentUpon>Réservoir dassistance de direction .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Réservoir de carburant.resx">
+      <DependentUpon>Réservoir de carburant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Réservoir de liquide de frein .resx">
+      <DependentUpon>Réservoir de liquide de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Rétroviseur extérieur G %28droit uniquement si AR non vitré%29.resx">
+      <DependentUpon>Rétroviseur extérieur G %28droit uniquement si AR non vitré%29.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Rétroviseur intérieur.resx">
+      <DependentUpon>Rétroviseur intérieur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Rétroviseurs.resx">
+      <DependentUpon>Rétroviseurs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Select_Vehicle.resx">
+      <DependentUpon>Select_Vehicle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Settings.resx">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Siege.resx">
+      <DependentUpon>Siege.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Signal de détresse-Flasher.resx">
+      <DependentUpon>Signal de détresse-Flasher.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Signalisation.resx">
+      <DependentUpon>Signalisation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Silencieux échappement.resx">
+      <DependentUpon>Silencieux échappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Silent bloc de barre stabilisatrice .resx">
+      <DependentUpon>Silent bloc de barre stabilisatrice .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\silent bloc tirant de suspension .resx">
+      <DependentUpon>silent bloc tirant de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Sphere, coussin damortisseur.resx">
+      <DependentUpon>Sphere, coussin damortisseur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Structure carrosserie.resx">
+      <DependentUpon>Structure carrosserie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Structures.resx">
+      <DependentUpon>Structures.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Support roue de secours.resx">
+      <DependentUpon>Support roue de secours.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Suspension .resx">
+      <DependentUpon>Suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Systemes antiblocage.resx">
+      <DependentUpon>Systemes antiblocage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Systemes antiblocage1.resx">
+      <DependentUpon>Systemes antiblocage1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\SYSTEMLOGIN.resx">
+      <DependentUpon>SYSTEMLOGIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Tambour de frein .resx">
+      <DependentUpon>Tambour de frein .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Taxi1.resx">
+      <DependentUpon>Taxi1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Taxipage.resx">
+      <DependentUpon>Taxipage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Temoindeclairageetdesignalisation.resx">
+      <DependentUpon>Temoindeclairageetdesignalisation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\TemoinFonction1.resx">
+      <DependentUpon>TemoinFonction1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\TemoinFonction2.resx">
+      <DependentUpon>TemoinFonction2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Teneur en CO des gaz echappement.resx">
+      <DependentUpon>Teneur en CO des gaz echappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\TimerSet.resx">
+      <DependentUpon>TimerSet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Trains.resx">
+      <DependentUpon>Trains.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Transmission.resx">
+      <DependentUpon>Transmission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Traverse.resx">
+      <DependentUpon>Traverse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Triangle de pré-signalisation %28en labsence de signal de détresse %29.resx">
+      <DependentUpon>Triangle de pré-signalisation %28en labsence de signal de détresse %29.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Triangle, tirant de suspension .resx">
+      <DependentUpon>Triangle, tirant de suspension .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Tringlerie de commande des freins.resx">
+      <DependentUpon>Tringlerie de commande des freins.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Troisiéme feu stop.resx">
+      <DependentUpon>Troisiéme feu stop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Tuyauterie dassistance  de freinage .resx">
+      <DependentUpon>Tuyauterie dassistance  de freinage .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoin de dispositif OBD.resx">
+      <DependentUpon>Témoin de dispositif OBD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoin de feux de brouillard AR.resx">
+      <DependentUpon>Témoin de feux de brouillard AR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoin de feux de route .resx">
+      <DependentUpon>Témoin de feux de route .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoin de signal de détresse.resx">
+      <DependentUpon>Témoin de signal de détresse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoin indicateur de direction .resx">
+      <DependentUpon>Témoin indicateur de direction .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Témoins de mauvais fonctionement du cossin gonflable.resx">
+      <DependentUpon>Témoins de mauvais fonctionement du cossin gonflable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Un controle supplementaire de vehicules soumis a la loi specifique.resx">
+      <DependentUpon>Un controle supplementaire de vehicules soumis a la loi specifique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Users.resx">
+      <DependentUpon>Users.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\UsersGroup.resx">
+      <DependentUpon>UsersGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Vannes du circuit de freinage .resx">
+      <DependentUpon>Vannes du circuit de freinage .vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Vehicles.resx">
+      <DependentUpon>Vehicles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Vehicule.resx">
+      <DependentUpon>Vehicule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\VehiculePage.resx">
+      <DependentUpon>VehiculePage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Visibilite.resx">
+      <DependentUpon>Visibilite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Vitrages.resx">
+      <DependentUpon>Vitrages.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\VolantDirection.resx">
+      <DependentUpon>VolantDirection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\échappement.resx">
+      <DependentUpon>échappement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\Éléments de carrosserie inamovible.resx">
+      <DependentUpon>Éléments de carrosserie inamovible.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\éléments information.resx">
+      <DependentUpon>éléments information.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </None>
+    <None Include="bin\Debug\VTS[4.7].exe.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\Accessoires_de_visibilite.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.DataSet334433TableAdapters.QueriesTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.DataSet377777TableAdapters.QueriesTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.DataSetFstVisitFailRateByLaneTableAdapters.QueriesTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.rptFstVisitFailRateByInspTableAdapters.QueriesTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.VTSDatasetTableAdapters.CARDAFTARTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.VTSDatasetTableAdapters.CERTIFICATETableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.VTSDatasetTableAdapters.INSPECTIONHISTORYTableAdapter.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.VTSDatasetTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="My Project\DataSources\VTS_4._7_.VTSDatasetTableAdapters.TableAdapterManager.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\VTS[4.7].vbproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\VTS[4.7].vbprojAssemblyReference.cache" />
+    <EntityDeploy Include="Reports\ModelFailRateInspByLane.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelFailRateInspByLane.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Reports\ModelFailRateInspByLane.edmx.diagram">
+      <DependentUpon>ModelFailRateInspByLane.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\VTS[4.7].exe" />
+    <Content Include="bin\Debug\VTS[4.7].pdb" />
+    <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
+    <Content Include="Pics\Logo.jpg" />
+    <Content Include="Pics\Mecanique.JPG" />
+    <Content Include="Reports\ModelFailRateInspByLane.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFailRateInspByLane.edmx</DependentUpon>
+      <LastGenOutput>ModelFailRateInspByLane.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Reports\ModelFailRateInspByLane.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFailRateInspByLane.edmx</DependentUpon>
+      <LastGenOutput>ModelFailRateInspByLane.vb</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
+</Project>
