@@ -25,7 +25,6 @@ Partial Class Vehicles
         Me.lblPlate = New System.Windows.Forms.Label()
         Me.btnEuroBack = New System.Windows.Forms.Button()
         Me.header = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.lblInspectorID = New System.Windows.Forms.Label()
         Me.lblInspectionNo = New System.Windows.Forms.Label()
         Me.lblMessage = New System.Windows.Forms.Label()
@@ -34,6 +33,7 @@ Partial Class Vehicles
         Me.lblGroup = New System.Windows.Forms.Label()
         Me.lblLane = New System.Windows.Forms.Label()
         Me.lblSection = New System.Windows.Forms.Label()
+        Me.lblStored = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblPlate
@@ -51,7 +51,7 @@ Partial Class Vehicles
         'btnEuroBack
         '
         Me.btnEuroBack.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEuroBack.Location = New System.Drawing.Point(811, 802)
+        Me.btnEuroBack.Location = New System.Drawing.Point(918, 752)
         Me.btnEuroBack.Name = "btnEuroBack"
         Me.btnEuroBack.Size = New System.Drawing.Size(138, 72)
         Me.btnEuroBack.TabIndex = 0
@@ -67,16 +67,6 @@ Partial Class Vehicles
         Me.header.Name = "header"
         Me.header.Size = New System.Drawing.Size(1443, 77)
         Me.header.TabIndex = 16
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1043, 802)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(153, 72)
-        Me.Button2.TabIndex = 18
-        Me.Button2.Text = "EXIT"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'lblInspectorID
         '
@@ -108,7 +98,7 @@ Partial Class Vehicles
         Me.lblMessage.AutoSize = True
         Me.lblMessage.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMessage.ForeColor = System.Drawing.Color.Red
-        Me.lblMessage.Location = New System.Drawing.Point(12, 225)
+        Me.lblMessage.Location = New System.Drawing.Point(18, 254)
         Me.lblMessage.Name = "lblMessage"
         Me.lblMessage.Size = New System.Drawing.Size(0, 20)
         Me.lblMessage.TabIndex = 24
@@ -174,12 +164,24 @@ Partial Class Vehicles
         Me.lblSection.Text = "Section"
         Me.lblSection.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'lblStored
+        '
+        Me.lblStored.AutoSize = True
+        Me.lblStored.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStored.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblStored.Location = New System.Drawing.Point(18, 209)
+        Me.lblStored.Name = "lblStored"
+        Me.lblStored.Size = New System.Drawing.Size(0, 25)
+        Me.lblStored.TabIndex = 294
+        Me.lblStored.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'Vehicles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1450, 903)
+        Me.Controls.Add(Me.lblStored)
         Me.Controls.Add(Me.lblSection)
         Me.Controls.Add(Me.lblLane)
         Me.Controls.Add(Me.lblGroup)
@@ -188,7 +190,6 @@ Partial Class Vehicles
         Me.Controls.Add(Me.lblMessage)
         Me.Controls.Add(Me.lblInspectionNo)
         Me.Controls.Add(Me.lblInspectorID)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.btnEuroBack)
         Me.Controls.Add(Me.lblPlate)
@@ -202,7 +203,6 @@ Partial Class Vehicles
     Friend WithEvents lblPlate As System.Windows.Forms.Label
     Friend WithEvents btnEuroBack As System.Windows.Forms.Button
     Friend WithEvents header As Label
-    Friend WithEvents Button2 As Button
     Friend WithEvents lblInspectorID As Label
     Friend WithEvents lblInspectionNo As Label
     Friend WithEvents lblMessage As Label
@@ -211,4 +211,5 @@ Partial Class Vehicles
     Friend WithEvents lblGroup As Label
     Friend WithEvents lblLane As Label
     Friend WithEvents lblSection As Label
+    Friend WithEvents lblStored As Label
 End Class

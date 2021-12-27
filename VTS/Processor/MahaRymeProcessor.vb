@@ -44,9 +44,13 @@ Public Class MahaRymeProcessor
         DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Silver
         DataGridView1.RowHeadersDefaultCellStyle.ForeColor = Color.White
 
-        LoadProcessor()
+        FillData()
+        lblHeartBeat.Text = "0"
+        lblHeartBeat.Refresh()
+
         Dim Interval As String = Handler.GetTimerInterval()
         Timer1.Interval = IIf(Interval = "", 10000, Interval)
+        lblInterval.Text = Interval & " ms"
         Timer1.Start()
     End Sub
 
@@ -89,30 +93,45 @@ Public Class MahaRymeProcessor
     End Function
 
     Private Function ProcessRymeFiles() As Boolean
-        FillData()
-        Timer1.Stop()
+
+        ' Timer1.Stop()
         Try
             Dim Es As New EsOut
             If (Not (Handler.SectionsLabelsOut Is Nothing)) Then
                 For Each iKey As String In Handler.SectionsLabelsOut.Keys
                     Dim value As String = Handler.SectionsLabelsOut(iKey)
 
-                    For Each file As IO.FileInfo In New IO.DirectoryInfo(value).GetFiles
+                    For Each folder In New DirectoryInfo(value).GetDirectories()
 
-                        If (ProcessEsOut(value, file.Name, iKey)) Then
-                            Handler.Log(file.Name & " Processed successfully for Section : " & iKey & ". InspectionNo = " & Es.getVtsValueFromCode(file.Name, "10304"), Handler.GenerateTimeZone().ToString("dd/MM/yyyy HH:mm"), "VTS RYME PROCESS", "Success")
-                        Else
-                            Handler.Log(file.Name & " Processed Unsuccessfully for Section : " & iKey & ". InspectionNo = " & Es.getVtsValueFromCode(file.Name, "10304"), Handler.GenerateTimeZone().ToString("dd/MM/yyyy HH:mm"), "VTS RYME PROCESS", "Failure")
-                        End If
+                        For Each file As IO.FileInfo In folder.GetFiles 'IO.DirectoryInfo(value).GetFiles
 
+                            If (file.FullName.Contains("SKIPPED")) Then
+                                Continue For
+                            End If
+
+                            If (ProcessEsOut(folder.FullName, file.Name, iKey)) Then
+                                Handler.Log(file.Name & " Processed successfully for Section : " & folder.FullName & ". InspectionNo = " & Es.getVtsValueFromCode(file.Name, "10304"), Handler.GenerateTimeZone().ToString("dd/MM/yyyy HH:mm"), "VTS RYME PROCESS", "Success")
+                            Else
+                                Handler.Log(file.Name & " Processed Unsuccessfully for Section : " & folder.FullName & "\" & file.Name, Handler.GenerateTimeZone().ToString("dd/MM/yyyy HH: mm"), "VTS RYME PROCESS", "Failure")
+                            End If
+                            Handler.heartBeat += 1
+                            lblHeartBeat.Text = Handler.heartBeat
+                            lblHeartBeat.Refresh()
+                        Next
                     Next
+
                 Next
             End If
+
+            FillData()
+
             Return True
         Catch ex As Exception
             Return False
         End Try
-        Timer1.Start()
+
+        'Timer1.Start()
+
     End Function
 
     Private Function FillData() As Boolean
@@ -159,33 +178,33 @@ Public Class MahaRymeProcessor
         End Try
     End Function
 
-    Private Function LoadVehiclesFiles() As DataTable
-        Dim dtRyme As DataTable = New DataTable
-        Dim value As String = ""
-        dtRyme.Columns.Add("VEHICLE PLATE")
-        For Each iKey As String In Handler.SectionsLabelsOut.Keys
-            value = Handler.SectionsLabelsOut(iKey)
-            dtRyme.Columns.Add(iKey)
-        Next
+    'Private Function LoadVehiclesFiles() As DataTable
+    '    Dim dtRyme As DataTable = New DataTable
+    '    Dim value As String = ""
+    '    dtRyme.Columns.Add("VEHICLE PLATE")
+    '    For Each iKey As String In Handler.SectionsLabelsOut.Keys
+    '        value = Handler.SectionsLabelsOut(iKey)
+    '        dtRyme.Columns.Add(iKey)
+    '    Next
 
-        Dim i As Integer = 0
+    '    Dim i As Integer = 0
 
-        value = Handler.SectionsLabelsOut(Handler.SectionsLabelsOut.Keys.First)
+    '    value = Handler.SectionsLabelsOut(Handler.SectionsLabelsOut.Keys.First)
 
-        For Each file As IO.FileInfo In New IO.DirectoryInfo(value).GetFiles
-            Dim dr As DataRow = dtRyme.NewRow
-            dr(0) = file.Name
-            For Each iKey As String In Handler.SectionsLabelsOut.Keys
-                value = Handler.SectionsLabelsOut(iKey)
-                If (IO.File.Exists(value & "\" & dr(0)) And isSectionProcessed(dr(0), iKey)) Then
-                    dr(iKey) = True
-                End If
-            Next
+    '    For Each file As IO.FileInfo In New IO.DirectoryInfo(value).GetFiles
+    '        Dim dr As DataRow = dtRyme.NewRow
+    '        dr(0) = file.Name
+    '        For Each iKey As String In Handler.SectionsLabelsOut.Keys
+    '            value = Handler.SectionsLabelsOut(iKey)
+    '            If (IO.File.Exists(value & "\" & dr(0)) And isSectionProcessed(dr(0), iKey)) Then
+    '                dr(iKey) = True
+    '            End If
+    '        Next
 
-            dtRyme.Rows.Add(dr)
-        Next
-        Return dtRyme
-    End Function
+    '        dtRyme.Rows.Add(dr)
+    '    Next
+    '    Return dtRyme
+    'End Function
 
     Private Function isSectionProcessed(EsOutFile As String, SectionLabel As String) As Boolean
         Dim Res As Boolean = False
@@ -257,87 +276,87 @@ Public Class MahaRymeProcessor
         End Try
     End Function
 
-    Private Function ProcessVehiclesFile() As Boolean
-        Try
-            Dim dtRyme As DataTable = Handler.dtProcessRyme
-            Dim i As Integer
+    'Private Function ProcessVehiclesFile() As Boolean
+    '    Try
+    '        Dim dtRyme As DataTable = Handler.dtProcessRyme
+    '        Dim i As Integer
 
-            If (dtRyme.Rows.Count > 0) Then
+    '        If (dtRyme.Rows.Count > 0) Then
 
-                For Each row As DataRow In dtRyme.Rows
-                    i = i + 1
-                    For Each iKey As String In Handler.SectionsLabelsOut.Keys
-                        If (Not IsDBNull(row(iKey))) Then Continue For
-                        Dim value As String = Handler.SectionsLabelsOut(iKey)
-                        If (Not IO.File.Exists(value & "\" & row(0))) Then Continue For
-                        Dim fileSection As New FileInfo(value & "\" & row(0))
+    '            For Each row As DataRow In dtRyme.Rows
+    '                i = i + 1
+    '                For Each iKey As String In Handler.SectionsLabelsOut.Keys
+    '                    If (Not IsDBNull(row(iKey))) Then Continue For
+    '                    Dim value As String = Handler.SectionsLabelsOut(iKey)
+    '                    If (Not IO.File.Exists(value & "\" & row(0))) Then Continue For
+    '                    Dim fileSection As New FileInfo(value & "\" & row(0))
 
-                        Timer1.Stop()
-                        row(iKey) = ProcessEsOut(value, row(0), iKey)
-                        Timer1.Start()
+    '                    Timer1.Stop()
+    '                    row(iKey) = ProcessEsOut(value, row(0), iKey)
+    '                    Timer1.Start()
 
-                        If row(iKey) = True Then
-                            'IO.File.Delete(value & "\" & row(0))
-                            Handler.Log(row(0) & " Processed successfully. VS EsOut filled successfully. Section : " & iKey, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
-                        End If
-                    Next
-                Next row
+    '                    If row(iKey) = True Then
+    '                        'IO.File.Delete(value & "\" & row(0))
+    '                        Handler.Log(row(0) & " Processed successfully. VS EsOut filled successfully. Section : " & iKey, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
+    '                    End If
+    '                Next
+    '            Next row
 
-                dtRyme.AcceptChanges()
-                Handler.dtProcessRyme = dtRyme
-                Handler.dtProcessRyme.AcceptChanges()
+    '            dtRyme.AcceptChanges()
+    '            Handler.dtProcessRyme = dtRyme
+    '            Handler.dtProcessRyme.AcceptChanges()
 
-            End If
+    '        End If
 
-            Return True
-        Catch ex As Exception
-            Console.WriteLine(ex.ToString)
+    '        Return True
+    '    Catch ex As Exception
+    '        Console.WriteLine(ex.ToString)
 
-            'Return nothing if something fails
-            Return Nothing
-        End Try
-    End Function
+    '        'Return nothing if something fails
+    '        Return Nothing
+    '    End Try
+    'End Function
 
-    Private Function ProcessVehiclesFiles() As Boolean
-        Try
-            Dim dtRyme As DataTable = Handler.dtProcessRyme
-            Dim i As Integer
+    'Private Function ProcessVehiclesFiles() As Boolean
+    '    Try
+    '        Dim dtRyme As DataTable = Handler.dtProcessRyme
+    '        Dim i As Integer
 
-            If (dtRyme.Rows.Count > 0) Then
+    '        If (dtRyme.Rows.Count > 0) Then
 
-                For Each row As DataRow In dtRyme.Rows
-                    i = i + 1
-                    For Each iKey As String In Handler.SectionsLabelsOut.Keys
-                        If (Not IsDBNull(row(iKey))) Then Continue For
-                        Dim value As String = Handler.SectionsLabelsOut(iKey)
-                        If (Not IO.File.Exists(value & "\" & row(0))) Then Continue For
-                        Dim fileSection As New FileInfo(value & "\" & row(0))
+    '            For Each row As DataRow In dtRyme.Rows
+    '                i = i + 1
+    '                For Each iKey As String In Handler.SectionsLabelsOut.Keys
+    '                    If (Not IsDBNull(row(iKey))) Then Continue For
+    '                    Dim value As String = Handler.SectionsLabelsOut(iKey)
+    '                    If (Not IO.File.Exists(value & "\" & row(0))) Then Continue For
+    '                    Dim fileSection As New FileInfo(value & "\" & row(0))
 
-                        Timer1.Stop()
-                        row(iKey) = ProcessEsOut(value, row(0), iKey)
-                        Timer1.Start()
+    '                    Timer1.Stop()
+    '                    row(iKey) = ProcessEsOut(value, row(0), iKey)
+    '                    Timer1.Start()
 
-                        If row(iKey) = True Then
-                            'IO.File.Delete(value & "\" & row(0))
-                            Handler.Log(iKey & " Processed successfully. VS EsOut filled successfully. FileName : " & row(0), Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
-                        End If
-                    Next
-                Next row
+    '                    If row(iKey) = True Then
+    '                        'IO.File.Delete(value & "\" & row(0))
+    '                        Handler.Log(iKey & " Processed successfully. VS EsOut filled successfully. FileName : " & row(0), Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
+    '                    End If
+    '                Next
+    '            Next row
 
-                dtRyme.AcceptChanges()
-                Handler.dtProcessRyme = dtRyme
-                Handler.dtProcessRyme.AcceptChanges()
+    '            dtRyme.AcceptChanges()
+    '            Handler.dtProcessRyme = dtRyme
+    '            Handler.dtProcessRyme.AcceptChanges()
 
-            End If
+    '        End If
 
-            Return True
-        Catch ex As Exception
-            Handler.Log(" Not Processed successfully. VS EsOut not filled successfully.", Handler.GenerateTimeZone(), ex.Message, "Failure")
+    '        Return True
+    '    Catch ex As Exception
+    '        Handler.Log(" Not Processed successfully. VS EsOut not filled successfully.", Handler.GenerateTimeZone(), ex.Message, "Failure")
 
-            'Return nothing if something fails
-            Return Nothing
-        End Try
-    End Function
+    '        'Return nothing if something fails
+    '        Return Nothing
+    '    End Try
+    'End Function
 
     Private Function ClearFiles(ByVal FileName As String) As Boolean
         For Each iKey As String In Handler.SectionsLabelsOut.Keys
@@ -352,35 +371,35 @@ Public Class MahaRymeProcessor
     End Function
 
     'Provide the plateno, the location and the maha code and in return get the value of the code
-    Private Function GetEsCodeValue(plate As String, EsIo As String, EsTyp As String, code As String) As String
-        Dim strFile As String = Handler.GetEsLocation(EsIo, EsTyp) & "\" & plate & ".txt"
-        Dim line As String = ""
-        Dim res As String = ""
+    'Private Function GetEsCodeValue(plate As String, EsIo As String, EsTyp As String, code As String) As String
+    '    Dim strFile As String = Handler.GetEsLocation(EsIo, EsTyp) & "\" & plate & ".txt"
+    '    Dim line As String = ""
+    '    Dim res As String = ""
 
-        If (IO.File.Exists(strFile)) Then
+    '    If (IO.File.Exists(strFile)) Then
 
-            Using sr As StreamReader = New System.IO.StreamReader(strFile)
+    '        Using sr As StreamReader = New System.IO.StreamReader(strFile)
 
 
-                Dim arr() As String
+    '            Dim arr() As String
 
-                Do Until sr.EndOfStream
-                    line = sr.ReadLine()
-                    If (line.Contains(code)) Then
-                        arr = line.Split("=")
+    '            Do Until sr.EndOfStream
+    '                line = sr.ReadLine()
+    '                If (line.Contains(code)) Then
+    '                    arr = line.Split("=")
 
-                        res = arr(1)
+    '                    res = arr(1)
 
-                    End If
+    '                End If
 
-                Loop
+    '            Loop
 
-                sr.Close()
+    '            sr.Close()
 
-            End Using
-        End If
-        Return res
-    End Function
+    '        End Using
+    '    End If
+    '    Return res
+    'End Function
 
     Private Function ProcessVehicleMahaFile() As DataTable
         Try
@@ -486,7 +505,7 @@ Public Class MahaRymeProcessor
 
         dt = conn.ExecuteReaderdt("Select MahaCode from CodesMappingLookup where RymeCode like '%" & RymeCode & "%' ")
         If dt.Rows.Count > 0 Then
-            Res = IIf(IsDBNull(dt.Rows(0).Item("MahaCode")), RymeCode, dt.Rows(0).Item("MahaCode"))
+            Res = IIf(IsDBNull(dt.Rows(0).Item("MahaCode")), RymeCode, dt.Rows(0).Item("MahaCode").ToString().Trim())
         End If
 
         Return Res
@@ -504,6 +523,8 @@ Public Class MahaRymeProcessor
         Dim dc As Dictionary(Of String, Dictionary(Of String, String)) = Handler.GetCalculatedVtsCodes2D
         Dim Val1 As Double = 0
         Dim Val2 As Double = 0
+        Dim Val3 As Double = 0
+        Dim Val4 As Double = 0
         Dim Es As New EsOut
 
         For Each iKey In dc.Keys
@@ -515,6 +536,12 @@ Public Class MahaRymeProcessor
                     Val2 = Es.getRymeValueFromFile(RymePath, FileName, value.First.Value)
                     dcRes.Add(iKey, (Val1 - Val2) * 100 / Math.Max(Val1, Val2))
                 End If
+            ElseIf (Es.getCalVtsBr(iKey).Equals("WEIGHT")) Then
+                Val1 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04014") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04014"))
+                Val2 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04016") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04016"))
+                Val3 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04018") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04018"))
+                Val4 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04020") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04020"))
+                dcRes.Add(iKey, Val1 + Val2 + Val3 + Val4)
             End If
         Next
 
@@ -554,18 +581,27 @@ Public Class MahaRymeProcessor
 
                 sr.Close()
 
+                If (Not File.Exists(Handler.GetEsLocation("OUT", "VTS") & "\" & FileName)) Then
+                    My.Computer.FileSystem.RenameFile(RymeEsOutPath & "\" & FileName, Path.GetFileNameWithoutExtension(RymeEsOutPath & "\" & FileName) & "_SKIPPED" & ".txt")
+                    Handler.Log(RymeEsOutPath & "\" & FileName & " SKIPPED by processor : " & SectionLabel, Handler.GenerateTimeZone(), "EsOut not found", "Skipped")
+                Else
+                    If (dc.Keys.Count > 0) Then
+                        Es.SetVtsCodes(FileName, dc) 'Normal Vts Codes
+                        Es.SetVtsCodes(FileName, ProcessEquation(RymeEsOutPath, FileName)) 'Calculated Vts Codes
 
-                If (dc.Keys.Count > 0) Then
-                    Es.SetVtsCodes(FileName, dc) 'Normal Vts Codes
-
-                    Es.SetVtsCodes(FileName, ProcessEquation(RymeEsOutPath, FileName)) 'Calculated Vts Codes
-
-                    IO.File.Delete(RymeEsOutPath & "\" & FileName)
-                    Res = True
+                        If (File.Exists(RymeEsOutPath & "\" & FileName)) Then
+                            IO.File.Delete(RymeEsOutPath & "\" & FileName)
+                        End If
+                        Dim RymeEsInPath = RymeEsOutPath.Replace("\OUT\", "\IN\")
+                        If (File.Exists(RymeEsInPath & "\" & FileName)) Then
+                            IO.File.Delete(RymeEsInPath & "\" & FileName)
+                        End If
+                        Res = True
+                    End If
                 End If
             End Using
         Catch ex As Exception
-            Handler.Log(FileName & " Not Processed Successfully for Section : " & SectionLabel, Handler.GenerateTimeZone(), ex.Message, "Failure")
+            Handler.Log(FileName & " Not Processed Successfully for Section : " & SectionLabel, Handler.GenerateTimeZone(), ex.Message.Replace("'", ""), "Failure")
             txtDate.Text = ""
             txtInspectionNo.Text = ""
             cmbStatus.Text = ""
@@ -594,6 +630,7 @@ Public Class MahaRymeProcessor
         ProcessRymeFiles()
         DataGridView2.DataSource = ProcessVehicleMahaFile()
         lblStatus.Text = "Processes Loaded Successfully"
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -620,4 +657,7 @@ Public Class MahaRymeProcessor
     Private Sub BtnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
         FillData()
     End Sub
+
+
+
 End Class

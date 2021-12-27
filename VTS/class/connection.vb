@@ -75,43 +75,44 @@ Public Class connection
 
 
     Public Function ExecuteSqlCommand(ByVal sql As String) As (Boolean, String)
-        conn = New Data.SqlClient.SqlConnection(connetionString)
-        Try
-            conn.Open()
-            command = New Data.SqlClient.SqlCommand(sql, conn)
-            command.ExecuteNonQuery()
-            Return (True, "")
-        Catch ex As Exception
-            If conn.State = Data.ConnectionState.Open Then
+        ' conn = New Data.SqlClient.SqlConnection(connetionString)
+        Using conn As New Data.SqlClient.SqlConnection(connetionString)
+            Try
+                conn.Open()
+                command = New Data.SqlClient.SqlCommand(sql, conn)
+                command.ExecuteNonQuery()
+                Return (True, "")
+            Catch ex As Exception
+                If conn.State = Data.ConnectionState.Open Then
+                    conn.Close()
+                End If
+                Return (False, ex.Message)
+            Finally
                 conn.Close()
-            End If
-            Return (False, ex.Message)
-        Finally
-            conn.Close()
-            conn = Nothing
-        End Try
+            End Try
+        End Using
     End Function
 
-    Public Function ExecuteSqlCommand(ByVal sql As String, ByVal condition As Boolean) As Boolean
+    Public Function ExecuteSqlCommand(ByVal sql As String, ByVal condition As Boolean) As (Boolean, String)
 
         Dim res As Boolean = False
-        conn = New Data.SqlClient.SqlConnection(connetionString)
-        Try
-            conn.Open()
-            command = New Data.SqlClient.SqlCommand(sql, conn)
-            command.ExecuteNonQuery()
-            res = True
-        Catch ex As Exception
-            res = False
-            If conn.State = Data.ConnectionState.Open Then
+        'conn = New Data.SqlClient.SqlConnection(connetionString)
+        Using conn As New Data.SqlClient.SqlConnection(connetionString)
+            Try
+                conn.Open()
+                command = New Data.SqlClient.SqlCommand(sql, conn)
+                command.ExecuteNonQuery()
+                Return (True, "")
+            Catch ex As Exception
+                res = False
+                If conn.State = Data.ConnectionState.Open Then
+                    conn.Close()
+                End If
+                Return (False, ex.Message)
+            Finally
                 conn.Close()
-            End If
-        Finally
-            conn.Close()
-            conn = Nothing
-        End Try
-        Return res
-
+            End Try
+        End Using
     End Function
 
     Public Function ExecuteGetReader(ByVal strsql As String) As Data.SqlClient.SqlDataReader

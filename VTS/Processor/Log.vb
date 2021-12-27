@@ -12,6 +12,8 @@
         header.Width = My.Computer.Screen.WorkingArea.Size.Width
         header.Height = 100
 
+        FillData()
+
         Timer1.Interval = 10000
         Timer1.Start()
 

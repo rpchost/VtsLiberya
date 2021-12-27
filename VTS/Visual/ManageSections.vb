@@ -51,6 +51,21 @@
         End If
 
         Dim opExec As New connection
+        dt = New DataTable
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader("select *  from Section_Labels where SC_LBL = '" & txtLbl.Text & "' and SC_IN_OUT = '" & cmbIO.Text & "'")
+        Try
+
+            If reader.HasRows = True Then
+
+                MessageBox.Show("Label and InOut are already exist")
+                Return
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            opExec.closeConnection()
+        End Try
+
         opExec.ExecuteSqlCommand("Insert into Section_Labels (SC_LBL,SC_DSC,SC_IN_OUT,SC_DIR_LOC,SC_TYP) values ('" & txtLbl.Text & "','" & txtDsc.Text & "','" & cmbIO.Text & "','" & txtDir.Text & "','" & cmbType.Text & "')")
         opExec.closeConnection()
 
@@ -63,27 +78,19 @@
 
     End Sub
 
-    Private Sub DeleteSection(SectionId As Integer)
+    Private Sub DeleteSection(ScLabel As String, ScIO As String)
 
         Dim opExec As New connection
-        opExec.ExecuteSqlCommand("delete from Section_Labels where ID = " & SectionId)
+        opExec.ExecuteSqlCommand("delete from Section_Labels where SC_LBL = '" & ScLabel & "' and SC_IN_OUT = '" & ScIO & "' ")
         opExec.closeConnection()
 
         FillData()
-
-
-
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-
-
         If MsgBox("Are you sure you want to delete this section?", vbQuestion Or vbYesNo Or vbDefaultButton2, "Confirm Delete") = vbYes Then
-            DeleteSection(DataGridView1.SelectedCells(0).Value)
-
+            DeleteSection(DataGridView1.SelectedCells(0).Value, DataGridView1.SelectedCells(2).Value)
         End If
-
-
     End Sub
 
     Private Sub btnEsc_Click(sender As Object, e As EventArgs) Handles btnEsc.Click

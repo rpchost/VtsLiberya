@@ -35,9 +35,12 @@ Partial Class Settings
         Me.VTSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MACHINESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CALCULATEDVTSCODESToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TimerSetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CancelInspectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VtsRymeProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoggerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileWatcherToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EscToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,7 +48,6 @@ Partial Class Settings
         Me.VTSVivautoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FailRateByInspectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TimerSetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -62,7 +64,7 @@ Partial Class Settings
         '
         'AdministratorToolStripMenuItem
         '
-        Me.AdministratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SectionsToolStripMenuItem, Me.ComputerNamePatternToolStripMenuItem, Me.UsersToolStripMenuItem, Me.GroupsToolStripMenuItem1, Me.GroupsToolStripMenuItem, Me.BusinessUnitToolStripMenuItem, Me.GroupsBusinessUnitToolStripMenuItem, Me.GroupCodesToolStripMenuItem, Me.TimerSetToolStripMenuItem})
+        Me.AdministratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SectionsToolStripMenuItem, Me.ComputerNamePatternToolStripMenuItem, Me.UsersToolStripMenuItem, Me.GroupsToolStripMenuItem1, Me.GroupsToolStripMenuItem, Me.BusinessUnitToolStripMenuItem, Me.GroupsBusinessUnitToolStripMenuItem, Me.GroupCodesToolStripMenuItem, Me.TimerSetToolStripMenuItem, Me.CancelInspectionToolStripMenuItem})
         Me.AdministratorToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AdministratorToolStripMenuItem.Name = "AdministratorToolStripMenuItem"
         Me.AdministratorToolStripMenuItem.Size = New System.Drawing.Size(84, 25)
@@ -135,9 +137,21 @@ Partial Class Settings
         Me.CALCULATEDVTSCODESToolStripMenuItem1.Size = New System.Drawing.Size(268, 26)
         Me.CALCULATEDVTSCODESToolStripMenuItem1.Text = "CALCULATED VTS CODES"
         '
+        'TimerSetToolStripMenuItem
+        '
+        Me.TimerSetToolStripMenuItem.Name = "TimerSetToolStripMenuItem"
+        Me.TimerSetToolStripMenuItem.Size = New System.Drawing.Size(266, 26)
+        Me.TimerSetToolStripMenuItem.Text = "Timer Interval"
+        '
+        'CancelInspectionToolStripMenuItem
+        '
+        Me.CancelInspectionToolStripMenuItem.Name = "CancelInspectionToolStripMenuItem"
+        Me.CancelInspectionToolStripMenuItem.Size = New System.Drawing.Size(266, 26)
+        Me.CancelInspectionToolStripMenuItem.Text = "Cancel Inspection"
+        '
         'RunToolStripMenuItem
         '
-        Me.RunToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VtsRymeProcessToolStripMenuItem, Me.LoggerToolStripMenuItem})
+        Me.RunToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VtsRymeProcessToolStripMenuItem, Me.LoggerToolStripMenuItem, Me.FileWatcherToolStripMenuItem})
         Me.RunToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RunToolStripMenuItem.Name = "RunToolStripMenuItem"
         Me.RunToolStripMenuItem.Size = New System.Drawing.Size(52, 25)
@@ -154,6 +168,12 @@ Partial Class Settings
         Me.LoggerToolStripMenuItem.Name = "LoggerToolStripMenuItem"
         Me.LoggerToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
         Me.LoggerToolStripMenuItem.Text = "Logger"
+        '
+        'FileWatcherToolStripMenuItem
+        '
+        Me.FileWatcherToolStripMenuItem.Name = "FileWatcherToolStripMenuItem"
+        Me.FileWatcherToolStripMenuItem.Size = New System.Drawing.Size(212, 26)
+        Me.FileWatcherToolStripMenuItem.Text = "File Watcher"
         '
         'ExitToolStripMenuItem
         '
@@ -203,12 +223,6 @@ Partial Class Settings
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(58, 25)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
-        'TimerSetToolStripMenuItem
-        '
-        Me.TimerSetToolStripMenuItem.Name = "TimerSetToolStripMenuItem"
-        Me.TimerSetToolStripMenuItem.Size = New System.Drawing.Size(266, 26)
-        Me.TimerSetToolStripMenuItem.Text = "Timer Interval"
-        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -250,4 +264,6 @@ Partial Class Settings
     Friend WithEvents VTSVivautoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FailRateByInspectorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TimerSetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CancelInspectionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileWatcherToolStripMenuItem As ToolStripMenuItem
 End Class

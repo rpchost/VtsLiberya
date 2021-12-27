@@ -31,6 +31,9 @@ Partial Class ComputerNamePattern
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnEsc = New System.Windows.Forms.Button()
         Me.txtPrefix = New System.Windows.Forms.TextBox()
+        Me.lblComputerName = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblMachineName = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'header
@@ -131,11 +134,48 @@ Partial Class ComputerNamePattern
         Me.txtPrefix.TabIndex = 44
         Me.txtPrefix.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'lblComputerName
+        '
+        Me.lblComputerName.AutoSize = True
+        Me.lblComputerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblComputerName.ForeColor = System.Drawing.Color.Teal
+        Me.lblComputerName.Location = New System.Drawing.Point(64, 130)
+        Me.lblComputerName.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblComputerName.Name = "lblComputerName"
+        Me.lblComputerName.Size = New System.Drawing.Size(0, 26)
+        Me.lblComputerName.TabIndex = 45
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Teal
+        Me.Label2.Location = New System.Drawing.Point(11, 179)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(171, 26)
+        Me.Label2.TabIndex = 46
+        Me.Label2.Text = "Machine Name"
+        '
+        'lblMachineName
+        '
+        Me.lblMachineName.AutoSize = True
+        Me.lblMachineName.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMachineName.ForeColor = System.Drawing.Color.Teal
+        Me.lblMachineName.Location = New System.Drawing.Point(197, 179)
+        Me.lblMachineName.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblMachineName.Name = "lblMachineName"
+        Me.lblMachineName.Size = New System.Drawing.Size(0, 26)
+        Me.lblMachineName.TabIndex = 47
+        '
         'ComputerNamePattern
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1391, 862)
+        Me.Controls.Add(Me.lblMachineName)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblComputerName)
         Me.Controls.Add(Me.txtPrefix)
         Me.Controls.Add(Me.btnEsc)
         Me.Controls.Add(Me.btnUpdate)
@@ -162,4 +202,7 @@ Partial Class ComputerNamePattern
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnEsc As Button
     Friend WithEvents txtPrefix As TextBox
+    Friend WithEvents lblComputerName As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblMachineName As Label
 End Class

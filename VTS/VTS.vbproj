@@ -176,6 +176,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Vehicle.vb" />
     <Compile Include="Visual\Accessoires de visibilite.Designer.vb">
       <DependentUpon>Accessoires de visibilite.vb</DependentUpon>
     </Compile>
@@ -390,6 +391,12 @@
       <DependentUpon>CanalisationFreinPneumatique.vb</DependentUpon>
     </Compile>
     <Compile Include="Visual\CanalisationFreinPneumatique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\CancelInspection.Designer.vb">
+      <DependentUpon>CancelInspection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\CancelInspection.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Visual\Capot.Designer.vb">
@@ -791,6 +798,12 @@
       <DependentUpon>FeuCroisementdemesures.vb</DependentUpon>
     </Compile>
     <Compile Include="Visual\FeuCroisementdemesures.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\FileWatcher.Designer.vb">
+      <DependentUpon>FileWatcher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\FileWatcher.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Visual\Flexible de frein .Designer.vb">
@@ -1760,6 +1773,9 @@
     <EmbeddedResource Include="Visual\CanalisationFreinPneumatique.resx">
       <DependentUpon>CanalisationFreinPneumatique.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Visual\CancelInspection.resx">
+      <DependentUpon>CancelInspection.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Visual\Capot.resx">
       <DependentUpon>Capot.vb</DependentUpon>
     </EmbeddedResource>
@@ -1957,6 +1973,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\FeuCroisementdemesures.resx">
       <DependentUpon>FeuCroisementdemesures.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\FileWatcher.resx">
+      <DependentUpon>FileWatcher.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\Flexible de frein .resx">
       <DependentUpon>Flexible de frein .vb</DependentUpon>

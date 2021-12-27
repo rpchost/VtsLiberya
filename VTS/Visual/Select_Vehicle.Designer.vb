@@ -27,7 +27,6 @@ Partial Class Select_Vehicle
         Me.btnSignOut = New System.Windows.Forms.Button()
         Me.header = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.lblInspectorID = New System.Windows.Forms.Label()
         Me.lblSection = New System.Windows.Forms.Label()
@@ -50,11 +49,11 @@ Partial Class Select_Vehicle
         'btnSignOut
         '
         Me.btnSignOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSignOut.Location = New System.Drawing.Point(679, 811)
+        Me.btnSignOut.Location = New System.Drawing.Point(815, 815)
         Me.btnSignOut.Name = "btnSignOut"
         Me.btnSignOut.Size = New System.Drawing.Size(139, 74)
         Me.btnSignOut.TabIndex = 2
-        Me.btnSignOut.Text = "LOGOUT"
+        Me.btnSignOut.Text = "ESC"
         Me.btnSignOut.UseVisualStyleBackColor = True
         '
         'header
@@ -78,16 +77,6 @@ Partial Class Select_Vehicle
         Me.Label3.Size = New System.Drawing.Size(321, 39)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "SELECT VEHICLE"
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(957, 812)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(145, 72)
-        Me.Button2.TabIndex = 12
-        Me.Button2.Text = "EXIT"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'Timer1
         '
@@ -149,7 +138,7 @@ Partial Class Select_Vehicle
         Me.lstVehicle.FormattingEnabled = True
         Me.lstVehicle.ItemHeight = 33
         Me.lstVehicle.Location = New System.Drawing.Point(679, 117)
-        Me.lstVehicle.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lstVehicle.Margin = New System.Windows.Forms.Padding(2)
         Me.lstVehicle.Name = "lstVehicle"
         Me.lstVehicle.Size = New System.Drawing.Size(423, 664)
         Me.lstVehicle.TabIndex = 297
@@ -164,7 +153,6 @@ Partial Class Select_Vehicle
         Me.Controls.Add(Me.lblLane)
         Me.Controls.Add(Me.lblGroup)
         Me.Controls.Add(Me.lblInspectorID)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.btnSignOut)
@@ -180,7 +168,6 @@ Partial Class Select_Vehicle
     Friend WithEvents btnSignOut As System.Windows.Forms.Button
     Friend WithEvents header As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button2 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lblInspectorID As Label
     Friend WithEvents lblSection As Label

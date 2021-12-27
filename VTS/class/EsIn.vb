@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 
 Public Class EsIn
-    Public Function ToEsPath(ByVal EsType As String, ByVal EsIO As String, ByVal FileName As String, Optional EsVehTyp As String = "") As Boolean
+    Public Function ToEsPath(ByVal EsType As String, ByVal EsIO As String, ByVal FileName As String, ByVal Lane As String, Optional EsVehTyp As String = "") As Boolean
         'EsVehTyp param if empty then CreateEsIn in all sections upon the choice of EsIO and EsType
         'EsType = RYME or VTS
         'EsIO = IN or OUT
         'FileName is the Plate number
 
-        Dim dc As Dictionary(Of String, String) = GetSectionsDir(EsType, EsIO, EsVehTyp)
+        Dim dc As Dictionary(Of String, String) = GetSectionsDir(EsType, EsIO, Lane, EsVehTyp)
 
         For Each iKey As String In dc.Keys
             Try
@@ -25,11 +25,12 @@ Public Class EsIn
     Private Function WriteEsIn(EsType As String, Loc As String, FileName As String) As Boolean
 
         Dim strFile As String = Loc & "\" & FileName & ".txt"
+
         Dim Res As Boolean = False
 
         If (EsType = "RYME") Then
 
-            Dim sw As New StreamWriter(strFile, True)
+            Dim sw As New StreamWriter(strFile, False)
             sw.WriteLine("[DATOS_RYME]")
             sw.WriteLine("00100=" & FileName)
             sw.WriteLine("00101=" & Handler.InspectionNo)
@@ -46,7 +47,7 @@ Public Class EsIn
     End Function
 
 
-    Private Function GetSectionsDir(ByVal EsType As String, ByVal EsIO As String, Optional EsVehTyp As String = "") As Dictionary(Of String, String)
+    Private Function GetSectionsDir(ByVal EsType As String, ByVal EsIO As String, ByVal Lane As String, Optional EsVehTyp As String = "") As Dictionary(Of String, String)
 
         Dim str As String = ""
         Dim opExec As New connection
@@ -62,7 +63,7 @@ Public Class EsIn
             If reader.HasRows = True Then
 
                 While reader.Read()
-                    dc.Add(reader("SC_LBL"), reader("SC_DIR_LOC"))
+                    dc.Add(reader("SC_LBL"), reader("SC_DIR_LOC") & "\" & Lane)
                 End While
 
             End If

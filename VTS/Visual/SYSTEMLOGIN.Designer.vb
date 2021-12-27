@@ -31,6 +31,7 @@ Partial Class SYSTEMLOGIN
         Me.header = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -85,7 +86,7 @@ Partial Class SYSTEMLOGIN
         Me.lblmsg.AutoSize = True
         Me.lblmsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblmsg.ForeColor = System.Drawing.Color.Crimson
-        Me.lblmsg.Location = New System.Drawing.Point(878, 484)
+        Me.lblmsg.Location = New System.Drawing.Point(844, 483)
         Me.lblmsg.Name = "lblmsg"
         Me.lblmsg.Size = New System.Drawing.Size(57, 18)
         Me.lblmsg.TabIndex = 6
@@ -100,15 +101,15 @@ Partial Class SYSTEMLOGIN
         Me.header.ForeColor = System.Drawing.Color.White
         Me.header.Location = New System.Drawing.Point(0, 0)
         Me.header.Name = "header"
-        Me.header.Size = New System.Drawing.Size(1423, 77)
+        Me.header.Size = New System.Drawing.Size(1657, 77)
         Me.header.TabIndex = 8
         '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(847, 679)
+        Me.Button2.Location = New System.Drawing.Point(820, 555)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(128, 43)
+        Me.Button2.Size = New System.Drawing.Size(169, 61)
         Me.Button2.TabIndex = 9
         Me.Button2.Text = "EXIT"
         Me.Button2.UseVisualStyleBackColor = True
@@ -125,12 +126,25 @@ Partial Class SYSTEMLOGIN
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "LOGIN"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(1609, 54)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(48, 22)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "v1.9"
+        '
         'SYSTEMLOGIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1435, 829)
+        Me.ClientSize = New System.Drawing.Size(1655, 829)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.header)
@@ -156,4 +170,5 @@ Partial Class SYSTEMLOGIN
     Friend WithEvents header As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

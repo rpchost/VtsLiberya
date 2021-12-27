@@ -163,9 +163,6 @@ Public Class DefectPage
 
     End Sub
 
-
-
-
     Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
 
 
@@ -175,6 +172,11 @@ Public Class DefectPage
         Else
             strinspectionNO = Handler.InspectionNo
             strCertNO = strinspectionNO
+        End If
+
+        If (Handler.InspectionNo = Nothing Or Handler.InspectionNo.Trim = "") Then
+            MessageBox.Show("InspectionNo is null")
+            Exit Sub
         End If
 
 
@@ -194,6 +196,8 @@ Public Class DefectPage
             My.Forms.Defects.lblmsgStatus.Text = "YOU HAVE ADDED THIS CODE"
             Me.Dispose()
         Else
+
+
 
             Dim DefectDate As DateTime = Handler.GenerateTimeZone() 'Now.Year & "-" & Now.Month & "-" & Now.Day.ToString("D2") & Space(1) & Now.Hour.ToString("D2") & ":" & Now.Minute.ToString("D2")
 
@@ -217,8 +221,27 @@ Public Class DefectPage
 
 
             CodeIdentification = arrID1(0) & arrID2(0) & arrID3(0) & arrID2(1) & arrID3(0) & arrID3(2) & "0" & arrID3(3)
+            Dim visualCode = Label5.Text.Trim
+            Dim arr() = visualCode.Split(" ")
+            visualCode = arr(0).Trim
 
-            Dim DefectDesc As String = "No Inspector:" & Space(1) & lblInspectorID.Text & " - No Lane: 1 - No Section: 2 - Defect CD:!" & CodeIdentification & "! - Defect Location:#" & Fleft1 & "" & Mleft1 & "" & Rleft1 & "" & Cleft1 & "" & CC1 & "" & CD1 & "" & RL1 & "" & RM1 & "" & RR1 & "" & Minor1 & "" & Major1 & "# - @ " & ValIdent & "@" & Label5.Text.Substring(0, 9) & " "
+            Dim helper As New Helpers
+
+            If (helper.DefectCodeExists(Handler.InspectionNo, visualCode)) Then
+                MessageBox.Show("Defect code already added")
+                Exit Sub
+            End If
+            If (Handler.dTDefects.Rows.Count > 0) Then
+                For Each obj In Handler.dTDefects.Rows
+                    If (obj("DefectDesc").contains(visualCode)) Then
+                        MessageBox.Show("Defect code already added")
+                        Exit Sub
+                    End If
+                Next
+            End If
+
+            'Dim DefectDesc As String = "No Inspector:" & Space(1) & lblInspectorID.Text & " - No Lane: " & Handler.Lane & " - No Section: " & Handler.Section & " - Defect CD:!" & CodeIdentification & "! - Defect Location:#" & Fleft1 & "" & Mleft1 & "" & Rleft1 & "" & Cleft1 & "" & CC1 & "" & CD1 & "" & RL1 & "" & RM1 & "" & RR1 & "" & Minor1 & "" & Major1 & "# - @ " & ValIdent & "@" & Label5.Text.Substring(0, 9) & " "
+            Dim DefectDesc As String = "No Inspector:" & Space(1) & lblInspectorID.Text & " - No Lane: " & Handler.Lane & " - No Section: " & Handler.Section & " - Defect CD: !" & CodeIdentification & "! - @" & ValIdent & " " & visualCode & " @ - Defect Location:#" & Fleft1 & "" & Mleft1 & "" & Rleft1 & "" & Cleft1 & "" & CC1 & "" & CD1 & "" & RL1 & "" & RM1 & "" & RR1 & "" & Minor1 & "" & Major1 & "#- " & Handler.getDefectCodeResult(visualCode)
 
             ' Dim sqlInsertCode1 As String
             Dim Value1 As String
@@ -259,8 +282,8 @@ Public Class DefectPage
 
 
     End Sub
-    
-    Private Sub btnLogOut_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogOut.Click
+
+    Private Sub btnLogOut_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) 
         My.Forms.SYSTEMLOGIN.Show()
         My.Forms.SYSTEMLOGIN.txtUser.ResetText()
         My.Forms.SYSTEMLOGIN.txtPwd.ResetText()

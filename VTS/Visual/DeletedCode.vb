@@ -9,7 +9,7 @@
         header.Height = 100
 
         Try
-            sql = "select * from DeletedCodes  where plateNO='" & Label1.Text & "'"
+            sql = "select * from DeletedCodes_tmp where certificateno = '" & Handler.InspectionNo & "'"
             dt = conn.ExecuteReaderdt(sql)
             lblUser.Text = ""
             lblDeleted.Text = ""
@@ -18,7 +18,11 @@
                 lblDeleted.Text = lblDeleted.Text & dt.Rows(i).Item("DeletedCode") & Environment.NewLine
             Next
 
-
+            'If (dt.Rows.Count > 0) Then
+            '    CheckedListBox1.DataSource = dt 'PopulateDefectFromDB(inspectionNo)
+            '    CheckedListBox1.DisplayMember = "deletedcode"
+            '    CheckedListBox1.ValueMember = "ID"
+            'End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -39,13 +43,13 @@
     End Sub
 
 
-    Private Sub btnLogoutDCODE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogoutDCODE.Click
+    Private Sub btnLogoutDCODE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         My.Forms.SYSTEMLOGIN.Show()
         My.Forms.SYSTEMLOGIN.txtUser.ResetText()
         My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
         My.Forms.SYSTEMLOGIN.txtUser.Focus()
         My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
-        Label1.ResetText()
+        'Label1.ResetText()
         Me.Dispose()
     End Sub
 End Class

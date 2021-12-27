@@ -3,27 +3,30 @@
 Public Class EsOut
     Public Function CreateTitleHeaderEOF(ByVal HeaderType As String, ByVal EsType As String, ByVal EsIO As String, ByVal FileName As String, ByVal VisitType As String, Optional EsVehTyp As String = "") As Boolean
         Dim Res As Boolean = False
-        Dim sw As StreamWriter = Nothing
+        'Dim sw As StreamWriter = Nothing
 
         Try
-
             If (Not FileName.Contains(".txt")) Then FileName = FileName & ".txt"
 
             Dim strFile As String = Handler.GetEsLocation(EsIO, EsVehTyp) & "\" & FileName
-            sw = New StreamWriter(strFile, True)
 
-            If (HeaderType.Equals("TitleHeader")) Then
-                sw.WriteLine(Title(EsType, FileName))
-                sw.WriteLine(setEsOut(FileName))
-                sw.WriteLine(EOF())
+            'If EsOut skeleton exist then exit
+            If (File.Exists(strFile)) Then
+                Return True
             End If
-            Res = True
 
+            Using sw = New StreamWriter(strFile, True)
+                If (HeaderType.Equals("TitleHeader")) Then
+                    sw.WriteLine(Title(EsType, FileName))
+                    sw.WriteLine(setEsOut(FileName))
+                    sw.WriteLine(EOF())
+                End If
+                Res = True
+                sw.Close()
+            End Using
         Catch ex As IOException
             Res = False
             Handler.Log("Error creating " & EsVehTyp & EsIO & " file " & ". " & FileName & " HeaderType = " & HeaderType, Handler.GenerateTimeZone(), "EsOut.CreateTitleHeader", ex.Message)
-        Finally
-            sw.Close()
         End Try
         Return Res
     End Function
@@ -220,6 +223,36 @@ Public Class EsOut
         End Try
     End Function
 
+    Private Function getHeaderData(ByVal Plate As String) As Dictionary(Of String, String)
+        Dim opExec As New connection
+        Dim dc As New Dictionary(Of String, String)
+
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader("select * from Cardaftar where plateno = '" & Plate & "'")
+        Try
+            If reader.HasRows = True Then
+                reader.Read()
+                dc("Chassis") = IIf(IsDBNull(reader("Chassisno")), "", reader("Chassisno"))
+                dc("Address") = IIf(IsDBNull(reader("ADDRESS1")), "", reader("ADDRESS1"))
+                dc("DateManufactured") = IIf(IsDBNull(reader("DATEMANUFACTURED")), "", reader("DATEMANUFACTURED"))
+                dc("Engine") = IIf(IsDBNull(reader("EnginePower")), "", reader("EnginePower"))
+                dc("Make") = IIf(IsDBNull(reader("MAKE")), "", reader("MAKE"))
+                dc("Manufacturer") = IIf(IsDBNull(reader("MANUFACTURER")), "", reader("MANUFACTURER"))
+                dc("FueType") = IIf(IsDBNull(reader("FuelType")), "", reader("FuelType"))
+                dc("Phone") = IIf(IsDBNull(reader("Phone")), "", reader("Phone"))
+                dc("Owner") = IIf(IsDBNull(reader("OWNER")), "", reader("OWNER"))
+                dc("Color") = IIf(IsDBNull(reader("Color")), "", reader("Color"))
+                dc("Model") = IIf(IsDBNull(reader("Model")), "", reader("Model"))
+                dc("Weight") = IIf(IsDBNull(reader("WeightTotal")), "", reader("WeightTotal"))
+                dc("VehicleCategory") = IIf(IsDBNull(reader("VehicleCategory")), "", reader("VehicleCategory"))
+            End If
+            Return dc
+        Catch ex As Exception
+            MessageBox.Show("Error in getHeaderData")
+        Finally
+            opExec.closeConnection()
+        End Try
+    End Function
+
     Private Function setEsOutSection(ByVal intSectionLabel As Integer, ByVal FileName As String) As String
         Dim str As String = ""
         Dim opExec As New connection
@@ -235,6 +268,9 @@ Public Class EsOut
         Else
             strSectionHeader = vbCrLf & "; ----------" & SectionLabel & vbCrLf
         End If
+
+        Dim headerData As Dictionary(Of String, String)
+        If (intSectionLabel = 1) Then headerData = getHeaderData(FileName)
 
         sql = "select * from CodesMappingLookup where type = " & intSectionLabel & " order by MahaCode asc"
 
@@ -252,8 +288,26 @@ Public Class EsOut
                         strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & Handler.Lane & vbCrLf
                     ElseIf (reader("MahaCode").trim = "10304") Then
                         strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & Handler.InspectionNo & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10104") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Engine") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10050") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Owner") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10202") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("DateManufactured") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10201") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Make") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10200") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Manufacturer") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10109") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Color") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10400") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("Weight") & vbCrLf
+                    ElseIf (reader("MahaCode").trim = "10191") Then
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("VehicleCategory") & vbCrLf
+                        'ElseIf (reader("MahaCode").trim = "10303") Then
+                        '    strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & headerData("VehicleCategory") & vbCrLf
                     ElseIf (reader("MahaCode").trim = "10057") Then
-                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & IIf(Handler.IType = "I", "Fst Visit", "Repeat Visit") & vbCrLf
+                        strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & IIf(Handler.InspType = "Y", "Fst Visit", "Repeat Visit") & vbCrLf
                     Else
                         strSectionHeader = strSectionHeader & reader("MahaCode").trim & "= " & vbCrLf
                     End If
@@ -272,45 +326,45 @@ Public Class EsOut
         End Try
     End Function
 
-    Public Function Header(ByVal VisitType As String, ByVal FileName As String, Optional EsVehTyp As String = "") As String
-        Dim strHeader As String = "[HEADER]" & vbCrLf
+    'Public Function Header(ByVal VisitType As String, ByVal FileName As String, Optional EsVehTyp As String = "") As String
+    '    Dim strHeader As String = "[HEADER]" & vbCrLf
 
-        If (VisitType = "I") Then
-            strHeader = strHeader & "10003= " & vbCrLf
-            strHeader = strHeader & "10010= " & Handler.Lane & vbCrLf
-            strHeader = strHeader & "10053= " & Handler.userId & vbCrLf
-            strHeader = strHeader & "10057= Fst Visit" & vbCrLf
-            strHeader = strHeader & "10058= " & Handler.GenerateTimeZone() & vbCrLf
-            strHeader = strHeader & "10100= " & Handler.Plate & vbCrLf
-            strHeader = strHeader & "10102= " & Handler.Chassis & vbCrLf
-            strHeader = strHeader & "10105= " & vbCrLf
-            strHeader = strHeader & "10109= " & vbCrLf
-            strHeader = strHeader & "10111= " & vbCrLf
-            strHeader = strHeader & "10190= " & vbCrLf
-            strHeader = strHeader & "10191= " & vbCrLf
-            strHeader = strHeader & "10195= " & vbCrLf
-            strHeader = strHeader & "10196= " & vbCrLf
-            strHeader = strHeader & "10200= " & vbCrLf
-            strHeader = strHeader & "10201= " & vbCrLf
-            strHeader = strHeader & "10202= " & vbCrLf
-            strHeader = strHeader & "10204= " & vbCrLf
-            strHeader = strHeader & "10212= " & vbCrLf
-            strHeader = strHeader & "10227= " & vbCrLf
-            strHeader = strHeader & "10121= " & vbCrLf
-            strHeader = strHeader & "10131= " & vbCrLf
-            strHeader = strHeader & "10110= " & vbCrLf
-            strHeader = strHeader & "10050= " & vbCrLf
-            strHeader = strHeader & "10251= " & vbCrLf
-            strHeader = strHeader & "10208= " & vbCrLf
-            strHeader = strHeader & "10054= " & vbCrLf
-            strHeader = strHeader & "10303= " & vbCrLf
-            strHeader = strHeader & "10076= " & vbCrLf
-            strHeader = strHeader & "10072= " & vbCrLf
-            strHeader = strHeader & "10071= " & vbCrLf
-        End If
+    '    If (VisitType = "I") Then
+    '        strHeader = strHeader & "10003= " & vbCrLf
+    '        strHeader = strHeader & "10010= " & Handler.Lane & vbCrLf
+    '        strHeader = strHeader & "10053= " & Handler.userId & vbCrLf
+    '        strHeader = strHeader & "10057= Fst Visit" & vbCrLf
+    '        strHeader = strHeader & "10058= " & Handler.GenerateTimeZone() & vbCrLf
+    '        strHeader = strHeader & "10100= " & Handler.Plate & vbCrLf
+    '        strHeader = strHeader & "10102= " & Handler.Chassis & vbCrLf
+    '        strHeader = strHeader & "10105= " & vbCrLf
+    '        strHeader = strHeader & "10109= " & vbCrLf
+    '        strHeader = strHeader & "10111= " & vbCrLf
+    '        strHeader = strHeader & "10190= " & vbCrLf
+    '        strHeader = strHeader & "10191= " & vbCrLf
+    '        strHeader = strHeader & "10195= " & vbCrLf
+    '        strHeader = strHeader & "10196= " & vbCrLf
+    '        strHeader = strHeader & "10200= " & vbCrLf
+    '        strHeader = strHeader & "10201= " & vbCrLf
+    '        strHeader = strHeader & "10202= " & vbCrLf
+    '        strHeader = strHeader & "10204= " & vbCrLf
+    '        strHeader = strHeader & "10212= " & vbCrLf
+    '        strHeader = strHeader & "10227= " & vbCrLf
+    '        strHeader = strHeader & "10121= " & vbCrLf
+    '        strHeader = strHeader & "10131= " & vbCrLf
+    '        strHeader = strHeader & "10110= " & vbCrLf
+    '        strHeader = strHeader & "10050= " & vbCrLf
+    '        strHeader = strHeader & "10251= " & vbCrLf
+    '        strHeader = strHeader & "10208= " & vbCrLf
+    '        strHeader = strHeader & "10054= " & vbCrLf
+    '        strHeader = strHeader & "10303= " & vbCrLf
+    '        strHeader = strHeader & "10076= " & vbCrLf
+    '        strHeader = strHeader & "10072= " & vbCrLf
+    '        strHeader = strHeader & "10071= " & vbCrLf
+    '    End If
 
-        Return strHeader
-    End Function
+    '    Return strHeader
+    'End Function
 
     Public Function RymeSection(ByVal SectionLabelHeader As String, ByVal dcRymeCodesSection As Dictionary(Of String, String), Optional EsVehTyp As String = "") As String
         Dim strRymeCode As String = "; ----------" & SectionLabelHeader & vbCrLf

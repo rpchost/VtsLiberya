@@ -18,10 +18,12 @@
         lblInspectorID.Text = Handler.InspectorID
         lblPlate.Text = Handler.Plate
 
-        If (Handler.IType = "I") Then
+        If (Handler.InspType = "Y") Then
             lblVisitType.Text = "Fst Visit"
-        ElseIf (Handler.IType = "R") Then
+        ElseIf (Handler.InspType = "R") Then
             lblVisitType.Text = "Repeat Visit"
+        ElseIf (Handler.InspType = "A") Then
+            lblVisitType.Text = "Aborted"
         Else
             lblVisitType.Text = ""
         End If

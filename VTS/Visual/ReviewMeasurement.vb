@@ -19,12 +19,14 @@ Public Class ReviewMeasurement
 
         CheckedListBox1.Width = Me.Width
 
+        Dim inspectionNo = Handler.getInspection(Handler.Plate)
+
         Dim CertificateNo As String = ""
         If (Handler.InspectionNo <> Nothing) Then
             Try
-                If (Handler.IType = "R") Then
-                    If (Handler.LastInspectionNo <> "") Then
-                        Handler.dTDefects = Handler.ApplyDbToHtDefect("DEFECTS_Tmp", Handler.LastInspectionNo)
+                If (Handler.InspType = "R") Then
+                    If (Handler.InspectionNo <> "") Then
+                        Handler.dTDefects = Handler.ApplyDbToHtDefect("DEFECTS_Tmp", Handler.InspectionNo)
                     Else
                         MessageBox.Show("No LastInspectionNo found, most probably last visit process Esout file was not found")
                         Exit Sub
@@ -36,10 +38,15 @@ Public Class ReviewMeasurement
         End If
 
         Try
+            If (Handler.dTDefects.Rows.Count > 0) Then
+                CheckedListBox1.DataSource = Handler.dTDefects 'PopulateDefectFromDB(inspectionNo)
+                CheckedListBox1.DisplayMember = "DefectDesc"
+                CheckedListBox1.ValueMember = "ID"
+            End If
 
-            CheckedListBox1.DataSource = Handler.dTDefects
-            CheckedListBox1.DisplayMember = "DefectDesc"
-            CheckedListBox1.ValueMember = "ID"
+            CheckedListBox2.DataSource = Handler.PopulateDefectFromDB(inspectionNo)
+            CheckedListBox2.DisplayMember = "DefectDesc"
+            CheckedListBox2.ValueMember = "ID"
 
             lblInspectionNo.Text = Handler.InspNo
             lblInspectorID.Text = Handler.InspectorID
@@ -58,40 +65,69 @@ Public Class ReviewMeasurement
 
         Dim strFile As String = Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt"
 
-        If (IO.File.Exists(strFile)) Then
-            MessageBox.Show("You can not delete defects; vehicle is already stored Intermediate")
-            Return
-        End If
+        'If (IO.File.Exists(strFile)) Then
+        '    MessageBox.Show("You can not delete defects; vehicle is already stored Intermediate")
+        '    Return
+        'End If
 
 
-        If (CheckedListBox1.CheckedItems.Count = 0) Then
-            MessageBox.Show("You must select at least 1 defect to delete")
-            Return
-        End If
+        'If (CheckedListBox1.CheckedItems.Count = 0) Then
+        '    MessageBox.Show("You must select at least 1 defect to delete")
+        '    Return
+        'End If
 
+        Dim opExec As New connection
 
         j = MessageBox.Show("Are you sure you want to delete the record(s) ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If j = MsgBoxResult.Yes Then
 
-                If CheckedListBox1.CheckedItems.Count > 0 Then
-                    Dim sb As New System.Text.StringBuilder
+            'If CheckedListBox1.CheckedItems.Count > 0 Then
+            Dim sb As New System.Text.StringBuilder
+            Dim al As ArrayList = New ArrayList()
 
-                Try
-                    For Each obj In CheckedListBox1.CheckedItems
 
-                        Handler.deleteDefectsRow("ID", obj.row.itemArray(0).ToString)
-                        Handler.CopyDT(Handler.dTDefects)
+            For Each obj In CheckedListBox1.CheckedItems
 
-                        If (Handler.InspType.Equals("R")) Then
-                            Handler.PopulateDelCodesTbl(Handler.InspectionNo, Handler.GenerateTimeZone(), Handler.InspectorID, Handler.Lane, Handler.Section, obj.row.itemArray(2))
+                Dim sqlDeleteCode = opExec.ExecuteSqlCommand("insert into DELETEDCODES_Tmp (certificateno, DELETEDATE,INSPECTOR,LANE,SECT,DELETEDCODE) values ('" & Handler.InspectionNo & "','" & Handler.GenerateTimeZone() & "','" & Handler.InspectorID & "', '" & Handler.Lane & "', '" & Handler.Section & "', '" & obj.row.itemArray(1) & "')")
+                If (sqlDeleteCode.Item1 = True) Then
+
+                    al.Add(obj.row.itemArray(1).ToString().Trim())
+
+                Else
+                    MessageBox.Show("Error adding removed code to DELETEDCODES_Tmp")
+                End If
+            Next
+
+            Handler.deleteDefectsRow("DefectDesc", al)
+            Handler.CopyDT(Handler.dTDefects)
+
+            CheckedListBox1.DataSource = Handler.dTDefects 'PopulateDefectFromDB(inspectionNo)
+            CheckedListBox1.DisplayMember = "DefectDesc"
+            CheckedListBox1.ValueMember = "ID"
+
+            Try
+                For Each obj In CheckedListBox2.CheckedItems
+
+                    Dim sqlInsertDeletedCode = opExec.ExecuteSqlCommand("insert into DELETEDCODES_Tmp (certificateno, DELETEDATE,INSPECTOR,LANE,SECT,DELETEDCODE) values ('" & Handler.InspectionNo & "','" & Handler.GenerateTimeZone() & "','" & Handler.InspectorID & "', '" & Handler.Lane & "', '" & Handler.Section & "', '" & obj.row.itemArray(1) & "')")
+                    If (sqlInsertDeletedCode.Item1 = True) Then
+
+                        Dim sqlDeleteDefect = opExec.ExecuteSqlCommand("Delete from Defects_Tmp where DefectDesc = '" & obj.row.itemArray(1) & "' ")
+                        If (sqlInsertDeletedCode.Item1 = False) Then
+                            MessageBox.Show("Error removing items")
                         End If
-                    Next
-                Catch ex As Exception
-                End Try
+                    Else
+                        MessageBox.Show("Error adding removed code to DELETEDCODES_Tmp")
+                    End If
+                Next
 
-            End If
+                CheckedListBox2.DataSource = Handler.PopulateDefectFromDB(Handler.InspectionNo)
+                CheckedListBox2.DisplayMember = "DefectDesc"
+                CheckedListBox2.ValueMember = "ID"
 
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
         End If
 
     End Sub
@@ -105,7 +141,7 @@ Public Class ReviewMeasurement
         'My.Forms.Vehicles.btnDeleted.Enabled = True
 
         Vehicles.Show()
-       Me.Dispose()
+        Me.Dispose()
     End Sub
 
 

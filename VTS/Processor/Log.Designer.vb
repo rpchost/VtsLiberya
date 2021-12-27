@@ -39,7 +39,7 @@ Partial Class Log
         Me.header.Location = New System.Drawing.Point(1, -2)
         Me.header.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.header.Name = "header"
-        Me.header.Size = New System.Drawing.Size(1569, 77)
+        Me.header.Size = New System.Drawing.Size(1745, 77)
         Me.header.TabIndex = 11
         '
         'Label3
@@ -48,7 +48,7 @@ Partial Class Log
         Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(587, 36)
+        Me.Label3.Location = New System.Drawing.Point(737, 36)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(365, 39)
@@ -64,16 +64,16 @@ Partial Class Log
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 30
-        Me.DataGridView1.Size = New System.Drawing.Size(1557, 623)
+        Me.DataGridView1.Size = New System.Drawing.Size(1733, 623)
         Me.DataGridView1.TabIndex = 14
         '
         'btnEsc
         '
         Me.btnEsc.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEsc.Location = New System.Drawing.Point(690, 776)
+        Me.btnEsc.Location = New System.Drawing.Point(910, 775)
         Me.btnEsc.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEsc.Name = "btnEsc"
-        Me.btnEsc.Size = New System.Drawing.Size(111, 60)
+        Me.btnEsc.Size = New System.Drawing.Size(152, 60)
         Me.btnEsc.TabIndex = 32
         Me.btnEsc.Text = "ESC"
         Me.btnEsc.UseVisualStyleBackColor = True
@@ -85,7 +85,7 @@ Partial Class Log
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1569, 944)
+        Me.ClientSize = New System.Drawing.Size(1745, 944)
         Me.Controls.Add(Me.btnEsc)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label3)

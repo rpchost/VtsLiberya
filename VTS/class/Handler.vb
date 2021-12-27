@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Text.RegularExpressions
 Imports Microsoft.Extensions.Configuration
 
 Public Class Handler
@@ -8,10 +9,20 @@ Public Class Handler
     Public Shared dTDefectsClone As New DataTable
     Public Shared dTDelCodes As New DataTable
     Public Shared InspectionNo As String
+    Public Shared Engine As String
     Public Shared InspNo As String
     Public Shared InspectorID As String
     Public Shared Plate As String
     Public Shared Chassis As String
+    Public Shared Address As String
+    Public Shared DateManufactured As String
+    Public Shared Make As String
+    Public Shared Manufacturer As String
+    Public Shared Color As String
+    Public Shared FuelType As String
+    Public Shared Weight As String
+    Public Shared Phone As String
+    Public Shared Owner As String
     Public Shared Lane As String
     Public Shared Section As String
     Public Shared StationName As String
@@ -21,8 +32,8 @@ Public Class Handler
     Public Shared LastInspectionNo As String
     Public Shared InspectorGroupID As Integer
     Public Shared dSet As DataSet
-    Public Shared InspType As Char ' F : First / R : Repeat 
-    Public Shared IType As Char ' Y : Yearly / A : Additional
+    Public Shared IType As Char ' I : First / C : Cancelled
+    Public Shared InspType As Char ' Y : First / R : Repeat / A : Aborted
     Public Shared RymeEmissionStat As String
     Public Shared RymeLightStat As String
     Public Shared Result As String
@@ -31,6 +42,7 @@ Public Class Handler
     Public Shared SectionsLabelsIn As Dictionary(Of String, String)
     Public Shared dtProcessRyme As DataTable
     Public Shared dcVtsCodes As Dictionary(Of String, String)
+    Public Shared heartBeat As Integer
 
     Public Shared Function AppSettings() As IConfiguration
         Dim builder = New ConfigurationBuilder()
@@ -66,6 +78,7 @@ Public Class Handler
         InspectorGroupID = Nothing
         dSet = Nothing
         IType = Nothing
+        InspType = Nothing
         RymeEmissionStat = Nothing
         RymeLightStat = Nothing
         RymeSuspensionStat = Nothing
@@ -92,6 +105,103 @@ Public Class Handler
 
         dTDefects.Rows.Add(0, DefectDesc, DefectDate, InspectionNo)
     End Function
+
+    Public Shared Function PopulateDefectFromDB(ByVal InspectionNo As String) As DataTable
+
+        Dim opExec As New connection
+        Dim sql As String = ""
+        Dim dTDefects As New DataTable
+
+        If (Not dTDefects.Columns.Contains("ID")) Then
+            Dim dtC As DataColumn = dTDefects.Columns.Add("ID", GetType(Int32))
+            dtC.AutoIncrement = True
+            dtC.AutoIncrementSeed = 1
+            dtC.AutoIncrementStep = 1
+        End If
+
+        If (Not dTDefects.Columns.Contains("DefectDesc")) Then dTDefects.Columns.Add("DefectDesc", GetType(String))
+        If (Not dTDefects.Columns.Contains("DefectDate")) Then dTDefects.Columns.Add("DefectDate", GetType(DateTime))
+        If (Not dTDefects.Columns.Contains("InspectionNo")) Then dTDefects.Columns.Add("InspectionNo", GetType(String))
+
+        sql = "select * from DEFECTS_Tmp where inspectionno = '" & InspectionNo & "' "
+
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader(sql)
+        Try
+
+            If reader.HasRows = True Then
+
+                While reader.Read()
+                    dTDefects.Rows.Add(reader("ID"), reader("DefectDesc"), reader("DefectDate"), reader("InspectionNo"))
+                End While
+
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            opExec.closeConnection()
+        End Try
+
+        Return dTDefects
+    End Function
+
+    Public Shared Function getInspection(ByVal Plate As String) As String
+
+        Dim opExec As New connection
+        Dim sql As String = ""
+        Dim dc As New DataTable
+
+        sql = "select Inspectionno from inspectionActive i inner join cardaftar c on i.chassisno = c.chassisno  where c.plateno = '" & Plate & "' "
+
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader(sql)
+        Try
+
+            If reader.HasRows = True Then
+
+                reader.Read()
+                Return reader("Inspectionno")
+
+            Else
+
+                Return ""
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            opExec.closeConnection()
+        End Try
+    End Function
+
+    Public Shared Function getDefectsCount(ByVal InspectionNo As String) As Integer
+
+        Dim opExec As New connection
+        Dim sql As String = ""
+        Dim dc As New DataTable
+
+        sql = "select Count(*) as count from defects_tmp  where inspectionno = '" & InspectionNo & "' "
+
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader(sql)
+        Try
+
+            If reader.HasRows = True Then
+
+                reader.Read()
+                Return reader("count")
+
+            Else
+                Return 0
+
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            opExec.closeConnection()
+        End Try
+    End Function
+
+
 
     Public Shared Function GetMachineCodes() As Dictionary(Of String, String)
 
@@ -521,22 +631,55 @@ Public Class Handler
         Return res
     End Function
 
-    Public Shared Function deleteDefectsRow(ColName As String, ColValue As String) As Boolean
+    Public Shared Function deleteDefectsRow(ColName As String, al As ArrayList) As Boolean
+
         Dim i As Integer = 0
+        'Dim dt = dTDefects
+        Dim dt As DataTable
 
-        For i = 0 To dTDefects.Rows.Count - 1
+        Dim str As String = ""
+        If (al.Count = 0) Then
+            Return True
+        End If
+        For j = 0 To al.Count - 1
+            If (j = al.Count - 1) Then
+                str = str & " DefectDesc <> '" & al(j) & "' "
+            Else
+                str = str & " DefectDesc <> '" & al(j) & "'  and "
+            End If
+        Next
+        If (dTDefects.Select(str).Count > 0) Then
+            dt = dTDefects.Select(str).CopyToDataTable()
+            dTDefects = dt
+        Else
+            dTDefects.Rows.Clear()
+        End If
 
-            If (dTDefects.Rows(i)(ColName).ToString = ColValue) Then
+        Return True
+    End Function
 
-                dTDefects.Rows(i).Delete()
-                dTDefects.AcceptChanges()
-                Return True
-                Exit Function
+    Public Shared Function getDefectCodeResult(DefectCode As String) As String
+        Dim opExec As New connection
+        Dim sql = "Select VisualResult from VisualLookup where VisualCodePnt = '" & DefectCode & "' "
+
+        Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader(sql)
+        Try
+
+            If reader.HasRows = True Then
+
+                reader.Read()
+
+                Return reader("VisualResult")
+
+            Else
+                Return ""
             End If
 
-        Next
-
-        Return False
+        Catch ex As Exception
+            Return -1
+        Finally
+            opExec.closeConnection()
+        End Try
     End Function
 
     Public Shared Function CopyDT(dTSource As DataTable) As Boolean
@@ -558,9 +701,19 @@ Public Class Handler
         Next
     End Function
 
-    Private Shared Function GetComputerName() As String
-        Dim ComputerName As String = AppSettings()("ComputerName") 'System.Environment.MachineName
+    Public Shared Function GetComputerName() As String
+        Dim ComputerName As String = ""
+
+        If (GetChars(System.Environment.MachineName)) <> "LN-PC" Then
+            ComputerName = GetComputerNameFromFile()
+        Else
+            ComputerName = System.Environment.MachineName
+        End If
         Return ComputerName
+    End Function
+
+    Private Shared Function GetChars(input As String) As String
+        Return New String(input.Where(Function(c) Not Char.IsDigit(c)).ToArray())
     End Function
 
     Public Shared Function GetPatterName() As String
@@ -612,34 +765,51 @@ Public Class Handler
     End Function
 
     Public Shared Sub GetLaneSection()
-
         Try
-
             Dim str As String
             Dim dbl As Double = 0.0
             Dim i As Integer = 0
 
-            str = GetComputerName.Replace(GetPrefix, "")
-            dbl = Convert.ToInt16(str) / 10
-            str = dbl.ToString
-            Dim arr() As String = str.Split(".")
+            Dim strComputerName = GetComputerName()
+            Dim arr() As String = strComputerName.Split("-")
+            Lane = arr(0)
+            Section = arr(1)
 
-            If (GetPatterName.Trim.Equals("Lane & Section")) Then
-                Lane = arr(0)
-                Section = arr(1)
-            ElseIf (GetPatterName.Trim.Equals("Section & Lane")) Then
-                Lane = arr(1)
-                Section = arr(0)
-            Else
-                Lane = -1
-                Section = -1
-            End If
-
+            Lane = IIf(IsNumeric(Lane.Replace("LN", "")), Lane.Replace("LN", ""), "-1")
+            Section = IIf(IsNumeric(Section.Replace("PC", "")), Section.Replace("PC", ""), "-1")
         Catch ex As Exception
-            Lane = -1
-            Section = -1
+            Lane = "-1"
+            Section = "-1"
         End Try
     End Sub
+
+    Public Shared Function GetLaneSectionFromFile()
+        Try
+            Dim str As String
+            Dim dbl As Double = 0.0
+            Dim i As Integer = 0
+
+            Dim strComputerName = GetComputerNameFromFile()
+            Dim arr() As String = strComputerName.Split("-")
+            Lane = arr(0)
+            Section = arr(1)
+
+            Lane = IIf(IsNumeric(Lane.Replace("LN", "")), Lane.Replace("LN", ""), "-1")
+            Section = IIf(IsNumeric(Section.Replace("PC", "")), Section.Replace("PC", ""), "-1")
+        Catch ex As Exception
+            Lane = "-1"
+            Section = "-1"
+        End Try
+    End Function
+
+    Private Shared Function GetComputerNameFromFile() As String
+        Try
+            Dim allFile As String = File.ReadAllText("C:/Visual/ComputerName.txt")
+            Return allFile.Trim
+        Catch ex As Exception
+            Throw New Exception("Error getting the serial")
+        End Try
+    End Function
 
     Public Shared Function GetEsCodeValue(plate As String, EsIo As String, EsTyp As String, code As String) As String
 
@@ -709,11 +879,9 @@ Public Class Handler
 
         For Each dr As DataRow In dT.Rows
 
-            If (Not opExec.ExecuteSqlCommand("Insert into Defects_tmp (DefectDesc, inspectionNo, DefectDate) values ('" & dr("DefectDesc") & "', '" & Handler.InspectionNo.Replace("C", "I") & "', CONVERT(datetime,'" & GenerateTimeZone().ToString("dd/MM/yyyy HH:mm") & "',103))", True)) Then
-
+            If (opExec.ExecuteSqlCommand("Insert into Defects_tmp (DefectDesc, inspectionNo, DefectDate) values ('" & dr("DefectDesc") & "', '" & Handler.InspectionNo & "', CONVERT(datetime,'" & GenerateTimeZone().ToString("dd/MM/yyyy HH:mm") & "',103))", True).Item1 = False) Then
                 res = False
                 Exit Function
-
             End If
         Next
 
@@ -1031,15 +1199,13 @@ Public Class Handler
     End Function
 
     Public Shared Function Log(ByVal LG_DSC As String, ByVal LG_DATETIME As DateTime, ByVal LG_SRC As String, ByVal LG_ERR As String) As Boolean
-
         Dim opExec As New connection
-        If (Not opExec.ExecuteSqlCommand("Insert into VTS_RYME_LOGGER (LG_DSC,LG_DATETIME,LG_SRC,LG_ERR) values ('" & LG_DSC & "',CONVERT(datetime,'" & LG_DATETIME & "',103),'" & LG_SRC & "','" & LG_ERR & "')", True)) Then
-            MessageBox.Show("Error with logger " & LG_DSC & " " & LG_DATETIME)
+        Dim sqlCommand = opExec.ExecuteSqlCommand("Insert into VTS_RYME_LOGGER (LG_DSC,LG_DATETIME,LG_SRC,LG_ERR) values ('" & LG_DSC & "','" & GenerateTimeZone() & "','" & LG_SRC & "','" & LG_ERR & "')", True)
+        If (sqlCommand.Item1 = False) Then
+            ' MessageBox.Show("Error with logger " & LG_DSC & " " & LG_DATETIME & " " & sqlCommand.Item2)
         End If
         opExec.closeConnection()
-
         Return True
-
     End Function
 
     Public Shared Function UserFk(ByVal UserName As String) As Integer
@@ -1105,3 +1271,4 @@ Public Class Handler
         End If
     End Function
 End Class
+

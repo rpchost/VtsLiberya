@@ -1,4 +1,6 @@
-﻿Public Class Vehicles
+﻿Imports System.IO
+
+Public Class Vehicles
     Dim conn As New connection
     Public Sub Vehicles_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -7,6 +9,9 @@
 
         Dim i As Integer
         Dim arrLst As ArrayList = getBU(Handler.GroupID)
+
+        Dim helper As New Helpers
+
         For i = 0 To arrLst.Count - 1
 
             Dim btnBU As New Windows.Forms.Button
@@ -15,6 +20,13 @@
             btnBU.AutoSize = True
             btnBU.Name = "btn-" & arrLst(i)
             btnBU.Text = getBULabel(arrLst(i))
+
+            If (btnBU.Text.Equals("Complete and Save")) Then
+                If (helper.CanCompleteAndSave(Handler.Lane, Handler.Section) = False) Then
+                    btnBU.Visible = False
+                End If
+            End If
+
             btnBU.Font = New Font("Microsoft Sans Serif", 15, FontStyle.Bold)
             btnBU.Top = i * 70
             btnBU.Left = 25
@@ -31,12 +43,20 @@
         lblLane.Text = IIf(Handler.Lane <> "", "Lane : " & Handler.Lane, "")
         lblSection.Text = IIf(Handler.Section <> "", "Section : " & Handler.Section, "")
 
-        If (Handler.IType = "I") Then
+        If (Handler.InspType = "Y") Then
             lblVisitType.Text = "Fst Visit"
-        ElseIf (Handler.IType = "R") Then
+        ElseIf (Handler.InspType = "R") Then
             lblVisitType.Text = "Repeat Visit"
+        ElseIf (Handler.InspType = "A") Then
+            lblVisitType.Text = "Aborted"
         Else
             lblVisitType.Text = ""
+        End If
+
+        If (File.Exists(Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt")) Then
+            lblStored.Text = "Stored intermediate"
+        Else
+            lblStored.Text = ""
         End If
 
         If (Handler.Group(Handler.InspectorID) = "Inspectors" Or Handler.Group(Handler.InspectorID) = "Supervisors") Then
@@ -52,10 +72,13 @@
         Dim arr() As String
 
         Dim btn As Button = DirectCast(sender, Button)
+
         arr = btn.Name.Split("-")
 
         Dim vForm As String
         vForm = getBULink(arr(1))
+
+        Dim helper As New Helpers
 
         If (vForm = "cachier" Or vForm = "cashier") Then
 
@@ -90,31 +113,34 @@
                 Exit Function
             End If
 
-            Dim strFile As String = Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt"
+            Dim inspActiveExists = helper.InspectionActiveExist(Handler.Chassis)
 
-            If (IO.File.Exists(strFile)) Then
-                btn.Enabled = False
-                MessageBox.Show("Vehicle is already stored Intermediate")
+            If (inspActiveExists = False) Then
+                MessageBox.Show("No Inspection Active for this vehicle")
                 Exit Function
             End If
 
+            Dim strFile As String = Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt"
+
+            Dim MaxReached = Handler.getDefectsCount(Handler.InspectionNo) + Handler.dTDefects.Rows.Count > 30
+            If (MaxReached) Then
+                MessageBox.Show("Number of entered defects reached the maximum (30)")
+                Exit Function
+            End If
 
             If (Handler.dTDefects.Rows.Count > 0) Then
                 Try
+
                     If (Not Handler.ApplyDataTableToDefects(Handler.dTDefects)) Then
                         MessageBox.Show("Failure to store Defects DataTable")
                         Handler.Log(Handler.Plate & " Defects DataTable did not added successfully; " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
                     Else
                         Handler.Log(Handler.Plate & " Defects codes added successfully " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
+                        Handler.dTDefects.Clear()
                     End If
                 Catch ex As Exception
                     Handler.Log(Handler.Plate & " Defects codes did not added successfully; " & ex.Message & "  " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
                     Exit Function
-                End Try
-
-                Try
-                    Handler.dTDefects.Dispose()
-                Catch ex As Exception
                 End Try
 
                 lblMessage.Text = "Defects codes stored successfully"
@@ -137,21 +163,22 @@
 
             'Create the ESIn files for Ryme Stations
             Dim esIn As New EsIn
-            esIn.ToEsPath("RYME", "IN", Handler.Plate, "")
+            esIn.ToEsPath("RYME", "IN", Handler.Plate, Handler.Lane, "")
 
-            If (Handler.IType = "I") Then
+            If (Handler.InspType = "Y") Then
 
                 'Create the EsOut file (Title + Header) for VTS
                 Dim Es As New EsOut
-                If (Es.CreateTitleHeaderEOF("TitleHeader", Handler.IType, "OUT", Handler.Plate, "", "VTS")) Then
-                    MessageBox.Show(Handler.Plate & " Stored Successfully [First Visit]" & Handler.InspNo)
-                    Handler.Log(Handler.Plate & " Status = Stored. VTS EsOut stored successfully. [First Visit]" & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
+                'If (Es.CreateTitleHeaderEOF("TitleHeader", Handler.IType, "IN", Handler.Plate, "", "VTS")) Then
+                If (Es.CreateTitleHeaderEOF("TitleHeader", Handler.InspType, "OUT", Handler.Plate, "", "VTS")) Then ' Create the EsOut skeleton file in VTS/OUT
+                    MessageBox.Show(Handler.Plate & " READY FOR RYME INSPECTION")
+                    Handler.Log(Handler.Plate & " Status = Stored. VTS EsIn stored successfully. [First Visit]" & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
                 Else
                     MessageBox.Show(Handler.Plate & " Error while Storing " & Handler.InspNo)
-                    Handler.Log(Handler.Plate & " Status = Store Error. VTS EsOut stored UNsuccessfully. " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
+                    Handler.Log(Handler.Plate & " Status = Store Error. VTS EsIn fail to store. " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
                 End If
 
-            ElseIf (Handler.IType = "R") Then
+            ElseIf (Handler.InspType = "R") Then
                 Dim srcFile As String = Handler.GetEsLocation("OUT", "PROCESS_SUCCESS") & "\" & Handler.Plate & ".txt"
                 If (IO.File.Exists(srcFile)) Then
                     Try
@@ -161,12 +188,26 @@
                         Handler.Log(Handler.Plate & " did not move successfully. [Repeat Visit] " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
                     End Try
 
-                    MessageBox.Show(Handler.Plate & " Stored Successfully [Repeat Visit] " & Handler.InspNo)
+                    MessageBox.Show(Handler.Plate & " READY FOR RYME INSPECTION")
                     Handler.Log(Handler.Plate & " Status = Stored. VTS EsOut stored successfully. [Repeat Visit] " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
                 Else
                     MessageBox.Show(Handler.Plate & " does not exist in ProcessEsOut_Success [Repeat Visit]" & Handler.InspNo)
                     Handler.Log(Handler.Plate & " does not exist in ProcessEsOut_Success. [Repeat Visit] " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Failure")
                 End If
+            ElseIf (Handler.InspType = "A") Then
+                MessageBox.Show(Handler.InspNo & " Ws Aborted")
+            Else
+                MessageBox.Show("No valid visit nature for this vehicle")
+            End If
+
+            If (helper.CanCompleteAndSave(Handler.Lane, Handler.Section) = False) Then
+
+                My.Forms.SYSTEMLOGIN.Show()
+                My.Forms.SYSTEMLOGIN.txtUser.ResetText()
+                My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
+                My.Forms.SYSTEMLOGIN.txtUser.Focus()
+                My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
+                Me.Dispose()
 
             End If
 
@@ -184,6 +225,18 @@
             Dim strDestSuccess As String = Handler.GetEsLocation("OUT", "PROCESS_SUCCESS") & "\" & Handler.Plate & ".txt"
             Dim strDestFail As String = Handler.GetEsLocation("OUT", "PROCESS_FAIL") & "\" & Handler.Plate & ".txt"
 
+            If (File.Exists(strSourceFile) = False) Then
+                MessageBox.Show($"No Esout file exists for the plate {Handler.Plate}")
+                Exit Function
+            End If
+
+            Dim inspActiveExists = helper.InspectionActiveExist(Handler.Chassis)
+
+            If (inspActiveExists = False) Then
+                MessageBox.Show("No Inspection Active for this vehicle")
+                Exit Function
+            End If
+
             If MsgBox("Are you sure you want to Complete and Save", vbQuestion Or vbYesNo Or vbDefaultButton2, "Confirm Vehicle Inspection") = vbYes Then
 
                 Dim plate As String = Handler.Plate
@@ -192,38 +245,55 @@
 
                 Dim opExec As New connection
 
-                Try
-                    Dim HistoryInserted = opExec.ExecuteSqlCommand("Insert into inspectionhistory (INSPECTIONNO, CHASSISNO, ITYPE, LANE, FEEAMOUNT, FEETYPE, FEELABEL, STATIONNAME, LASTSTATIONNAME, USER_FK, USERNAME, HOSTNAME, CASHIERNAME, CASHIER_FK, TESTRESULT, InspType, ReceiptNo, LaneIN, LANETYPE, MinLane) Select replace(INSPECTIONNO, 'B-C-', 'B-I-'),CHASSISNO,ITYPE,LANE,FEEAMOUNT,FEETYPE,FEELABEL,STATIONNAME,LASTSTATIONNAME ,USER_FK,USERNAME,HOSTNAME ,CASHIERNAME,CASHIER_FK,TESTRESULT,InspType,ReceiptNo,LaneIN,LANETYPE,MinLane from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
+                IO.File.Move(strSourceFile, strDestSuccess)
+                Handler.Log(Handler.InspectionNo & " Completed successfully, Plate = " & plate, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Success")
+                MessageBox.Show(Handler.InspectionNo & " Completed successfully")
 
-                    If (HistoryInserted) Then
-                        Dim CertificateInserted = opExec.ExecuteSqlCommand("Insert into Certificate (CERTIFICATENO ,CERTIFICATEDATE,INSPECTIONNO,LANENO,CHASSISNO,TestResult)  values ('" & Handler.InspectionNo.Replace("B-I-", "B-C-") & "', CONVERT(datetime,'" & Handler.GenerateTimeZone() & "',103),'" & Handler.InspectionNo & "','" & Handler.Lane & "','" & Chassis & "','F') ", True)
+                My.Forms.SYSTEMLOGIN.Show()
+                My.Forms.SYSTEMLOGIN.txtUser.ResetText()
+                My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
+                My.Forms.SYSTEMLOGIN.txtUser.Focus()
+                My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
+                Me.Dispose()
 
-                        If (CertificateInserted) Then
-                            Dim DeleteInspectionActive = opExec.ExecuteSqlCommand("Delete from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
+                'Try
+                '    Dim HistoryInserted = opExec.ExecuteSqlCommand("Insert into inspectionhistory (INSPECTIONNO, CHASSISNO, ITYPE, LANE, FEEAMOUNT, FEETYPE, FEELABEL, STATIONNAME, LASTSTATIONNAME, USER_FK, USERNAME, HOSTNAME, CASHIERNAME, CASHIER_FK, TESTRESULT, InspType, ReceiptNo, LaneIN, LANETYPE, MinLane) Select INSPECTIONNO,CHASSISNO,ITYPE,LANE,FEEAMOUNT,FEETYPE,FEELABEL,STATIONNAME,LASTSTATIONNAME ,USER_FK,USERNAME,HOSTNAME ,CASHIERNAME,CASHIER_FK,TESTRESULT,InspType,ReceiptNo,LaneIN,LANETYPE,MinLane from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
 
-                            If (DeleteInspectionActive) Then
-                                IO.File.Move(strSourceFile, strDestSuccess) 'It should go to ProcessEsOut folder and the ProcessEsOut software move it to success or failure folder
-                                Handler.Log(Handler.InspectionNo & " Completed successfully, Plate = " & plate, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Success")
-                                MessageBox.Show(Handler.InspectionNo & " Completed successfully")
-                            Else
-                                Throw New DataException("Complete & Save not executed; InspectionActive not deleted")
-                            End If
-                        Else
-                            Throw New DataException("Complete & Save not executed; Certificate not inserted")
-                        End If
-                    Else
-                        Throw New DataException("Complete & Save not executed; Inspectionhisory not inserted")
-                    End If
+                '    If (HistoryInserted.Item1) Then
+                '        Dim CertificateInserted = opExec.ExecuteSqlCommand("Insert into Certificate (CERTIFICATENO , inspectionno, CERTIFICATEDATE, LANENO,FeeLabel,CHASSISNO,TestResult, stationname)  select replace(INSPECTIONNO, 'B-C-', 'B-I-'),INSPECTIONNO,UPDATEDATE,LANE,FEELABEL,CHASSISNO,TestResult, stationname from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
 
-                Catch ex As Exception
-                        IO.File.Move(strSourceFile, strDestFail)
-                        Handler.Log(Handler.InspectionNo & " failed to complete , Plate = " & plate & " ; " & ex.Message, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Failure")
-                        MessageBox.Show(Handler.InspectionNo & " Failed to complete")
-                    Finally
-                        opExec.closeConnection()
-                    End Try
-                End If
+                '        If (CertificateInserted.Item1) Then
+                '            Dim DeleteInspectionActive = opExec.ExecuteSqlCommand("Delete from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
+
+                '            If (DeleteInspectionActive.Item1) Then
+                '                IO.File.Move(strSourceFile, strDestSuccess) 'It should go to ProcessEsOut folder and the ProcessEsOut software move it to success or failure folder
+                '                Handler.Log(Handler.InspectionNo & " Completed successfully, Plate = " & plate, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Success")
+                '                MessageBox.Show(Handler.InspectionNo & " Completed successfully")
+
+                '                My.Forms.SYSTEMLOGIN.Show()
+                '                My.Forms.SYSTEMLOGIN.txtUser.ResetText()
+                '                My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
+                '                My.Forms.SYSTEMLOGIN.txtUser.Focus()
+                '                My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
+                '                Me.Dispose()
+                '            Else
+                '                Throw New DataException("Complete & Save not executed; InspectionActive not deleted")
+                '            End If
+                '        Else
+                '            Throw New DataException("Complete & Save not executed; Certificate not inserted")
+                '        End If
+                '    Else
+                '        Throw New DataException("Complete & Save not executed; Inspectionhisory not inserted")
+                '    End If
+
+                'Catch ex As Exception
+                '    Handler.Log(Handler.InspectionNo & " failed to complete , Plate = " & plate & " ; " & ex.Message, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Failure")
+                '    MessageBox.Show(Handler.InspectionNo & " Failed to complete")
+                'Finally
+                '    opExec.closeConnection()
+                'End Try
             End If
+        End If
 
         If (vForm = "Print Certificate") Then
             If (Handler.Plate = Nothing) Then
@@ -381,8 +451,8 @@
         Dim strFile As String = Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt"
 
         If (IO.File.Exists(strFile)) Then
-            'MessageBox.Show("Vehicle is already stored Intermediate")
-            Return
+            MessageBox.Show("Vehicle is already stored Intermediate")
+            'Return
         End If
 
 
@@ -417,11 +487,11 @@
 
         'Create the ESIn files for Ryme Stations
         Dim esIn As New EsIn
-        esIn.ToEsPath("RYME", "IN", Handler.Plate, "")
+        esIn.ToEsPath("RYME", "IN", Handler.Plate, Handler.Lane, "")
 
         'Create the EsOut file (Title + Header) for VTS
         Dim Es As New EsOut
-        If (Es.CreateTitleHeaderEOF("TitleHeader", Handler.IType, "OUT", Handler.Plate, "", "VTS")) Then
+        If (Es.CreateTitleHeaderEOF("TitleHeader", Handler.InspType, "OUT", Handler.Plate, "", "VTS")) Then
             ''btnStore.Enabled = False
             MessageBox.Show(Handler.Plate & " Stored Successfully " & Handler.InspNo)
             Handler.Log(Handler.Plate & " Status = Stored. VTS EsOut stored successfully. " & Handler.InspNo, Handler.GenerateTimeZone(), "VTS RYME PROCESS", "Success")
@@ -437,7 +507,7 @@
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Me.Close()
         Dispose()
 
@@ -466,13 +536,13 @@
             Try
                 Dim HistoryInserted = opExec.ExecuteSqlCommand("Insert into inspectionhistory (INSPECTIONNO, CHASSISNO, ITYPE, LANE, FEEAMOUNT, FEETYPE, FEELABEL, STATIONNAME, LASTSTATIONNAME, USER_FK, USERNAME, HOSTNAME, CASHIERNAME, CASHIER_FK, TESTRESULT, InspType, ReceiptNo, LaneIN, LANETYPE, MinLane) Select replace(INSPECTIONNO, 'B-C-', 'B-I-'),CHASSISNO,ITYPE,LANE,FEEAMOUNT,FEETYPE,FEELABEL,STATIONNAME,LASTSTATIONNAME ,USER_FK,USERNAME,HOSTNAME ,CASHIERNAME,CASHIER_FK,TESTRESULT,InspType,ReceiptNo,LaneIN,LANETYPE,MinLane from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
 
-                If (HistoryInserted) Then
+                If (HistoryInserted.Item1) Then
                     Dim CertificateInserted = opExec.ExecuteSqlCommand("Insert into Certificate (CERTIFICATENO ,CERTIFICATEDATE,INSPECTIONNO,LANENO,CHASSISNO,TestResult)  values ('" & Handler.InspectionNo.Replace("B-I-", "B-C-") & "', CONVERT(datetime,'" & Handler.GenerateTimeZone() & "',103),'" & Handler.InspectionNo & "','" & Handler.Lane & "','" & Chassis & "','F') ", True)
 
-                    If (CertificateInserted) Then
+                    If (CertificateInserted.Item1) Then
                         Dim DeleteInspectionActive = opExec.ExecuteSqlCommand("Delete from inspectionactive where inspectionno = '" & Handler.InspectionNo & "' ", True)
 
-                        If (DeleteInspectionActive) Then
+                        If (DeleteInspectionActive.Item1) Then
                             IO.File.Move(strSourceFile, strDestSuccess) 'It should go to ProcessEsOut folder and the ProcessEsOut software move it to success or failure folder
                             Handler.Log(Handler.InspectionNo & " Completed successfully, Plate = " & plate, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Success")
                             MessageBox.Show(Handler.InspectionNo & " Completed successfully")

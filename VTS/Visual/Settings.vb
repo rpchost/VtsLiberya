@@ -84,4 +84,12 @@
     Private Sub TimerSetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimerSetToolStripMenuItem.Click
         TimerSet.Show()
     End Sub
+
+    Private Sub CancelInspectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelInspectionToolStripMenuItem.Click
+        CancelInspection.Show()
+    End Sub
+
+    Private Sub FileWatcherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileWatcherToolStripMenuItem.Click
+        FileWatcher.Show()
+    End Sub
 End Class

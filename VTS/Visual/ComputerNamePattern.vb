@@ -1,6 +1,9 @@
 ﻿Public Class ComputerNamePattern
     Private Sub ComputerNamePattern_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        lblComputerName.Text = Handler.GetComputerName()
+        lblMachineName.Text = System.Environment.MachineName
+
         header.Width = My.Computer.Screen.WorkingArea.Size.Width
         header.Height = 100
         Me.WindowState = FormWindowState.Maximized

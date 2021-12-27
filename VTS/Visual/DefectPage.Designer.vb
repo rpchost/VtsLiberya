@@ -49,7 +49,6 @@ Partial Class DefectPage
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnESC = New System.Windows.Forms.Button()
-        Me.btnLogOut = New System.Windows.Forms.Button()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.LabelComments = New System.Windows.Forms.Label()
         Me.header = New System.Windows.Forms.Label()
@@ -202,7 +201,7 @@ Partial Class DefectPage
         '
         Me.Label66.AutoSize = True
         Me.Label66.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label66.Location = New System.Drawing.Point(57, 630)
+        Me.Label66.Location = New System.Drawing.Point(72, 709)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(113, 16)
         Me.Label66.TabIndex = 14
@@ -212,7 +211,7 @@ Partial Class DefectPage
         '
         Me.btnMinorDefect.BackColor = System.Drawing.Color.Silver
         Me.btnMinorDefect.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMinorDefect.Location = New System.Drawing.Point(55, 659)
+        Me.btnMinorDefect.Location = New System.Drawing.Point(70, 738)
         Me.btnMinorDefect.Name = "btnMinorDefect"
         Me.btnMinorDefect.Size = New System.Drawing.Size(92, 54)
         Me.btnMinorDefect.TabIndex = 15
@@ -223,7 +222,7 @@ Partial Class DefectPage
         '
         Me.btnMajorDefect.BackColor = System.Drawing.Color.Silver
         Me.btnMajorDefect.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMajorDefect.Location = New System.Drawing.Point(181, 659)
+        Me.btnMajorDefect.Location = New System.Drawing.Point(196, 738)
         Me.btnMajorDefect.Name = "btnMajorDefect"
         Me.btnMajorDefect.Size = New System.Drawing.Size(90, 54)
         Me.btnMajorDefect.TabIndex = 16
@@ -233,7 +232,7 @@ Partial Class DefectPage
         'Button14
         '
         Me.Button14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button14.Location = New System.Drawing.Point(356, 659)
+        Me.Button14.Location = New System.Drawing.Point(371, 738)
         Me.Button14.Name = "Button14"
         Me.Button14.Size = New System.Drawing.Size(157, 54)
         Me.Button14.TabIndex = 17
@@ -244,9 +243,9 @@ Partial Class DefectPage
         '
         Me.Button15.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button15.Location = New System.Drawing.Point(891, 560)
+        Me.Button15.Location = New System.Drawing.Point(803, 560)
         Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(123, 44)
+        Me.Button15.Size = New System.Drawing.Size(280, 93)
         Me.Button15.TabIndex = 18
         Me.Button15.Text = "SAVE"
         Me.Button15.UseVisualStyleBackColor = False
@@ -298,7 +297,7 @@ Partial Class DefectPage
         'Button16
         '
         Me.Button16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button16.Location = New System.Drawing.Point(541, 659)
+        Me.Button16.Location = New System.Drawing.Point(556, 738)
         Me.Button16.Name = "Button16"
         Me.Button16.Size = New System.Drawing.Size(132, 54)
         Me.Button16.TabIndex = 23
@@ -319,22 +318,12 @@ Partial Class DefectPage
         'btnESC
         '
         Me.btnESC.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnESC.Location = New System.Drawing.Point(1282, 642)
+        Me.btnESC.Location = New System.Drawing.Point(1142, 721)
         Me.btnESC.Name = "btnESC"
-        Me.btnESC.Size = New System.Drawing.Size(146, 71)
+        Me.btnESC.Size = New System.Drawing.Size(205, 71)
         Me.btnESC.TabIndex = 0
         Me.btnESC.Text = "ESC"
         Me.btnESC.UseVisualStyleBackColor = True
-        '
-        'btnLogOut
-        '
-        Me.btnLogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogOut.Location = New System.Drawing.Point(1098, 642)
-        Me.btnLogOut.Name = "btnLogOut"
-        Me.btnLogOut.Size = New System.Drawing.Size(162, 71)
-        Me.btnLogOut.TabIndex = 29
-        Me.btnLogOut.Text = "LOGOUT"
-        Me.btnLogOut.UseVisualStyleBackColor = True
         '
         'RichTextBox1
         '
@@ -414,7 +403,6 @@ Partial Class DefectPage
         Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.LabelComments)
         Me.Controls.Add(Me.RichTextBox1)
-        Me.Controls.Add(Me.btnLogOut)
         Me.Controls.Add(Me.btnESC)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button16)
@@ -475,7 +463,6 @@ Partial Class DefectPage
     Friend WithEvents Button16 As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btnESC As System.Windows.Forms.Button
-    Friend WithEvents btnLogOut As System.Windows.Forms.Button
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents LabelComments As System.Windows.Forms.Label
     Friend WithEvents header As Label

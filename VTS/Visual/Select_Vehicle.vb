@@ -42,16 +42,17 @@ Public Class Select_Vehicle
     End Sub
 
     Private Sub btnSignOut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSignOut.Click
-        Label1.ResetText()
-        My.Forms.SYSTEMLOGIN.Show()
-        My.Forms.SYSTEMLOGIN.txtUser.ResetText()
-        My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
-        My.Forms.SYSTEMLOGIN.txtUser.Focus()
-        My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
-        Me.Dispose()
+        'Label1.ResetText()
+        'My.Forms.SYSTEMLOGIN.Show()
+        'My.Forms.SYSTEMLOGIN.txtUser.ResetText()
+        'My.Forms.SYSTEMLOGIN.txtPwd.ResetText()
+        'My.Forms.SYSTEMLOGIN.txtUser.Focus()
+        'My.Forms.SYSTEMLOGIN.lblmsg.ResetText()
+        'Me.Dispose()
+        Me.Close()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Me.Close()
         Dispose()
     End Sub
@@ -64,7 +65,7 @@ Public Class Select_Vehicle
         Dim str As String
         Dim dtCar As New Data.DataTable
 
-        str = "select distinct plateno, inspectionactive.chassisno from cardaftar inner join inspectionactive on cardaftar.chassisno=inspectionactive.chassisno and esincreated=1 and inspectionactive.Lane = " & Handler.Lane
+        str = "select distinct plateno, inspectionactive.chassisno,inspectionactive.updatedate from cardaftar inner join inspectionactive on cardaftar.chassisno=inspectionactive.chassisno where esincreated=1 and inspectionactive.Lane = " & Handler.Lane & " order by inspectionactive.updatedate desc"
         dtCar = conn.ExecuteReaderdt(str)
 
         lstVehicle.DataSource = dtCar
@@ -77,7 +78,7 @@ Public Class Select_Vehicle
     End Sub
     Private Sub lstVehicle_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstVehicle.MouseDoubleClick
         If (Handler.dTDefects IsNot Nothing) Then
-            Handler.dTDefects.Dispose()
+            Handler.dTDefects.Clear()
         End If
 
         'Dim sqlLabelCar As String
@@ -92,14 +93,14 @@ Public Class Select_Vehicle
         Handler.Plate = lstVehicle.GetItemText(lstVehicle.SelectedItem)
         Handler.InspNo = Handler.FillInspNo(InspectionActive("InspectionNo"))
         Handler.IType = InspectionActive("IType") 'dtLabelCar.Rows(0).Item("IType")
+        Handler.InspType = InspectionActive("InspType")
 
-        If (Handler.IType = "R") Then
+        If (Handler.InspType = "R") Then
             Handler.LastInspectionNo = Handler.GetEsCodeValue(Handler.Plate, "OUT", "PROCESS_SUCCESS", "10304").Trim().Replace("C", "I")
         Else
             Handler.LastInspectionNo = ""
         End If
 
-        Handler.InspType = InspectionActive("InspType") 'dtLabelCar.Rows(0).Item("InspType")
         Handler.Lane = InspectionActive("Lane") 'dtLabelCar.Rows(0).Item("Lane")
         Handler.userId = InspectionActive("userId") 'IIf(IsDBNull(dtLabelCar.Rows(0).Item("user_Fk")), "", dtLabelCar.Rows(0).Item("user_Fk"))
         Handler.Chassis = InspectionActive("Chassis") 'dtLabelCar.Rows(0).Item("ChassisNo")
