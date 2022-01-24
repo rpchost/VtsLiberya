@@ -60,6 +60,8 @@ Public Class Cashier
         Dim opExec As New connection
 
         lblVisitType.Text = ""
+        CancelInspection.Enabled = True
+        btnSendInspection.Enabled = True
 
         Dim reader As SqlClient.SqlDataReader = opExec.rdGetReader("select * from Cardaftar where plateno = '" & txtPlate.Text & "'")
         Try
@@ -81,7 +83,6 @@ Public Class Cashier
                 txtModel.Text = IIf(IsDBNull(reader("Model")), "", reader("Model"))
                 txtWeight.Text = IIf(IsDBNull(reader("WeightTotal")), "", reader("WeightTotal"))
 
-
                 chk4Wd.Checked = IIf(IsDBNull(reader("FourWd")), False, reader("FourWd"))
                 cmbVehicleType.SelectedValue = IIf(IsDBNull(reader("VehicleCategory")), "", reader("VehicleCategory"))
 
@@ -90,8 +91,16 @@ Public Class Cashier
                 If (txtChassis.Text.Trim <> "" And txtPlate.Text.Trim <> "") Then
                     Dim helper As New Helpers
                     Dim VistNature = helper.GetVisitNature(txtChassis.Text.Trim)
+                    If (VistNature = "Y") Then
+                        lblVisitType.Text = "First Visit"
+                    ElseIf (VistNature = "R") Then
+                        lblVisitType.Text = "Repeat Visit"
+                    ElseIf (VistNature = "RP") Then
+                        lblVisitType.Text = "Already passed"
+                        CancelInspection.Enabled = False
+                        btnSendInspection.Enabled = False
+                    End If
 
-                    lblVisitType.Text = IIf(VistNature = "Y", "First Visit", "Repeat Visit")
                     Dim InspActive = helper.GetLastInspectionActive(txtChassis.Text.Trim)
                     If (InspActive.Count > 0) Then
                         lblInspNo.Text = $"{InspActive("InspectionNo") } on Lane [{InspActive("Lane")}]"

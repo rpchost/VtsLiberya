@@ -486,7 +486,6 @@ Public Class Handler
                         strCode8 = Replace(strCode8, "]", "")
                         dblVal8 = GetRymeValue(strCode8)
                     End If
-
                 Next
 
                 Return Math.Round(((dblVal1 + dblVal2 + dblVal3 + dblVal4) / (dblVal5 + dblVal6 + dblVal7 + dblVal8)) / (100 / 9.81), 4)
@@ -1202,7 +1201,7 @@ Public Class Handler
         Dim opExec As New connection
         Dim sqlCommand = opExec.ExecuteSqlCommand("Insert into VTS_RYME_LOGGER (LG_DSC,LG_DATETIME,LG_SRC,LG_ERR) values ('" & LG_DSC & "','" & GenerateTimeZone() & "','" & LG_SRC & "','" & LG_ERR & "')", True)
         If (sqlCommand.Item1 = False) Then
-            ' MessageBox.Show("Error with logger " & LG_DSC & " " & LG_DATETIME & " " & sqlCommand.Item2)
+            MessageBox.Show("Error with logger " & LG_DSC & " " & LG_DATETIME & " " & sqlCommand.Item2)
         End If
         opExec.closeConnection()
         Return True

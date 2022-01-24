@@ -22,6 +22,38 @@ Public Class EsIn
         Return True
 
     End Function
+
+    Public Function DeleteAllEs(ByVal EsType As String, ByVal EsIO As String, ByVal FileName As String, ByVal Lane As String, Optional EsVehTyp As String = "") As Boolean
+
+        Dim dc As Dictionary(Of String, String) = GetSectionsDir(EsType, EsIO, Lane, EsVehTyp)
+
+        For Each iKey As String In dc.Keys
+            Try
+                DeleteEs(EsType, dc(iKey), FileName)
+                Handler.Log("EsIn deleted successfully ; User = " & Handler.InspectorID & " EsIn data: " & dc(iKey) & " " & FileName, Handler.GenerateTimeZone(), "EsIn.DeleteAllEs.ToEsPath", "Success")
+            Catch ex As Exception
+                Handler.Log("FileName " & FileName & " Location " & dc(iKey) & " EsType " & EsType, Handler.GenerateTimeZone(), "EsIn.DeleteAllEs", ex.Message)
+            End Try
+
+        Next
+
+        Return True
+
+    End Function
+    Private Function DeleteEs(EsType As String, Loc As String, FileName As String) As Boolean
+
+        Dim strFile As String = Loc & "\" & FileName & ".txt"
+        Try
+            If (File.Exists(strFile)) Then
+                File.Delete(strFile)
+            End If
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+
+    End Function
+
     Private Function WriteEsIn(EsType As String, Loc As String, FileName As String) As Boolean
 
         Dim strFile As String = Loc & "\" & FileName & ".txt"

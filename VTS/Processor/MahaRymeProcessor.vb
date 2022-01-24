@@ -529,19 +529,68 @@ Public Class MahaRymeProcessor
 
         For Each iKey In dc.Keys
 
-            Dim value As Dictionary(Of String, String) = dc(iKey)
+            Dim value = Es.getVtsValueFromCode(FileName, iKey).Trim
             If (Es.getCalVtsBr(iKey).Equals("BRAKE")) Then
-                If (allFile.Contains(value.First.Key) And allFile.Contains(value.First.Value)) Then
-                    Val1 = Es.getRymeValueFromFile(RymePath, FileName, value.First.Key)
-                    Val2 = Es.getRymeValueFromFile(RymePath, FileName, value.First.Value)
-                    dcRes.Add(iKey, (Val1 - Val2) * 100 / Math.Max(Val1, Val2))
-                End If
+                'If (allFile.Contains(value.First.Key) And allFile.Contains(value.First.Value)) Then
+                '    Val1 = Es.getRymeValueFromFile(RymePath, FileName, value.First.Key)
+                '    Val2 = Es.getRymeValueFromFile(RymePath, FileName, value.First.Value)
+                '    dcRes.Add(iKey, Math.Round((Val1 - Val2) * 100 / Math.Max(Val1, Val2), 4))
+                'End If
+            ElseIf (Es.getCalVtsBr(iKey).Equals("OPACI")) Then
+                Val1 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03004") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03004")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03005") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03005")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03006") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03006")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03007") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03007")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03008") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03008")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03009") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03009")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03010") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03010")))
+                Val1 = Val1 + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "03011") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "03011")))
+                Dim val As Decimal
+                Decimal.TryParse(value, val)
+
+                If (val <= 0) Then dcRes.Add(iKey, Math.Round(Val1 / 8, 4)) 'if VTS code value already filled do not re process it
             ElseIf (Es.getCalVtsBr(iKey).Equals("WEIGHT")) Then
                 Val1 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04014") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04014"))
                 Val2 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04016") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04016"))
                 Val3 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04018") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04018"))
                 Val4 = IIf(Es.getRymeValueFromFile(RymePath, FileName, "04020") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04020"))
-                dcRes.Add(iKey, Val1 + Val2 + Val3 + Val4)
+                Dim val As Decimal
+                Decimal.TryParse(value, val)
+
+                If (val <= 0) Then dcRes.Add(iKey, Val1 + Val2 + Val3 + Val4)
+            ElseIf (Es.getCalVtsBr(iKey).Equals("DECELERATION PARK")) Then
+                Val1 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04056") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04056")))
+                Val2 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04057") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04057")))
+                'Static weight
+                Val3 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04014") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04014"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04016") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04016"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04018") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04018"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04020") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04020")))
+
+                Dim val As Decimal
+                Decimal.TryParse(value, val)
+
+                If (val <= 0) Then
+
+                    If (Val3 > 0) Then
+                        dcRes.Add(iKey, Math.Round((((Val1 + Val2) / Val3) * 100) / 9.81, 4))
+                    Else
+                        dcRes.Add(iKey, -1)
+                    End If
+                End If
+            ElseIf (Es.getCalVtsBr(iKey).Equals("DECELERATION SERVICE")) Then
+                Val1 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04074") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04074"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04075") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04075")))
+                Val2 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04076") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04076"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04077") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04077")))
+                'Static weight
+                Val3 = Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04014") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04014"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04016") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04016"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04018") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04018"))) + Convert.ToDouble(IIf(Es.getRymeValueFromFile(RymePath, FileName, "04020") = "", 0, Es.getRymeValueFromFile(RymePath, FileName, "04020")))
+                Dim val As Decimal
+
+                Decimal.TryParse(value, val)
+
+                If (val <= 0) Then
+                    If (Val3 > 0) Then
+                        dcRes.Add(iKey, Math.Round((((Val1 + Val2) / Val3) * 100) / 9.81, 4))
+                    Else
+                        dcRes.Add(iKey, -1)
+                    End If
+                End If
             End If
         Next
 

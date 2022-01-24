@@ -179,7 +179,7 @@ Public Class Vehicles
                 End If
 
             ElseIf (Handler.InspType = "R") Then
-                Dim srcFile As String = Handler.GetEsLocation("OUT", "PROCESS_SUCCESS") & "\" & Handler.Plate & ".txt"
+                Dim srcFile As String = Handler.GetEsLocation("OUT", "PROCESS_BACKUP") & "\" & Handler.Plate & ".txt"
                 If (IO.File.Exists(srcFile)) Then
                     Try
                         IO.File.Move(srcFile, strFile)
@@ -223,6 +223,7 @@ Public Class Vehicles
 
             Dim strSourceFile As String = Handler.GetEsLocation("OUT", "VTS") & "\" & Handler.Plate & ".txt"
             Dim strDestSuccess As String = Handler.GetEsLocation("OUT", "PROCESS_SUCCESS") & "\" & Handler.Plate & ".txt"
+            Dim strDestBackup As String = Handler.GetEsLocation("OUT", "PROCESS_BACKUP") & "\" & Handler.Plate & ".txt"
             Dim strDestFail As String = Handler.GetEsLocation("OUT", "PROCESS_FAIL") & "\" & Handler.Plate & ".txt"
 
             If (File.Exists(strSourceFile) = False) Then
@@ -245,7 +246,12 @@ Public Class Vehicles
 
                 Dim opExec As New connection
 
+                Dim esIn As New EsIn
+                esIn.DeleteAllEs("RYME", "IN", Handler.Plate, Handler.Lane, "") 'Delete all EsIn files in ryme folders
+
                 IO.File.Move(strSourceFile, strDestSuccess)
+                IO.File.Move(strSourceFile, strDestBackup)
+
                 Handler.Log(Handler.InspectionNo & " Completed successfully, Plate = " & plate, Handler.GenerateTimeZone(), "COMPLETE AND SAVE", "Success")
                 MessageBox.Show(Handler.InspectionNo & " Completed successfully")
 

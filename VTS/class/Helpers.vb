@@ -253,12 +253,13 @@ Public Class Helpers
 
     Public Function GetVisitNature(Chassis As String) As String
         Dim Res As String = ""
-        Dim VisitNature = GetLastCertificateInCurrentYear(Chassis) 'GetLastInspectinHistoryInCurrentYear(Chassis)
+        Dim VisitNature = GetLastInspectinHistoryInCurrentYear(Chassis) 'GetLastCertificateInCurrentYear(Chassis)
         If (VisitNature.Count > 0) Then
-            'If (VisitNature("InspType") = "Y") Then
-            Res = "R"
-            'ElseIf (VisitNature("InspType") = "R") Then
-            'Res = "Repeat Visit"
+            If (VisitNature("TestResult") = "P") Then
+                Res = "RP"
+            Else
+                Res = "R"
+            End If
         Else
             Res = "Y"
         End If
@@ -348,8 +349,8 @@ Public Class Helpers
                 While reader.Read()
                     LastInspectionHistory.Add("Chassis", IIf(IsDBNull(reader("ChassisNo")), "", reader("ChassisNo")))
                     LastInspectionHistory.Add("UPDATEDATE", IIf(IsDBNull(reader("UPDATEDATE")), "", reader("UPDATEDATE")))
-                    LastInspectionHistory.Add("Inspection", IIf(IsDBNull(reader("Inspection")), "", reader("Inspection")))
-                    LastInspectionHistory.Add("LaneNo", IIf(IsDBNull(reader("LaneNo")), "", reader("LaneNo")))
+                    LastInspectionHistory.Add("Inspection", IIf(IsDBNull(reader("Inspectionno")), "", reader("Inspectionno")))
+                    LastInspectionHistory.Add("LaneNo", IIf(IsDBNull(reader("Lane")), "", reader("Lane")))
                     LastInspectionHistory.Add("InspType", IIf(IsDBNull(reader("InspType")), "", reader("InspType")))
                     LastInspectionHistory.Add("TestResult", IIf(IsDBNull(reader("TestResult")), "", reader("TestResult")))
                 End While
